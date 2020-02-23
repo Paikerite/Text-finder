@@ -198,14 +198,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QGroupBox\n"
-"{\n"
-"    border: 1px solid darkgray;\n"
+"{   \n"
+"    border: 1px solid black;\n"
 "    margin-top: 10px;\n"
 "}\n"
 "\n"
 "QGroupBox:focus\n"
 "{\n"
-"    border: 1px solid darkgray;\n"
+"    border: 1px solid rgb(33,33,33)\n"
 "}\n"
 "\n"
 "QTextEdit:focus\n"
@@ -554,7 +554,26 @@ class Ui_MainWindow(object):
 "QMainWindow{\n"
 "    border-top: 2px solid black;\n"
 "}\n"
-"")
+"\n"
+"QGroupBox{\n"
+"    border-color:rgb(33,33,33)\n"
+"}\n"
+"\n"
+"QGroupBox:hover{\n"
+"    border-color:rgb(33,33,33)\n"
+"}\n"
+"\n"
+"QGroupBox::indicator {\n"
+"    color: #b1b1b1;\n"
+"    background-color: #323232;\n"
+"    border: 1px solid #b1b1b1;\n"
+"}\n"
+"\n"
+"QGroupBox::indicator:checked\n"
+"{\n"
+"    background-color: rgb(255, 170, 0);\n"
+"    color: rgb(255, 170, 0);\n"
+"}")
         MainWindow.setIconSize(QtCore.QSize(64, 64))
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -588,6 +607,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setMaximumSize(QtCore.QSize(955, 20))
         self.lineEdit.setDragEnabled(True)
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setReadOnly(True)
         self.horizontalLayout_2.addWidget(self.lineEdit)
         self.verticalLayout_4.addLayout(self.horizontalLayout_2)
         self.verticalLayout_2.addLayout(self.verticalLayout_4)
@@ -649,31 +669,84 @@ class Ui_MainWindow(object):
         self.checkBox_2.setMaximumSize(QtCore.QSize(100, 13))
         self.checkBox_2.setObjectName("checkBox_2")
         self.verticalLayout.addWidget(self.checkBox_2, 0, QtCore.Qt.AlignRight)
-        self.ScaleCheckBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.ScaleCheckBox.setChecked(False)
-        self.ScaleCheckBox.setObjectName("ScaleCheckBox")
-        self.verticalLayout.addWidget(self.ScaleCheckBox)
-        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setEnabled(True)
-        self.checkBox.setMinimumSize(QtCore.QSize(100, 13))
-        self.checkBox.setMaximumSize(QtCore.QSize(100, 13))
-        self.checkBox.setStyleSheet("")
-        self.checkBox.setChecked(False)
-        self.checkBox.setProperty("high_contrast_for_slide", False)
-        self.checkBox.setObjectName("checkBox")
-        self.verticalLayout.addWidget(self.checkBox, 0, QtCore.Qt.AlignRight)
-        self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
-        self.horizontalSlider.setEnabled(False)
+        self.ContrastGroup = QtWidgets.QGroupBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ContrastGroup.sizePolicy().hasHeightForWidth())
+        self.ContrastGroup.setSizePolicy(sizePolicy)
+        self.ContrastGroup.setCheckable(True)
+        self.ContrastGroup.setChecked(False)
+        self.ContrastGroup.setObjectName("ContrastGroup")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.ContrastGroup)
+        self.verticalLayout_6.setContentsMargins(5, 20, 5, -1)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.horizontalSlider = QtWidgets.QSlider(self.ContrastGroup)
+        self.horizontalSlider.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.horizontalSlider.sizePolicy().hasHeightForWidth())
         self.horizontalSlider.setSizePolicy(sizePolicy)
-        self.horizontalSlider.setMinimumSize(QtCore.QSize(100, 22))
-        self.horizontalSlider.setMaximumSize(QtCore.QSize(100, 22))
+        self.horizontalSlider.setMinimumSize(QtCore.QSize(88, 0))
+        self.horizontalSlider.setMaximumSize(QtCore.QSize(125, 22))
+        self.horizontalSlider.setValue(10)
+        self.horizontalSlider.setMaximum(20)
+        self.horizontalSlider.setMinimum(0)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
-        self.verticalLayout.addWidget(self.horizontalSlider, 0, QtCore.Qt.AlignRight)
+        self.verticalLayout_6.addWidget(self.horizontalSlider)
+        self.verticalLayout.addWidget(self.ContrastGroup)
+        self.ScaleCheckBox = QtWidgets.QGroupBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ScaleCheckBox.sizePolicy().hasHeightForWidth())
+        self.ScaleCheckBox.setSizePolicy(sizePolicy)
+        self.ScaleCheckBox.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.ScaleCheckBox.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.ScaleCheckBox.setFlat(False)
+        self.ScaleCheckBox.setCheckable(True)
+        self.ScaleCheckBox.setChecked(False)
+        self.ScaleCheckBox.setObjectName("ScaleCheckBox")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ScaleCheckBox)
+        self.verticalLayout_5.setContentsMargins(-1, 20, -1, -1)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.height_label = QtWidgets.QLabel(self.ScaleCheckBox)
+        self.height_label.setScaledContents(False)
+        self.height_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.height_label.setObjectName("height_label")
+        self.verticalLayout_5.addWidget(self.height_label)
+        self.width = QtWidgets.QLineEdit(self.ScaleCheckBox)
+        self.width.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.width.setStyleSheet("")
+        self.width.setInputMethodHints(QtCore.Qt.ImhDigitsOnly|QtCore.Qt.ImhPreferNumbers)
+        self.width.setEchoMode(QtWidgets.QLineEdit.Normal)
+        self.width.setClearButtonEnabled(False)
+        self.width.setObjectName("width")
+        self.verticalLayout_5.addWidget(self.width)
+        self.width_label = QtWidgets.QLabel(self.ScaleCheckBox)
+        self.width_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.width_label.setObjectName("width_label")
+        self.verticalLayout_5.addWidget(self.width_label)
+        self.height = QtWidgets.QLineEdit(self.ScaleCheckBox)
+        self.height.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.height.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
+        self.height.setObjectName("height")
+        self.verticalLayout_5.addWidget(self.height)
+        self.pushButton_3 = QtWidgets.QPushButton(self.ScaleCheckBox)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.verticalLayout_5.addWidget(self.pushButton_3)
+        self.resetScale = QtWidgets.QPushButton(self.ScaleCheckBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.resetScale.sizePolicy().hasHeightForWidth())
+        self.resetScale.setSizePolicy(sizePolicy)
+        self.resetScale.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.resetScale.setObjectName("resetScale")
+        self.verticalLayout_5.addWidget(self.resetScale)
+        self.verticalLayout.addWidget(self.ScaleCheckBox)
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.verticalLayout_2.setStretch(1, 1)
@@ -700,10 +773,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.Info.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.checkBox.toggled['bool'].connect(self.horizontalSlider.show)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.checkBox, self.horizontalSlider)
-        MainWindow.setTabOrder(self.horizontalSlider, self.pushButton_2)
         MainWindow.setTabOrder(self.pushButton_2, self.lineEdit)
         MainWindow.setTabOrder(self.lineEdit, self.checkBox_2)
 
@@ -714,8 +784,12 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Begin"))
         self.progressBar.setFormat(_translate("MainWindow", "%p%"))
         self.checkBox_2.setText(_translate("MainWindow", "Black-White"))
-        self.ScaleCheckBox.setText(_translate("MainWindow", "Scale image"))
-        self.checkBox.setText(_translate("MainWindow", "High Contrast"))
+        self.ContrastGroup.setTitle(_translate("MainWindow", "High Contrast"))
+        self.ScaleCheckBox.setTitle(_translate("MainWindow", "Scale"))
+        self.height_label.setText(_translate("MainWindow", "Width"))
+        self.width_label.setText(_translate("MainWindow", "Height"))
+        self.pushButton_3.setText(_translate("MainWindow", "Scale"))
+        self.resetScale.setText(_translate("MainWindow", "Reset"))
         self.Info.setTitle(_translate("MainWindow", "Info"))
         self.About.setText(_translate("MainWindow", "About..."))
         self.actionInstructiom.setText(_translate("MainWindow", "Instruction"))

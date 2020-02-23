@@ -1,8 +1,11 @@
 import sys
+from PIL import Image, ImageEnhance, ImageShow
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtGui import QImage
+from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QDesktopWidget,QApplication
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from ui import Ui_MainWindow  # импорт нашего сгенерированного файла
 
@@ -13,29 +16,61 @@ images_type = ['.jpg', '.png', 'jpeg']
 
 # print(resolution)
 
-
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.pushButton.clicked.connect(self.Buttonbegin)
-        self.ui.pushButton_2.clicked.connect(self.Browsebutton)
-        self.ui.ScaleCheckBox.stateChanged.connect(self.ScaleCheck)
-        self.ui.checkBox_2.clicked.connect(self.Black_And_White)
+        self.ui.pushButton.clicked.connect(self.buttonbegin)
+        self.ui.pushButton_2.clicked.connect(self.browsebutton)
+        self.ui.checkBox_2.clicked.connect(self.black_and_white)
+        self.ui.pushButton_3.clicked.connect(self.scalecheck)
+        self.ui.resetScale.clicked.connect(self.scalereset)
+        self.ui.horizontalSlider.valueChanged.connect(self.highcontrast)
 
-    def ScaleCheck(self, state):
+        self.ui.width.setValidator(QIntValidator())
+        self.ui.height.setValidator(QIntValidator())
 
-        if state == QtCore.Qt.Checked:
-            pixmap = image.scaled(1030, 677, QtCore.Qt.KeepAspectRatio)
-            self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+    def highcontrast(self):
+        value = self.ui.horizontalSlider.value()
+        value /= 10
+        print(value)
+        contrast_image = self.ui.imagelabel.pixmap()
+        contrast_image = Image.fromqpixmap(contrast_image)
+
+        contrast_image = ImageEnhance.Contrast(contrast_image).enhance(value)
+
+        self.ui.imagelabel.setPixmap(contrast_image.toqpixmap())
+
+    def scalereset(self):
+        try:
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+        except NameError as ne:
+            print(ne)
+            QMessageBox.about(self, 'Error', 'Image not found, upload it')
+
+    def scalecheck(self):
+        try:
+            width = int(self.ui.width.text())
+            height = int(self.ui.height.text())
+            print(f"width = {width} height - {height}")
+        except ValueError as ve:
+            print(ve)
+            QMessageBox.about(self, 'Error', 'Please, fill the empty fields')
+            width = ''
+            height = ''
+        if width == '' or height == '':
+            pass
         else:
             try:
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+                global pixmap
+                pixmap = image.scaled(width, height, QtCore.Qt.KeepAspectRatio)
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
             except NameError as ne:
                 print(ne)
+                QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
-    def Browsebutton(self):
+    def browsebutton(self):
         filename = QtWidgets.QFileDialog.getOpenFileName(filter='Images (*.png *.xpm *.jpg *.jpeg)',
                                                          caption='Select image')
         self.ui.lineEdit.setText(filename[0])
@@ -45,10 +80,22 @@ class MyWindow(QtWidgets.QMainWindow):
 
         self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
 
-    def Black_And_White(self):
-        pass
+    def black_and_white(self, state):
+        b_and_w_image = self.ui.imagelabel.pixmap()
+        if state is True:
+            b_and_w_image_updated = Image.fromqpixmap(b_and_w_image)
 
-    def Buttonbegin(self):
+            b_and_w_image_updated = b_and_w_image_updated.convert(mode='1', dither=Image.NONE)
+            self.ui.imagelabel.setPixmap(b_and_w_image_updated.toqpixmap())
+        elif state is False:
+            try:
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+            except NameError as ne:
+                print(ne)
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+
+
+    def buttonbegin(self):
         print("Pressed")
 
 
