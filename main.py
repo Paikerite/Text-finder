@@ -1,4 +1,5 @@
 import sys
+import pytesseract
 from PIL import Image, ImageEnhance, ImageShow
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap
@@ -95,20 +96,31 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
 
     def buttonbegin(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
+        fortxt = self.ui.imagelabel.pixmap()
+        fortxt = Image.fromqpixmap(fortxt)
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        pytesseract.image_to_osd(fortxt)
+        text = pytesseract.image_to_string(fortxt, lang='eng')
+        if text == '':
+            pass
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
 
-        msg.setText("Success")
-        msg.setInformativeText("")
-        msg.setWindowTitle("Result")
-        msg.setDetailedText('result')
-        msg.setStandardButtons(QMessageBox.Save)
+            msg.setText("Success")
+            msg.setInformativeText("")
+            msg.setWindowTitle("Result")
+            msg.setDetailedText(text)
+            msg.setStandardButtons(QMessageBox.Save | QMessageBox.Close)
 
-        res = msg.exec_()
-        if res == QMessageBox.Save:
-            print('save')
-
-
+            res = msg.exec_()
+            if res == QMessageBox.Save:
+                name = QtWidgets.QFileDialog.getSaveFileName(self, "Save result", "",
+                                                             filter=".txt",
+                                                             )
+                file = open(name[0], 'w')
+                file.write(text)
+                file.close()
 
 app = QtWidgets.QApplication([])
 application = MyWindow()
