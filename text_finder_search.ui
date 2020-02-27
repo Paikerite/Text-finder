@@ -968,7 +968,7 @@ QGroupBox::indicator:checked
              </property>
              <property name="minimumSize">
               <size>
-               <width>80</width>
+               <width>52</width>
                <height>0</height>
               </size>
              </property>
@@ -1133,6 +1133,8 @@ QGroupBox::indicator:checked
     </property>
     <addaction name="About"/>
     <addaction name="actionInstructiom"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout_Qt"/>
    </widget>
    <addaction name="Info"/>
   </widget>
@@ -1152,6 +1154,11 @@ QGroupBox::indicator:checked
    </property>
    <property name="text">
     <string>Instruction</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
    </property>
   </action>
  </widget>

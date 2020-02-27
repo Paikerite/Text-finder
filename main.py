@@ -37,12 +37,24 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.checkBox_2.clicked.connect(self.black_and_white)
         self.ui.pushButton_3.clicked.connect(self.scalecheck)
         self.ui.resetScale.clicked.connect(self.scalereset)
+        self.ui.pushButton_Reset_enhance.clicked.connect(self.enchancereset)
         self.ui.horizontalSlider.valueChanged.connect(self.highcontrast)
         self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
         self.ui.horizontalSlider_color_blalance.valueChanged.connect(self.colorbalance)
+        self.ui.comboBox.addItems(["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
+        self.ui.About.triggered.connect(self.about)
+        self.ui.actionInstructiom.triggered.connect(self.instruction)
 
         self.ui.width.setValidator(QIntValidator())
         self.ui.height.setValidator(QIntValidator())
+
+        self.ui.Info.addAction(QMessageBox.aboutQt)
+
+    def instruction(self):
+        print('yet dibil')
+
+    def about(self):
+        print('dibil')
 
     def colorbalance(self):
         colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
@@ -76,6 +88,13 @@ class MyWindow(QtWidgets.QMainWindow):
         contrast_image = ImageEnhance.Contrast(contrast_image).enhance(value)
 
         self.ui.imagelabel.setPixmap(contrast_image.toqpixmap())
+
+    def enchancereset(self):
+        try:
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+        except NameError as ne:
+            print(ne)
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
 
     def scalereset(self):
         try:
@@ -156,7 +175,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 name = QtWidgets.QFileDialog.getSaveFileName(self, "Save result", "",
                                                              filter="*.txt",
                                                              )
-                print(name)
+
                 file = open(name[0], 'w')
                 file.write(text)
                 file.close()
