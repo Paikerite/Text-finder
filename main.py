@@ -137,7 +137,6 @@ class MyWindow(QtWidgets.QMainWindow):
             pytesseract.image_to_osd(fortxt)
         except pytesseract.pytesseract.TesseractError as te:
             print(te)
-        else:
         lang = self.ui.comboBox.currentText()
         text = pytesseract.image_to_string(fortxt, lang=languages[lang])
         if text == '':
@@ -155,8 +154,9 @@ class MyWindow(QtWidgets.QMainWindow):
             res = msg.exec_()
             if res == QMessageBox.Save:
                 name = QtWidgets.QFileDialog.getSaveFileName(self, "Save result", "",
-                                                             filter=".txt",
+                                                             filter="*.txt",
                                                              )
+                print(name)
                 file = open(name[0], 'w')
                 file.write(text)
                 file.close()

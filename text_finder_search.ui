@@ -902,7 +902,10 @@ QGroupBox::indicator:checked
               </size>
              </property>
              <property name="maximum">
-              <number>100</number>
+              <number>20</number>
+             </property>
+             <property name="value">
+              <number>10</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -921,6 +924,12 @@ QGroupBox::indicator:checked
            </item>
            <item>
             <widget class="QSlider" name="horizontalSlider_brightness">
+             <property name="maximum">
+              <number>20</number>
+             </property>
+             <property name="value">
+              <number>10</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -938,8 +947,45 @@ QGroupBox::indicator:checked
            </item>
            <item>
             <widget class="QSlider" name="horizontalSlider_color_blalance">
+             <property name="maximum">
+              <number>20</number>
+             </property>
+             <property name="value">
+              <number>10</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QPushButton" name="pushButton_Reset_enhance">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>86</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>-1</pointsize>
+               <stylestrategy>PreferDefault</stylestrategy>
+              </font>
+             </property>
+             <property name="text">
+              <string>Reset</string>
              </property>
             </widget>
            </item>
