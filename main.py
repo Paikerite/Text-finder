@@ -5,7 +5,7 @@ from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtGui import QImage
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import QDesktopWidget,QApplication
+from PyQt5.QtWidgets import QDesktopWidget, QApplication
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from ui import Ui_MainWindow  # импорт нашего сгенерированного файла
@@ -16,6 +16,16 @@ images_type = ['.jpg', '.png', 'jpeg']
 # resolution = QDesktopWidget().availableGeometry()
 
 # print(resolution)
+
+languages = {"Russian": 'rus',
+             "English": 'eng',
+             "Ukrainan": 'ukr',
+             "Spanish": 'spa',
+             "French": 'fra',
+             "German": 'deu',
+             "Italian": 'ita',
+             "Math(test)": 'equ',
+             }
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -28,9 +38,33 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.scalecheck)
         self.ui.resetScale.clicked.connect(self.scalereset)
         self.ui.horizontalSlider.valueChanged.connect(self.highcontrast)
+        self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
+        self.ui.horizontalSlider_color_blalance.valueChanged.connect(self.colorbalance)
 
         self.ui.width.setValidator(QIntValidator())
         self.ui.height.setValidator(QIntValidator())
+
+    def colorbalance(self):
+        colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
+        colorbalance_value /= 10
+        print(colorbalance_value)
+        colorbalance_image = self.ui.imagelabel.pixmap()
+        colorbalance_image = Image.fromqpixmap(colorbalance_image)
+
+        colorbalance = ImageEnhance.Color(colorbalance_image).enhance(colorbalance_value)
+
+        self.ui.imagelabel.setPixmap(colorbalance.toqpixmap())
+
+    def brightness(self):
+        brightness_value = self.ui.horizontalSlider_brightness.value()
+        brightness_value /= 10
+        print(brightness_value)
+        brightness_image = self.ui.imagelabel.pixmap()
+        brightness_image = Image.fromqpixmap(brightness_image)
+
+        brightness_image = ImageEnhance.Brightness(brightness_image).enhance(brightness_value)
+
+        self.ui.imagelabel.setPixmap(brightness_image.toqpixmap())
 
     def highcontrast(self):
         value = self.ui.horizontalSlider.value()
@@ -99,10 +133,15 @@ class MyWindow(QtWidgets.QMainWindow):
         fortxt = self.ui.imagelabel.pixmap()
         fortxt = Image.fromqpixmap(fortxt)
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-        pytesseract.image_to_osd(fortxt)
-        text = pytesseract.image_to_string(fortxt, lang='eng')
+        try:
+            pytesseract.image_to_osd(fortxt)
+        except pytesseract.pytesseract.TesseractError as te:
+            print(te)
+        else:
+        lang = self.ui.comboBox.currentText()
+        text = pytesseract.image_to_string(fortxt, lang=languages[lang])
         if text == '':
-            pass
+            QMessageBox.about(self, 'Error', "Text hasn't found")
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -121,6 +160,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 file = open(name[0], 'w')
                 file.write(text)
                 file.close()
+
 
 app = QtWidgets.QApplication([])
 application = MyWindow()
