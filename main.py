@@ -94,9 +94,20 @@ class MyWindow(QtWidgets.QMainWindow):
                 print(ne)
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
 
-
     def buttonbegin(self):
-        print("Pressed")
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+
+        msg.setText("Success")
+        msg.setInformativeText("")
+        msg.setWindowTitle("Result")
+        msg.setDetailedText('result')
+        msg.setStandardButtons(QMessageBox.Save)
+
+        res = msg.exec_()
+        if res == QMessageBox.Save:
+            print('save')
+
 
 
 app = QtWidgets.QApplication([])
