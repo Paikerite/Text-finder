@@ -707,6 +707,9 @@ QGroupBox::indicator:checked
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QLabel" name="imagelabel">
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -798,6 +801,16 @@ QGroupBox::indicator:checked
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_for_language">
+          <property name="text">
+           <string>Languages</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QComboBox" name="comboBox">
           <property name="editable">
            <bool>false</bool>
@@ -858,7 +871,10 @@ QGroupBox::indicator:checked
           <property name="checked">
            <bool>false</bool>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
+          <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,0,0,0,0,0,0,0">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
            <property name="leftMargin">
             <number>5</number>
            </property>
@@ -901,11 +917,14 @@ QGroupBox::indicator:checked
                <height>22</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>-100</number>
+             </property>
              <property name="maximum">
-              <number>20</number>
+              <number>100</number>
              </property>
              <property name="value">
-              <number>10</number>
+              <number>0</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -924,11 +943,14 @@ QGroupBox::indicator:checked
            </item>
            <item>
             <widget class="QSlider" name="horizontalSlider_brightness">
+             <property name="minimum">
+              <number>-100</number>
+             </property>
              <property name="maximum">
-              <number>20</number>
+              <number>100</number>
              </property>
              <property name="value">
-              <number>10</number>
+              <number>0</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -947,11 +969,43 @@ QGroupBox::indicator:checked
            </item>
            <item>
             <widget class="QSlider" name="horizontalSlider_color_blalance">
+             <property name="minimum">
+              <number>-100</number>
+             </property>
              <property name="maximum">
-              <number>20</number>
+              <number>100</number>
              </property>
              <property name="value">
-              <number>10</number>
+              <number>0</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_for_sharpness">
+             <property name="text">
+              <string>Sharpness</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::AutoText</enum>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_for_sharpness">
+             <property name="minimum">
+              <number>-100</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -961,7 +1015,7 @@ QGroupBox::indicator:checked
            <item alignment="Qt::AlignHCenter">
             <widget class="QPushButton" name="pushButton_Reset_enhance">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -983,6 +1037,9 @@ QGroupBox::indicator:checked
                <pointsize>-1</pointsize>
                <stylestrategy>PreferDefault</stylestrategy>
               </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
              </property>
              <property name="text">
               <string>Reset</string>
@@ -1145,6 +1202,9 @@ QGroupBox::indicator:checked
    </property>
    <property name="shortcutContext">
     <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::TextHeuristicRole</enum>
    </property>
   </action>
   <action name="actionInstructiom">

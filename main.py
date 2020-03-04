@@ -17,6 +17,18 @@ images_type = ['.jpg', '.png', 'jpeg']
 
 # print(resolution)
 
+BRIGHTNESS_FACTOR_MIN = 0.5
+BRIGHTNESS_FACTOR_MAX = 2
+
+CONTRAST_FACTOR_MIN = 0.5
+CONTRAST_FACTOR_MAX = 1.5
+
+COLORBALANCE_FACTOR_MIN = 0.0
+COLORBALANCE_FACTOR_MAX = 2.0
+
+SHARPNESS_FACTOR_MIN = 0.0
+SHARPNESS_FACTOR_MAX = 2.0
+
 languages = {"Russian": 'rus',
              "English": 'eng',
              "Ukrainan": 'ukr',
@@ -26,6 +38,7 @@ languages = {"Russian": 'rus',
              "Italian": 'ita',
              "Math(test)": 'equ',
              }
+
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -60,11 +73,14 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def colorbalance(self):
         colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
-        colorbalance_value /= 10
-        print(colorbalance_value)
+        # colorbalance_value /= 10
+
         colorbalance_image = self.ui.imagelabel.pixmap()
         colorbalance_image = Image.fromqpixmap(colorbalance_image)
 
+        colorbalance_value = (colorbalance_value - -100) / (100 - -100)
+        colorbalance_value = COLORBALANCE_FACTOR_MIN + colorbalance_value * (COLORBALANCE_FACTOR_MAX - COLORBALANCE_FACTOR_MIN)
+        print(colorbalance_value)
         colorbalance = ImageEnhance.Color(colorbalance_image).enhance(colorbalance_value)
 
         self.ui.imagelabel.setPixmap(colorbalance.toqpixmap())
