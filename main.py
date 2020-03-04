@@ -44,11 +44,13 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.comboBox.addItems(["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
         self.ui.About.triggered.connect(self.about)
         self.ui.actionInstructiom.triggered.connect(self.instruction)
+        self.ui.actionAbout_Qt.triggered.connect(self.aboutPyqt)
 
         self.ui.width.setValidator(QIntValidator())
         self.ui.height.setValidator(QIntValidator())
 
-        self.ui.Info.addAction(QMessageBox.aboutQt)
+    def aboutPyqt(self):
+        QMessageBox.aboutQt(self)
 
     def instruction(self):
         print('yet dibil')
@@ -95,6 +97,9 @@ class MyWindow(QtWidgets.QMainWindow):
         except NameError as ne:
             print(ne)
             self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+        self.ui.horizontalSlider_color_blalance.setValue(10)
+        self.ui.horizontalSlider.setValue(10)
+        self.ui.horizontalSlider_brightness.setValue(10)
 
     def scalereset(self):
         try:
@@ -149,18 +154,33 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
 
     def buttonbegin(self):
+        value_for_PB = 0
         fortxt = self.ui.imagelabel.pixmap()
+        value_for_PB += 1
+        self.ui.progressBar.setValue(value_for_PB)
         fortxt = Image.fromqpixmap(fortxt)
+        value_for_PB += 1
+        self.ui.progressBar.setValue(value_for_PB)
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        value_for_PB += 1
+        self.ui.progressBar.setValue(value_for_PB + 1)
         try:
             pytesseract.image_to_osd(fortxt)
+            value_for_PB += 1
+            self.ui.progressBar.setValue(value_for_PB + 1)
         except pytesseract.pytesseract.TesseractError as te:
             print(te)
         lang = self.ui.comboBox.currentText()
+        value_for_PB += 1
+        self.ui.progressBar.setValue(value_for_PB + 1)
         text = pytesseract.image_to_string(fortxt, lang=languages[lang])
+        value_for_PB += 1
+        self.ui.progressBar.setValue(value_for_PB + 1)
         if text == '':
             QMessageBox.about(self, 'Error', "Text hasn't found")
         else:
+            value_for_PB += 1
+            self.ui.progressBar.setValue(value_for_PB + 1)
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
 
@@ -175,10 +195,13 @@ class MyWindow(QtWidgets.QMainWindow):
                 name = QtWidgets.QFileDialog.getSaveFileName(self, "Save result", "",
                                                              filter="*.txt",
                                                              )
-
-                file = open(name[0], 'w')
-                file.write(text)
-                file.close()
+                try:
+                    file = open(name[0], 'w')
+                    file.write(text)
+                    file.close()
+                except FileNotFoundError as fe:
+                    print(fe)
+        self.ui.progressBar.setValue(0)
 
 
 app = QtWidgets.QApplication([])
