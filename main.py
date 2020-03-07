@@ -1,3 +1,7 @@
+#
+# Только Бог и я, разбирались в этом дерьме,
+# Теперь только Бог. Удачи!
+#
 import sys
 import pytesseract
 from PIL import Image, ImageEnhance, ImageShow
@@ -54,6 +58,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider.valueChanged.connect(self.highcontrast)
         self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
         self.ui.horizontalSlider_color_blalance.valueChanged.connect(self.colorbalance)
+        self.ui.horizontalSlider_for_sharpness.valueChanged.connect(self.sharpness)
         self.ui.comboBox.addItems(["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
         self.ui.About.triggered.connect(self.about)
         self.ui.actionInstructiom.triggered.connect(self.instruction)
@@ -79,43 +84,75 @@ class MyWindow(QtWidgets.QMainWindow):
         colorbalance_image = Image.fromqpixmap(colorbalance_image)
 
         colorbalance_value = (colorbalance_value - -100) / (100 - -100)
-        colorbalance_value = COLORBALANCE_FACTOR_MIN + colorbalance_value * (COLORBALANCE_FACTOR_MAX - COLORBALANCE_FACTOR_MIN)
+        colorbalance_value = COLORBALANCE_FACTOR_MIN + colorbalance_value * (
+                COLORBALANCE_FACTOR_MAX - COLORBALANCE_FACTOR_MIN)
         print(colorbalance_value)
-        colorbalance = ImageEnhance.Color(colorbalance_image).enhance(colorbalance_value)
+        colorbalance_enchancer = ImageEnhance.Color(colorbalance_image)
+        # colorbalance = ImageEnhance.Color(colorbalance_image).enhance(colorbalance_value)
+        colorbalance = colorbalance_enchancer.enhance(colorbalance_value)
 
         self.ui.imagelabel.setPixmap(colorbalance.toqpixmap())
 
     def brightness(self):
         brightness_value = self.ui.horizontalSlider_brightness.value()
-        brightness_value /= 10
-        print(brightness_value)
+        # brightness_value /= 10
+
         brightness_image = self.ui.imagelabel.pixmap()
         brightness_image = Image.fromqpixmap(brightness_image)
 
-        brightness_image = ImageEnhance.Brightness(brightness_image).enhance(brightness_value)
+        brightness_value = (brightness_value - -100) / (100 - -100)
+        brightness_value = BRIGHTNESS_FACTOR_MIN + brightness_value * (
+                    BRIGHTNESS_FACTOR_MAX - BRIGHTNESS_FACTOR_MIN)
+        print(brightness_value)
+        # brightness_image = ImageEnhance.Brightness(brightness_image).enhance(brightness_value)
+        brightness_enchancer = ImageEnhance.Brightness(brightness_image)
+        brightness = brightness_enchancer.enhance(brightness_value)
 
-        self.ui.imagelabel.setPixmap(brightness_image.toqpixmap())
+        self.ui.imagelabel.setPixmap(brightness.toqpixmap())
 
     def highcontrast(self):
         value = self.ui.horizontalSlider.value()
-        value /= 10
-        print(value)
+        # value /= 10
+
         contrast_image = self.ui.imagelabel.pixmap()
         contrast_image = Image.fromqpixmap(contrast_image)
 
+        value = (value - -100) / (100 - -100)
+        value = CONTRAST_FACTOR_MIN + value * (
+                CONTRAST_FACTOR_MAX - CONTRAST_FACTOR_MIN)
+        print(value)
         contrast_image = ImageEnhance.Contrast(contrast_image).enhance(value)
 
         self.ui.imagelabel.setPixmap(contrast_image.toqpixmap())
 
+    def sharpness(self):
+        sharpness_value = self.ui.horizontalSlider_for_sharpness.value()
+
+        sharpness_image = self.ui.imagelabel.pixmap()
+        sharpness_image = Image.fromqpixmap(sharpness_image)
+
+        sharpness_value = (sharpness_value - -100) / (100 - -100)
+        sharpness_value = SHARPNESS_FACTOR_MIN + sharpness_value * (
+                SHARPNESS_FACTOR_MAX - SHARPNESS_FACTOR_MIN)
+        print(sharpness_value)
+        sharpness_image = ImageEnhance.Sharpness(sharpness_image).enhance(sharpness_value)
+
+        self.ui.imagelabel.setPixmap(sharpness_image.toqpixmap())
+
     def enchancereset(self):
-        try:
-            self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
-        except NameError as ne:
-            print(ne)
-            self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
-        self.ui.horizontalSlider_color_blalance.setValue(10)
-        self.ui.horizontalSlider.setValue(10)
-        self.ui.horizontalSlider_brightness.setValue(10)
+        if self.ui.checkBox_2.isChecked():
+            self.ui.imagelabel.setPixmap(b_and_w_image_updatedx2.toqpixmap())
+        else:
+            try:
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+            except NameError as ne:
+                print(ne)
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+
+        self.ui.horizontalSlider_color_blalance.setValue(0)
+        self.ui.horizontalSlider.setValue(0)
+        self.ui.horizontalSlider_brightness.setValue(0)
+        self.ui.horizontalSlider_for_sharpness.setValue(0)
 
     def scalereset(self):
         try:
@@ -154,14 +191,18 @@ class MyWindow(QtWidgets.QMainWindow):
         image = QImage(filename[0])
 
         self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+        self.ui.checkBox_2.setChecked(False)
 
     def black_and_white(self, state):
         b_and_w_image = self.ui.imagelabel.pixmap()
         if state is True:
             b_and_w_image_updated = Image.fromqpixmap(b_and_w_image)
 
-            b_and_w_image_updated = b_and_w_image_updated.convert(mode='1', dither=Image.NONE)
-            self.ui.imagelabel.setPixmap(b_and_w_image_updated.toqpixmap())
+            # b_and_w_image_updated = b_and_w_image_updated.convert(mode='1', dither=Image.NONE)
+            global b_and_w_image_updatedx2
+
+            b_and_w_image_updatedx2 = b_and_w_image_updated.convert(mode='L')
+            self.ui.imagelabel.setPixmap(b_and_w_image_updatedx2.toqpixmap())
         elif state is False:
             try:
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
