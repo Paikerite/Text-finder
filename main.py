@@ -6,9 +6,7 @@ import sys
 import pytesseract
 from PIL import Image, ImageEnhance, ImageShow
 from PyQt5 import QtCore
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtGui import QImage
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QDesktopWidget, QApplication
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
@@ -92,7 +90,6 @@ class MyWindow(QtWidgets.QMainWindow):
         colorbalance = colorbalance_enchancer.enhance(colorbalance_value)
 
         self.ui.imagelabel.setPixmap(colorbalance.toqpixmap())
-
     def brightness(self):
         brightness_value = self.ui.horizontalSlider_brightness.value()
         # brightness_value /= 10
