@@ -1,7 +1,7 @@
-#
+###############################################
 # Только Бог и я, разбирались в этом дерьме,
 # Теперь только Бог. Удачи!
-#
+##############################################
 import sys
 import pytesseract
 from PIL import Image, ImageEnhance, ImageShow
@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QDesktopWidget, QApplication
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from ui import Ui_MainWindow  # импорт нашего сгенерированного файла
+from Drawing.drawing import MyWindow as AreaSelection
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -18,6 +19,8 @@ images_type = ['.jpg', '.png', 'jpeg']
 # resolution = QDesktopWidget().availableGeometry()
 
 # print(resolution)
+
+dir = r'C:\Users\Учень\AppData\Local\Tesseract-OCR\tesseract.exe'
 
 BRIGHTNESS_FACTOR_MIN = 0.5
 BRIGHTNESS_FACTOR_MAX = 2
@@ -52,6 +55,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.checkBox_2.clicked.connect(self.black_and_white)
         self.ui.pushButton_3.clicked.connect(self.scalecheck)
         self.ui.resetScale.clicked.connect(self.scalereset)
+        self.ui.areaSelection_button.clicked.connect(self.areaSelection)
         self.ui.pushButton_Reset_enhance.clicked.connect(self.enchancereset)
         self.ui.horizontalSlider.valueChanged.connect(self.highcontrast)
         self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
@@ -73,6 +77,9 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def about(self):
         print('dibil')
+
+    def areaSelection(self):
+        self.next = AreaSelection()
 
     def colorbalance(self):
         colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
@@ -215,7 +222,7 @@ class MyWindow(QtWidgets.QMainWindow):
         fortxt = Image.fromqpixmap(fortxt)
         value_for_PB += 1
         self.ui.progressBar.setValue(value_for_PB)
-        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        pytesseract.pytesseract.tesseract_cmd = dir
         value_for_PB += 1
         self.ui.progressBar.setValue(value_for_PB + 1)
         try:
