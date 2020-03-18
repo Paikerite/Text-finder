@@ -10,8 +10,8 @@ from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QDesktopWidget, QApplication
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
-from ui import Ui_MainWindow  # импорт нашего сгенерированного файла
-from Drawing.drawing import MyWindow as AreaSelection
+from ui import ui
+import drawing
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -20,7 +20,7 @@ images_type = ['.jpg', '.png', 'jpeg']
 
 # print(resolution)
 
-dir = r'C:\Users\Учень\AppData\Local\Tesseract-OCR\tesseract.exe'
+dir = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 BRIGHTNESS_FACTOR_MIN = 0.5
 BRIGHTNESS_FACTOR_MAX = 2
@@ -48,7 +48,7 @@ languages = {"Russian": 'rus',
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.buttonbegin)
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
@@ -79,7 +79,7 @@ class MyWindow(QtWidgets.QMainWindow):
         print('dibil')
 
     def areaSelection(self):
-        self.next = AreaSelection()
+        drawing.MyWindow()
 
     def colorbalance(self):
         colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
@@ -97,6 +97,7 @@ class MyWindow(QtWidgets.QMainWindow):
         colorbalance = colorbalance_enchancer.enhance(colorbalance_value)
 
         self.ui.imagelabel.setPixmap(colorbalance.toqpixmap())
+
     def brightness(self):
         brightness_value = self.ui.horizontalSlider_brightness.value()
         # brightness_value /= 10

@@ -3,22 +3,24 @@ import sys
 from PyQt5 import QtGui
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
-from uiforDrawing import Ui_MainWindow
+from ui import ui_drawing
+import main
 
 
-class MyWidget(QtWidgets.QWidget):
+class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
-        super().__init__()
-        self.ui = Ui_MainWindow()
+        super(MyWindow, self).__init__()
+        self.ui = ui_drawing.Ui_MainWindow()
         self.ui.setupUi(self)
-        #self.setGeometry(30,30,600,400)
+        self.ui.label_2.setPixmap(main.MyWindow.image)
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
-        self.ui.show()
+        self.show()
+
 
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)
-        br = QtGui.QBrush(QtGui.QColor(100, 10, 10, 40))
+        br = QtGui.QBrush(QtGui.QColor(100, 10, 10, 40)) # 100, 10, 10, 40
         qp.setBrush(br)
         qp.drawRect(QtCore.QRect(self.begin, self.end))
 
@@ -28,6 +30,7 @@ class MyWidget(QtWidgets.QWidget):
         self.update()
 
     def mouseMoveEvent(self, event):
+        self.ui.positin_label.setText(f"Mouse position. begin - {self.begin.x()} {self.begin.y()} end - {self.end.x()} {self.end.y()}")
         self.end = event.pos()
         self.update()
 
