@@ -4,18 +4,18 @@ from PyQt5 import QtGui
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 from ui import ui_drawing
-import main
 
 
-class MyWindow(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(MyWindow, self).__init__()
+class MyWidget(QtWidgets.QMainWindow):
+    def __init__(self, image):
+        super(MyWidget, self).__init__()
         self.ui = ui_drawing.Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.label_2.setPixmap(main.MyWindow.image)
+        self.image_from_main = image
+        self.ui.label_2.setPixmap(self.image_from_main)
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
-        self.show()
+        #self.show()
 
 
     def paintEvent(self, event):
@@ -39,8 +39,10 @@ class MyWindow(QtWidgets.QMainWindow):
         self.end = event.pos()
         self.update()
 
-#app = QtWidgets.QApplication([])
-#application = MyWidget()
-#application.show()
 
-#sys.exit(app.exec())
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+    application = MyWidget()
+    application.show()
+
+    sys.exit(app.exec())

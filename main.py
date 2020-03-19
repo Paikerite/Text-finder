@@ -7,8 +7,7 @@ import pytesseract
 from PIL import Image, ImageEnhance, ImageShow
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
-from PyQt5.QtWidgets import QDesktopWidget, QApplication
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox
 from PyQt5 import QtWidgets
 from ui import ui
 import drawing
@@ -48,6 +47,7 @@ languages = {"Russian": 'rus',
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
+        #self.threadpool = QtCore.QThreadPool()
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.buttonbegin)
@@ -79,7 +79,10 @@ class MyWindow(QtWidgets.QMainWindow):
         print('dibil')
 
     def areaSelection(self):
-        drawing.MyWindow()
+        self.window = QtWidgets.QMainWindow()
+        self.uidraw = drawing.MyWidget(self.ui.imagelabel.pixmap())
+        #self.ui.setupUi(self.window)
+        self.uidraw.show()
 
     def colorbalance(self):
         colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
@@ -266,8 +269,9 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.progressBar.setValue(0)
 
 
-app = QtWidgets.QApplication([])
-application = MyWindow()
-application.show()
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+    application = MyWindow()
+    application.show()
 
-sys.exit(app.exec())
+    sys.exit(app.exec())
