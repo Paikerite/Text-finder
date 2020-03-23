@@ -4,13 +4,11 @@
 ##############################################
 import sys
 import pytesseract
-import numpy as np
-from PIL import Image, ImageEnhance, ImageShow, ImageDraw
-from PyQt5 import QtCore
+from PIL import Image, ImageEnhance, ImageShow, ImageFilter
+from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
-from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox
-from PyQt5 import QtWidgets
-from ui import ui
+from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox, QMainWindow
+from ui import ui, about_tf
 import drawing
 
 images_type = ['.jpg', '.png', 'jpeg']
@@ -78,14 +76,19 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def instruction(self):
         print('yet dibil')
+        image = self.ui.imagelabel.pixmap()
+        image = Image.fromqpixmap(image)
+
+        image = image.filter(ImageFilter.GaussianBlur(5))
+
+        self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def about(self):
-        print('dibil')
+        self.ab = uic.loadUi("about.ui")
+        self.ab.show()
 
     def areaSelection(self):
-        self.window = QtWidgets.QMainWindow()
         self.uidraw = drawing.MyWidget(self.ui.imagelabel.pixmap())
-        #self.ui.setupUi(self.window)
         self.uidraw.show()
 
     def colorbalance(self):
