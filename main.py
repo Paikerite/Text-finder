@@ -79,7 +79,7 @@ class MyWindow(QtWidgets.QMainWindow):
         image = self.ui.imagelabel.pixmap()
         image = Image.fromqpixmap(image)
 
-        image = image.filter(ImageFilter.MedianFilter(3))
+        image = image.filter(ImageFilter.GaussianBlur(5))
 
         self.ui.imagelabel.setPixmap(image.toqpixmap())
 
