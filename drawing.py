@@ -7,16 +7,18 @@ from ui import ui_drawing
 
 
 class MyWidget(QtWidgets.QMainWindow):
-    def __init__(self, image):
+    def __init__(self, image=None):
         super(MyWidget, self).__init__()
         self.ui = ui_drawing.Ui_MainWindow()
         self.ui.setupUi(self)
-        self.image_from_main = image
-        self.ui.label_2.setPixmap(self.image_from_main)
+        if image:
+            self.image_from_main = image
+            self.ui.label_2.setPixmap(self.image_from_main)
+        else:
+            pass
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
         #self.show()
-
 
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)

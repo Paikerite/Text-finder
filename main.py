@@ -4,7 +4,8 @@
 ##############################################
 import sys
 import pytesseract
-from PIL import Image, ImageEnhance, ImageShow
+import numpy as np
+from PIL import Image, ImageEnhance, ImageShow, ImageDraw
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox
@@ -50,6 +51,9 @@ class MyWindow(QtWidgets.QMainWindow):
         #self.threadpool = QtCore.QThreadPool()
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
+        self.image = None
+        self.pixmap = None
+        self.b_and_w_image_updatedx2 = None
         self.ui.pushButton.clicked.connect(self.buttonbegin)
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
         self.ui.checkBox_2.clicked.connect(self.black_and_white)
@@ -149,13 +153,13 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def enchancereset(self):
         if self.ui.checkBox_2.isChecked():
-            self.ui.imagelabel.setPixmap(b_and_w_image_updatedx2.toqpixmap())
+            self.ui.imagelabel.setPixmap(self.b_and_w_image_updatedx2.toqpixmap())
         else:
             try:
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
             except NameError as ne:
                 print(ne)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
 
         self.ui.horizontalSlider_color_blalance.setValue(0)
         self.ui.horizontalSlider.setValue(0)
@@ -164,7 +168,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def scalereset(self):
         try:
-            self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
         except NameError as ne:
             print(ne)
             QMessageBox.about(self, 'Error', 'Image not found, upload it')
@@ -183,9 +187,8 @@ class MyWindow(QtWidgets.QMainWindow):
             pass
         else:
             try:
-                global pixmap
-                pixmap = image.scaled(width, height, QtCore.Qt.KeepAspectRatio)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+                self.pixmap = self.image.scaled(width, height, QtCore.Qt.KeepAspectRatio)
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
             except NameError as ne:
                 print(ne)
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
@@ -194,11 +197,9 @@ class MyWindow(QtWidgets.QMainWindow):
         filename = QtWidgets.QFileDialog.getOpenFileName(filter='Images (*.png *.xpm *.jpg *.jpeg)',
                                                          caption='Select image')
         self.ui.lineEdit.setText(filename[0])
+        self.image = QImage(filename[0])
 
-        global image
-        image = QImage(filename[0])
-
-        self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+        self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
         self.ui.checkBox_2.setChecked(False)
 
     def black_and_white(self, state):
@@ -206,17 +207,14 @@ class MyWindow(QtWidgets.QMainWindow):
         if state is True:
             b_and_w_image_updated = Image.fromqpixmap(b_and_w_image)
 
-            # b_and_w_image_updated = b_and_w_image_updated.convert(mode='1', dither=Image.NONE)
-            global b_and_w_image_updatedx2
-
-            b_and_w_image_updatedx2 = b_and_w_image_updated.convert(mode='L')
-            self.ui.imagelabel.setPixmap(b_and_w_image_updatedx2.toqpixmap())
+            self.b_and_w_image_updatedx2 = b_and_w_image_updated.convert(mode='L')
+            self.ui.imagelabel.setPixmap(self.b_and_w_image_updatedx2.toqpixmap())
         elif state is False:
             try:
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(pixmap))
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
             except NameError as ne:
                 print(ne)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(image))
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
 
     def buttonbegin(self):
         value_for_PB = 0

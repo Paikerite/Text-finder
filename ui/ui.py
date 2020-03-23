@@ -865,7 +865,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Begin"))
         self.progressBar.setFormat(_translate("MainWindow", "%p%"))
         self.label_for_language.setText(_translate("MainWindow", "Languages"))
-        self.checkBox_2.setText(_translate("MainWindow", "Black-White"))
+        self.checkBox_2.setText(_translate("MainWindow", "Gray"))
         self.ContrastGroup.setTitle(_translate("MainWindow", "Image enhance"))
         self.label_for_contrast.setText(_translate("MainWindow", "Contrast"))
         self.lable_for_brightness.setText(_translate("MainWindow", "Brightness"))
