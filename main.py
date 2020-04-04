@@ -46,7 +46,7 @@ languages = {"Russian": 'rus',
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
-        #self.threadpool = QtCore.QThreadPool()
+        # self.threadpool = QtCore.QThreadPool()
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
         self.image = None
@@ -63,7 +63,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
         self.ui.horizontalSlider_color_blalance.valueChanged.connect(self.colorbalance)
         self.ui.horizontalSlider_for_sharpness.valueChanged.connect(self.sharpness)
-        self.ui.comboBox.addItems(["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
+        self.ui.comboBox.addItems(
+            ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
         self.ui.About.triggered.connect(self.about)
         self.ui.actionInstructiom.triggered.connect(self.instruction)
         self.ui.actionAbout_Qt.triggered.connect(self.aboutPyqt)
@@ -111,7 +112,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
         brightness_value = (brightness_value - -100) / (100 - -100)
         brightness_value = BRIGHTNESS_FACTOR_MIN + brightness_value * (
-                    BRIGHTNESS_FACTOR_MAX - BRIGHTNESS_FACTOR_MIN)
+                BRIGHTNESS_FACTOR_MAX - BRIGHTNESS_FACTOR_MIN)
         print(brightness_value)
         # brightness_image = ImageEnhance.Brightness(brightness_image).enhance(brightness_value)
         brightness_enchancer = ImageEnhance.Brightness(brightness_image)
