@@ -76,12 +76,6 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def instruction(self):
         print('yet dibil')
-        image = self.ui.imagelabel.pixmap()
-        image = Image.fromqpixmap(image)
-
-        image = image.filter(ImageFilter.GaussianBlur(5))
-
-        self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def about(self):
         self.ab = uic.loadUi("about.ui")
