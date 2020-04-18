@@ -48,6 +48,15 @@ languages = {"Russian": 'rus',
              }
 
 
+def calculating(self, from_slider_value, min, max):
+    value = from_slider_value
+
+    value = (value + 100) / (100 + 100)
+    value = min + value * (max - min)
+    print(value)
+
+    return value
+
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -58,6 +67,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.image = None
         self.pixmap = None
         self.b_and_w_image_updated = None
+        self.backup_image_updated = None
         self.ui.pushButton.clicked.connect(self.buttonbegin)
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
         self.ui.checkBox_2.clicked.connect(self.black_and_white)
@@ -69,9 +79,9 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
         self.ui.horizontalSlider_color_blalance.valueChanged.connect(self.colorbalance)
         self.ui.horizontalSlider_for_sharpness.valueChanged.connect(self.sharpness)
-        self.ui.horizontalSlider_medianfilter.valueChanged.connect(self.medianfilter)
+        self.ui.checkBox_medianfilter.clicked.connect(self.medianfilter)
         self.ui.horizontalSlider_unsharmask.valueChanged.connect(self.unsharmask)
-        self.ui.horizontalSlider_gaussianblur.valueChanged.connect(self.gaussianblur)
+        self.ui.horizontalSlider_gaussian.valueChanged.connect(self.gaussianblur)
         self.ui.comboBox.addItems(
             ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
         self.ui.About.triggered.connect(self.about)
@@ -95,12 +105,19 @@ class MyWindow(QtWidgets.QMainWindow):
         self.uidraw = drawing.MyWidget(self.ui.imagelabel.pixmap())
         self.uidraw.show()
 
-    def medianfilter(self):
-        value = self.ui.horizontalSlider_medianfilter.value()
-        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
-        print(value)
-        image = image.filter(ImageFilter.MedianFilter(size=value))
-        self.ui.imagelabel.setPixmap(image.toqpixmap())
+    def medianfilter(self, state):
+        backup_image = self.ui.imagelabel.pixmap()
+        if state is True:
+            backup_image_updated = Image.fromqpixmap(backup_image)
+
+            self.backup_image_updated = backup_image_updated.filter(ImageFilter.MedianFilter())
+            self.ui.imagelabel.setPixmap(self.backup_image_updated.toqpixmap())
+        elif state is False:
+            try:
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
+            except NameError as ne:
+                print(ne)
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
 
     def unsharmask(self):
         value = self.ui.horizontalSlider_unsharmask.value()
@@ -110,7 +127,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def gaussianblur(self):
-        value = self.ui.horizontalSlider_gaussianblur.value()
+        value = self.ui.horizontalSlider_gaussian.value()
         image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
         print(value)
         image = image.filter(ImageFilter.GaussianBlur(radius=value))
@@ -194,8 +211,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider_brightness.setValue(0)
         self.ui.horizontalSlider_for_sharpness.setValue(0)
         self.ui.horizontalSlider_unsharmask.setValue(0)
-        self.ui.horizontalSlider_medianfilter.setValue(0)
-        self.ui.horizontalSlider_gaussianblur.setValue(0)
+        self.ui.horizontalSlider_gaussian.setValue(0)
+        self.ui.checkBox_medianfilter.setChecked(False)
 
     def scalereset(self):
         try:
