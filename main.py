@@ -48,9 +48,8 @@ languages = {"Russian": 'rus',
              }
 
 
-def calculating(self, from_slider_value, min, max):
+def calculating(from_slider_value, min, max):
     value = from_slider_value
-
     value = (value + 100) / (100 + 100)
     value = min + value * (max - min)
     print(value)
@@ -68,6 +67,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.pixmap = None
         self.b_and_w_image_updated = None
         self.backup_image_updated = None
+        self.image_for_enchance_reset = None
         self.ui.pushButton.clicked.connect(self.buttonbegin)
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
         self.ui.checkBox_2.clicked.connect(self.black_and_white)
@@ -75,13 +75,13 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.resetScale.clicked.connect(self.scalereset)
         self.ui.areaSelection_button.clicked.connect(self.areaSelection)
         self.ui.pushButton_Reset_enhance.clicked.connect(self.enchancereset)
-        self.ui.horizontalSlider.valueChanged.connect(self.highcontrast)
-        self.ui.horizontalSlider_brightness.valueChanged.connect(self.brightness)
-        self.ui.horizontalSlider_color_blalance.valueChanged.connect(self.colorbalance)
-        self.ui.horizontalSlider_for_sharpness.valueChanged.connect(self.sharpness)
+        self.ui.horizontalSlider.sliderReleased.connect(self.highcontrast)
+        self.ui.horizontalSlider_brightness.sliderReleased.connect(self.brightness)
+        self.ui.horizontalSlider_color_blalance.sliderReleased.connect(self.colorbalance)
+        self.ui.horizontalSlider_for_sharpness.sliderReleased.connect(self.sharpness)
         self.ui.checkBox_medianfilter.clicked.connect(self.medianfilter)
-        self.ui.horizontalSlider_unsharmask.valueChanged.connect(self.unsharmask)
-        self.ui.horizontalSlider_gaussian.valueChanged.connect(self.gaussianblur)
+        self.ui.horizontalSlider_unsharmask.sliderReleased.connect(self.unsharmask)
+        self.ui.horizontalSlider_gaussian.sliderReleased.connect(self.gaussianblur)
         self.ui.comboBox.addItems(
             ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
         self.ui.About.triggered.connect(self.about)
@@ -120,81 +120,74 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
 
     def unsharmask(self):
-        value = self.ui.horizontalSlider_unsharmask.value()
         image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
-        print(value)
+
+        value = calculating(self.ui.horizontalSlider_unsharmask.value(),
+                            UNSHARPMASK_FACTOR_MIN,
+                            UNSHARPMASK_FACTOR_MAX)
+
         image = image.filter(ImageFilter.UnsharpMask(radius=value))
+
         self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def gaussianblur(self):
-        value = self.ui.horizontalSlider_gaussian.value()
         image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
-        print(value)
+
+        value = calculating(self.ui.horizontalSlider_gaussian.value(),
+                            GAUSSIANBLUR_FACTOR_MIN,
+                            GAUSSIANBLUR_FACTOR_MAX)
+
         image = image.filter(ImageFilter.GaussianBlur(radius=value))
+
         self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def colorbalance(self):
-        colorbalance_value = self.ui.horizontalSlider_color_blalance.value()
-        # colorbalance_value /= 10
+        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
 
-        colorbalance_image = self.ui.imagelabel.pixmap()
-        colorbalance_image = Image.fromqpixmap(colorbalance_image)
+        value = calculating(self.ui.horizontalSlider_color_blalance.value(),
+                            COLORBALANCE_FACTOR_MIN,
+                            COLORBALANCE_FACTOR_MAX)
 
-        colorbalance_value = (colorbalance_value + 100) / (100 + 100)
-        colorbalance_value = COLORBALANCE_FACTOR_MIN + colorbalance_value * (
-                COLORBALANCE_FACTOR_MAX - COLORBALANCE_FACTOR_MIN)
-        print(colorbalance_value)
-        colorbalance_enchancer = ImageEnhance.Color(colorbalance_image)
-        # colorbalance = ImageEnhance.Color(colorbalance_image).enhance(colorbalance_value)
-        colorbalance = colorbalance_enchancer.enhance(colorbalance_value)
+        image = ImageEnhance.Color(image)
+        image = image.enhance(value)
 
-        self.ui.imagelabel.setPixmap(colorbalance.toqpixmap())
+        self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def brightness(self):
-        brightness_value = self.ui.horizontalSlider_brightness.value()
-        # brightness_value /= 10
+        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
 
-        brightness_image = self.ui.imagelabel.pixmap()
-        brightness_image = Image.fromqpixmap(brightness_image)
+        value = calculating(self.ui.horizontalSlider_brightness.value(),
+                            BRIGHTNESS_FACTOR_MIN,
+                            BRIGHTNESS_FACTOR_MAX)
 
-        brightness_value = (brightness_value + 100) / (100 + 100)
-        brightness_value = BRIGHTNESS_FACTOR_MIN + brightness_value * (
-                BRIGHTNESS_FACTOR_MAX - BRIGHTNESS_FACTOR_MIN)
-        print(brightness_value)
-        # brightness_image = ImageEnhance.Brightness(brightness_image).enhance(brightness_value)
-        brightness_enchancer = ImageEnhance.Brightness(brightness_image)
-        brightness = brightness_enchancer.enhance(brightness_value)
+        image = ImageEnhance.Brightness(image)
+        image = image.enhance(value)
 
-        self.ui.imagelabel.setPixmap(brightness.toqpixmap())
+        self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def highcontrast(self):
-        value = self.ui.horizontalSlider.value()
-        # value /= 10
+        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
 
-        contrast_image = self.ui.imagelabel.pixmap()
-        contrast_image = Image.fromqpixmap(contrast_image)
+        value = calculating(self.ui.horizontalSlider.value(),
+                            CONTRAST_FACTOR_MIN,
+                            CONTRAST_FACTOR_MAX)
 
-        value = (value + 100) / (100 + 100)
-        value = CONTRAST_FACTOR_MIN + value * (
-                CONTRAST_FACTOR_MAX - CONTRAST_FACTOR_MIN)
-        print(value)
-        contrast_image = ImageEnhance.Contrast(contrast_image).enhance(value)
+        image = ImageEnhance.Contrast(image)
+        image = image.enhance(value)
 
-        self.ui.imagelabel.setPixmap(contrast_image.toqpixmap())
+        self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def sharpness(self):
-        sharpness_value = self.ui.horizontalSlider_for_sharpness.value()
+        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
 
-        sharpness_image = self.ui.imagelabel.pixmap()
-        sharpness_image = Image.fromqpixmap(sharpness_image)
+        value = calculating(self.ui.horizontalSlider_for_sharpness.value(),
+                            SHARPNESS_FACTOR_MIN,
+                            SHARPNESS_FACTOR_MAX)
 
-        sharpness_value = (sharpness_value + 100) / (100 + 100)
-        sharpness_value = SHARPNESS_FACTOR_MIN + sharpness_value * (
-                SHARPNESS_FACTOR_MAX - SHARPNESS_FACTOR_MIN)
-        print(sharpness_value)
-        sharpness_image = ImageEnhance.Sharpness(sharpness_image).enhance(sharpness_value)
+        image = ImageEnhance.Sharpness(image)
+        image = image.enhance(value)
 
-        self.ui.imagelabel.setPixmap(sharpness_image.toqpixmap())
+        self.ui.imagelabel.setPixmap(image.toqpixmap())
 
     def enchancereset(self):
         if self.ui.checkBox_2.isChecked():
@@ -204,7 +197,7 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
             except NameError as ne:
                 print(ne)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image_for_enchance_reset))
 
         self.ui.horizontalSlider_color_blalance.setValue(0)
         self.ui.horizontalSlider.setValue(0)
@@ -246,9 +239,18 @@ class MyWindow(QtWidgets.QMainWindow):
                                                          caption='Select image')
         self.ui.lineEdit.setText(filename[0])
         self.image = QImage(filename[0])
+        self.image_for_enchance_reset = QImage(filename[0])
 
         self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
         self.ui.checkBox_2.setChecked(False)
+
+        self.ui.areaSelection_button.setEnabled(True)
+        self.ui.ScaleCheckBox.setEnabled(True)
+        self.ui.pushButton.setEnabled(True)
+        self.ui.checkBox_2.setEnabled(True)
+        self.ui.ContrastGroup.setEnabled(True)
+        self.ui.progressBar.setEnabled(True)
+        self.ui.comboBox.setEnabled(True)
 
     def black_and_white(self, state):
         b_and_w_image = self.ui.imagelabel.pixmap()
@@ -267,14 +269,18 @@ class MyWindow(QtWidgets.QMainWindow):
     def buttonbegin(self):
         value_for_PB = 0
         fortxt = self.ui.imagelabel.pixmap()
+
         value_for_PB += 1
         self.ui.progressBar.setValue(value_for_PB)
         fortxt = Image.fromqpixmap(fortxt)
+
         value_for_PB += 1
         self.ui.progressBar.setValue(value_for_PB)
         pytesseract.pytesseract.tesseract_cmd = dir
+
         value_for_PB += 1
         self.ui.progressBar.setValue(value_for_PB + 1)
+
         try:
             pytesseract.image_to_osd(fortxt)
             value_for_PB += 1
@@ -283,9 +289,11 @@ class MyWindow(QtWidgets.QMainWindow):
             print(te)
         lang = self.ui.comboBox.currentText()
         value_for_PB += 1
+
         self.ui.progressBar.setValue(value_for_PB + 1)
         text = pytesseract.image_to_string(fortxt, lang=languages[lang])
         value_for_PB += 1
+
         self.ui.progressBar.setValue(value_for_PB + 1)
         if text == '':
             QMessageBox.about(self, 'Error', "Text hasn't found")
