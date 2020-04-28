@@ -67,6 +67,7 @@ class Operations:
         self.unsharmask = 0
         self.gaussianblur = 0
         self.blackandwhite = False
+        self.medianfilter = False
 
 
 operations = Operations()
@@ -80,13 +81,18 @@ def _get_img_with_all_operations(self):
     u = operations.unsharmask
     g = operations.gaussianblur
     baw = operations.blackandwhite
+    mf = operations.medianfilter
 
-    if self.b_and_w_image_updated:
-        img = self.b_and_w_image_updated
-    elif self.pixmap:
+    if self.pixmap:
         img = Image.fromqimage(self.pixmap)
     else:
         img = Image.fromqimage(self.image)
+
+    if mf:
+        img = img_helper.medianfilter(img, mf)
+
+    if baw:
+        img = img_helper.black_and_white(img, baw)
 
     if b != 0:
         img = img_helper.brightness(img, b)
@@ -184,19 +190,18 @@ class MyWindow(QtWidgets.QMainWindow):
         self.uidraw = drawing.MyWidget(self.ui.imagelabel.pixmap())
         self.uidraw.show()
 
-    def medianfilter(self, state):
-        backup_image = self.ui.imagelabel.pixmap()
-        if state is True:
-            backup_image_updated = Image.fromqpixmap(backup_image)
+    def black_and_white(self, state):
+        operations.blackandwhite = state
+        self.place_preview_img()
 
-            self.backup_image_updated = backup_image_updated.filter(ImageFilter.MedianFilter())
-            self.ui.imagelabel.setPixmap(self.backup_image_updated.toqpixmap())
-        elif state is False:
-            try:
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
-            except NameError as ne:
-                print(ne)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+        # if state is True:
+        #     operations.blackandwhite = True
+        # elif state is False:
+        #     operations.blackandwhite = False
+
+    def medianfilter(self, state):
+        operations.medianfilter = state
+        self.place_preview_img()
 
     def unsharmask(self):
         self.ui.horizontalSlider_unsharmask.setToolTip(str(self.ui.horizontalSlider_unsharmask.value()))
@@ -260,14 +265,11 @@ class MyWindow(QtWidgets.QMainWindow):
         self.place_preview_img()
 
     def enchancereset(self):
-        if self.ui.checkBox_2.isChecked():
-            self.ui.imagelabel.setPixmap(self.b_and_w_image_updated.toqpixmap())
-        else:
-            try:
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
-            except NameError as ne:
-                print(ne)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image_for_enchance_reset))
+        try:
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
+        except NameError as ne:
+            print(ne)
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image)) # self.image_for_enchance_reset
 
         self.ui.horizontalSlider_color_blalance.setValue(0)
         self.ui.horizontalSlider.setValue(0)
@@ -275,10 +277,13 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider_for_sharpness.setValue(0)
         self.ui.horizontalSlider_unsharmask.setValue(0)
         self.ui.horizontalSlider_gaussian.setValue(0)
+        self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
 
         operations.unsharmask = operations.gaussianblur = operations.color_balance =\
             operations.brightness = operations.contrast = operations.sharpness = 0
+
+        operations.medianfilter = operations.blackandwhite = False
 
     def place_preview_img(self):
         img = _get_img_with_all_operations(self)
@@ -330,20 +335,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.ContrastGroup.setEnabled(True)
         self.ui.progressBar.setEnabled(True)
         self.ui.comboBox.setEnabled(True)
-
-    def black_and_white(self, state):
-        b_and_w_image = self.ui.imagelabel.pixmap()
-        if state is True:
-            b_and_w_image_updated = Image.fromqpixmap(b_and_w_image)
-
-            self.b_and_w_image_updated = b_and_w_image_updated.convert(mode='L')
-            self.ui.imagelabel.setPixmap(self.b_and_w_image_updated.toqpixmap())
-        elif state is False:
-            try:
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
-            except NameError as ne:
-                print(ne)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
 
     def buttonbegin(self):
         value_for_PB = 0

@@ -27,6 +27,24 @@ UNSHARPMASK_FACTOR_MIN = 0.0
 UNSHARPMASK_FACTOR_MAX = 2.0
 
 
+def medianfilter(img, state):
+    """add medianfilter"""
+
+    if state:
+        return img.filter(ImageFilter.MedianFilter())
+    else:
+        return img
+
+
+def black_and_white(img, state):
+    """make black-white image"""
+
+    if state:
+        return img.convert(mode='L')
+    else:
+        return img
+
+
 def brightness(img, factor):
     """Adjust image brightness form 0.5-2 (1 - original)"""
 
@@ -75,6 +93,7 @@ def unsharmask(img, factor):
 
     # filter = img.filter(ImageFilter.UnsharpMask(radius=factor))
     return img.filter(ImageFilter.UnsharpMask(radius=factor))
+
 
 def gaussianblur(img, factor):
     """adjust image gaussianblur form 0-2 (1 - original)"""
