@@ -58,7 +58,7 @@ def sharpness(img, factor):
 
 
 def color_balance(img, factor):
-    """Adjust image color balance form 0-2 (1 - original)"""
+    """Adjust image color balance form 0-2 (0 - original)"""
 
     if factor > COLORBALANCE_FACTOR_MAX or factor < COLORBALANCE_FACTOR_MIN:
         raise ValueError("factor should be [0.0-2.0]")
@@ -68,14 +68,13 @@ def color_balance(img, factor):
 
 
 def unsharmask(img, factor):
-    """adjust image unsharmask form 0-2 (1 - original)"""
+    """adjust image unsharmask form 0-2 (0 - original)"""
 
     if factor > UNSHARPMASK_FACTOR_MAX or factor < UNSHARPMASK_FACTOR_MIN:
         raise ValueError(f"factor should be [{UNSHARPMASK_FACTOR_MAX}-{UNSHARPMASK_FACTOR_MIN}]")
 
-    filter = ImageFilter.UnsharpMask(img)
-    return filter.radius(factor)
-
+    # filter = img.filter(ImageFilter.UnsharpMask(radius=factor))
+    return img.filter(ImageFilter.UnsharpMask(radius=factor))
 
 def gaussianblur(img, factor):
     """adjust image gaussianblur form 0-2 (1 - original)"""
@@ -83,20 +82,6 @@ def gaussianblur(img, factor):
     if factor > GAUSSIANBLUR_FACTOR_MAX or factor < GAUSSIANBLUR_FACTOR_MIN:
         raise ValueError(f"factor should be [{GAUSSIANBLUR_FACTOR_MAX}-{GAUSSIANBLUR_FACTOR_MIN}]")
 
-    filter = ImageFilter.GaussianBlur(img)
-    return filter.radius(factor)
+    # filter = ImageFilter.GaussianBlur(img)
+    return img.filter(ImageFilter.GaussianBlur(radius=factor))
 
-
-def save(img, path):
-    """Save image to hard drive"""
-
-    img.save(path)
-
-
-def open_img(img):
-    """
-    Open image in temporary file
-    !use it only for debug!
-    """
-
-    img.open()

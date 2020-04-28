@@ -66,6 +66,7 @@ class Operations:
         self.color_balance = 0
         self.unsharmask = 0
         self.gaussianblur = 0
+        self.blackandwhite = False
 
 
 operations = Operations()
@@ -78,11 +79,13 @@ def _get_img_with_all_operations(self):
     cb = operations.color_balance
     u = operations.unsharmask
     g = operations.gaussianblur
+    baw = operations.blackandwhite
 
-    try:
+    if self.b_and_w_image_updated:
+        img = self.b_and_w_image_updated
+    elif self.pixmap:
         img = Image.fromqimage(self.pixmap)
-    except NameError as ne:
-        print(ne)
+    else:
         img = Image.fromqimage(self.image)
 
     if b != 0:
@@ -196,29 +199,29 @@ class MyWindow(QtWidgets.QMainWindow):
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
 
     def unsharmask(self):
-        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
+        self.ui.horizontalSlider_unsharmask.setToolTip(str(self.ui.horizontalSlider_unsharmask.value()))
+        self.ui.horizontalSlider_unsharmask.setStatusTip(str(self.ui.horizontalSlider_unsharmask.value()))
 
         value = calculating(self.ui.horizontalSlider_unsharmask.value(),
                             UNSHARPMASK_FACTOR_MIN,
                             UNSHARPMASK_FACTOR_MAX)
 
-        image = image.filter(ImageFilter.UnsharpMask(radius=value))
-
-        self.ui.imagelabel.setPixmap(image.toqpixmap())
+        operations.unsharmask = value
+        self.place_preview_img()
 
     def gaussianblur(self):
-        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
-
+        self.ui.horizontalSlider_gaussian.setToolTip(str(self.ui.horizontalSlider_gaussian.value()))
+        self.ui.horizontalSlider_gaussian.setStatusTip(str(self.ui.horizontalSlider_gaussian.value()))
         value = calculating(self.ui.horizontalSlider_gaussian.value(),
                             GAUSSIANBLUR_FACTOR_MIN,
                             GAUSSIANBLUR_FACTOR_MAX)
 
-        image = image.filter(ImageFilter.GaussianBlur(radius=value))
-
-        self.ui.imagelabel.setPixmap(image.toqpixmap())
+        operations.gaussianblur = value
+        self.place_preview_img()
 
     def colorbalance(self):
-        self.ui.horizontalSlider.setToolTip(str(self.ui.horizontalSlider_color_blalance.value()))
+        self.ui.horizontalSlider_color_blalance.setToolTip(str(self.ui.horizontalSlider_color_blalance.value()))
+        self.ui.horizontalSlider_color_blalance.setStatusTip(str(self.ui.horizontalSlider_color_blalance.value()))
         value = calculating(self.ui.horizontalSlider_color_blalance.value(),
                             COLORBALANCE_FACTOR_MIN,
                             COLORBALANCE_FACTOR_MAX)
@@ -227,7 +230,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.place_preview_img()
 
     def brightness(self):
-        self.ui.horizontalSlider.setToolTip(str(self.ui.horizontalSlider_brightness.value()))
+        self.ui.horizontalSlider_brightness.setToolTip(str(self.ui.horizontalSlider_brightness.value()))
+        self.ui.horizontalSlider_brightness.setStatusTip(str(self.ui.horizontalSlider_brightness.value()))
         value = calculating(self.ui.horizontalSlider_brightness.value(),
                             BRIGHTNESS_FACTOR_MIN,
                             BRIGHTNESS_FACTOR_MAX)
@@ -237,6 +241,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def highcontrast(self):
         self.ui.horizontalSlider.setToolTip(str(self.ui.horizontalSlider.value()))
+        self.ui.horizontalSlider.setStatusTip(str(self.ui.horizontalSlider.value()))
         value = calculating(self.ui.horizontalSlider.value(),
                             CONTRAST_FACTOR_MIN,
                             CONTRAST_FACTOR_MAX)
@@ -245,7 +250,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.place_preview_img()
 
     def sharpness(self):
-        self.ui.horizontalSlider.setToolTip(str(self.ui.horizontalSlider_for_sharpness.value()))
+        self.ui.horizontalSlider_for_sharpness.setToolTip(str(self.ui.horizontalSlider_for_sharpness.value()))
+        self.ui.horizontalSlider_for_sharpness.setStatusTip(str(self.ui.horizontalSlider_for_sharpness.value()))
         value = calculating(self.ui.horizontalSlider_for_sharpness.value(),
                             SHARPNESS_FACTOR_MIN,
                             SHARPNESS_FACTOR_MAX)
@@ -270,6 +276,9 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider_unsharmask.setValue(0)
         self.ui.horizontalSlider_gaussian.setValue(0)
         self.ui.checkBox_medianfilter.setChecked(False)
+
+        operations.unsharmask = operations.gaussianblur = operations.color_balance =\
+            operations.brightness = operations.contrast = operations.sharpness = 0
 
     def place_preview_img(self):
         img = _get_img_with_all_operations(self)
