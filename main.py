@@ -275,8 +275,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ui.horizontalSlider.setValue(0)
         self.ui.horizontalSlider_brightness.setValue(0)
         self.ui.horizontalSlider_for_sharpness.setValue(0)
-        self.ui.horizontalSlider_unsharmask.setValue(0)
-        self.ui.horizontalSlider_gaussian.setValue(0)
+        self.ui.horizontalSlider_unsharmask.setValue(-100)
+        self.ui.horizontalSlider_gaussian.setValue(-100)
         self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
 
