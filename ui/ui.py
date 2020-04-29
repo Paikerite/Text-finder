@@ -673,7 +673,7 @@ class Ui_MainWindow(object):
         self.progressBar.setOrientation(QtCore.Qt.Horizontal)
         self.progressBar.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
         self.progressBar.setObjectName("progressBar")
-        self.progressBar.setMaximum(8)
+        self.progressBar.setMaximum(7)
         self.progressBar.setEnabled(False)
         self.verticalLayout.addWidget(self.progressBar, 0, QtCore.Qt.AlignRight)
         self.label_for_language = QtWidgets.QLabel(self.centralwidget)

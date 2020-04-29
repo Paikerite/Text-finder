@@ -10,7 +10,7 @@ from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox, QMainWindow
 import img_helper
 from ui import ui, about_tf
-from areaselection import drawing
+from areaselection import drawing as drawing_file
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -84,7 +84,7 @@ def _get_img_with_all_operations(self):
     mf = operations.medianfilter
 
     if self.pixmap:
-        img = Image.fromqimage(self.pixmap)
+        img = Image.fromqpixmap(self.pixmap)
     else:
         img = Image.fromqimage(self.image)
 
@@ -128,14 +128,16 @@ class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         # self.threadpool = QtCore.QThreadPool()
+
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.drawing = None
         self.image = None
         self.pixmap = None
         self.b_and_w_image_updated = None
         self.backup_image_updated = None
         self.image_for_enchance_reset = None
-        self.uidraw = None
         self.ab = None
 
         self.ui.pushButton.clicked.connect(self.buttonbegin)
@@ -187,8 +189,14 @@ class MyWindow(QtWidgets.QMainWindow):
         self.ab.show()
 
     def areaSelection(self):
-        self.uidraw = drawing.MyWidget(self.ui.imagelabel.pixmap())
-        self.uidraw.show()
+        self.drawing = drawing_file.MyWidget(self.ui, self.ui.imagelabel.pixmap())
+        self.drawing.show()
+        if self.pixmap:
+            self.pixmap = self.ui.imagelabel.pixmap()
+        elif self.image:
+            self.image = self.ui.imagelabel.pixmap()
+        else:
+            print("Warning")
 
     def black_and_white(self, state):
         operations.blackandwhite = state

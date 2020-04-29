@@ -7,32 +7,24 @@ from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QPainterPath, QBrush
 from . import ui_drawing
 
 
-class Position:
-    def __init__(self):
-        self.begin_x = 0
-        self.begin_y = 0
-
-        self.end_x = 0
-        self.end_y = 0
-
-
-position = Position()
-
-
 class MyWidget(QtWidgets.QMainWindow, ui_drawing.Ui_MainWindow):
-    def __init__(self, image=None):
+
+    def __init__(self, parent, image=None):
         super().__init__()
         self.setupUi(self)
+        self.Parent = parent
+        self.resetPicture.clicked.connect(lambda: self.labelimage.setPixmap(self.image_from_main))
+        self.SaveChangedPic.clicked.connect(self.savepicture)
 
         if image:
             self.image_from_main = image
             self.labelimage.setPixmap(self.image_from_main)
         else:
-            pass
+            print('fail load picture')
 
-        # self.positin_label.setText(
-        #     f"Mouse position. begin - {position.begin_x} {position.begin_y} "
-        #     f"end - {position.end_x} {position.end_y}")
+    def savepicture(self):
+        self.Parent.imagelabel.setPixmap(self.labelimage.pixmap())
+        self.close()
 
 
 if __name__ == "__main__":
