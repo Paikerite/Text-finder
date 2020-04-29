@@ -113,6 +113,15 @@ def _get_img_with_all_operations(self):
     if g != 0:
         img = img_helper.gaussianblur(img, g)
 
+    if operations.rotation_angle:
+        img = img_helper.rotate(img, operations.rotation_angle)
+
+    if operations.flip_left:
+        img = img_helper.flip_left(img)
+
+    if operations.flip_top:
+        img = img_helper.flip_top(img)
+
     return img
 
 
@@ -140,6 +149,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.backup_image_updated = None
         self.image_for_enchance_reset = None
         self.ab = None
+        self.ins = None
 
         self.ui.pushButton.clicked.connect(self.buttonbegin)
 
@@ -169,6 +179,14 @@ class MyWindow(QtWidgets.QMainWindow):
 
         self.ui.horizontalSlider_gaussian.sliderReleased.connect(self.gaussianblur)
 
+        self.ui.pushButton_rotate_left.clicked.connect(self.on_rotate_left)
+
+        self.ui.pushButton_rotate_right.clicked.connect(self.on_rotate_right)
+
+        self.ui.pushButton_4.clicked.connect(self.on_flip_left)
+
+        self.ui.pushButton_5.clicked.connect(self.on_flip_top)
+
         self.ui.comboBox.addItems(
             ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
 
@@ -183,7 +201,8 @@ class MyWindow(QtWidgets.QMainWindow):
         QMessageBox.aboutQt(self)
 
     def instruction(self):
-        print('yet dibil')
+        self.ins = uic.loadUi("instruction.ui")
+        self.ins.show()
 
     def about(self):
         self.ab = uic.loadUi("about.ui")
@@ -294,6 +313,26 @@ class MyWindow(QtWidgets.QMainWindow):
 
         operations.medianfilter = operations.blackandwhite = False
 
+    def on_rotate_left(self):
+
+        operations.rotation_angle = 0 if operations.rotation_angle == 270 else operations.rotation_angle + 90
+        self.place_preview_img()
+
+    def on_rotate_right(self):
+
+        operations.rotation_angle = 0 if operations.rotation_angle == -270 else operations.rotation_angle - 90
+        self.place_preview_img()
+
+    def on_flip_left(self):
+
+        operations.flip_left = not operations.flip_left
+        self.place_preview_img()
+
+    def on_flip_top(self):
+
+        operations.flip_top = not operations.flip_top
+        self.place_preview_img()
+
     def place_preview_img(self):
         img = _get_img_with_all_operations(self)
 
@@ -348,6 +387,11 @@ class MyWindow(QtWidgets.QMainWindow):
             self.ui.ContrastGroup.setEnabled(True)
             self.ui.progressBar.setEnabled(True)
             self.ui.comboBox.setEnabled(True)
+            self.ui.pushButton_4.setEnabled(True)
+            self.ui.pushButton_5.setEnabled(True)
+            self.ui.pushButton_rotate_right.setEnabled(True)
+            self.ui.pushButton_rotate_left.setEnabled(True)
+            self.ui.horizontalSlider.setEnabled(True)
 
             self.ui.horizontalSlider_color_blalance.setValue(0)
             self.ui.horizontalSlider.setValue(0)

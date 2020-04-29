@@ -104,3 +104,21 @@ def gaussianblur(img, factor):
     # filter = ImageFilter.GaussianBlur(img)
     return img.filter(ImageFilter.GaussianBlur(radius=factor))
 
+
+def rotate(img, angle):
+    """Rotate image"""
+
+    return img.rotate(angle, expand=True)
+
+
+def flip_left(img):
+    """Flip left to right"""
+
+    return img.transpose(Image.FLIP_LEFT_RIGHT)
+
+
+def flip_top(img):
+    """Flip top to bottom"""
+
+    return img.transpose(Image.FLIP_TOP_BOTTOM)
+
