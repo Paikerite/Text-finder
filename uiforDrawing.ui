@@ -80,7 +80,7 @@ QPushButton:pressed
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="labelimage" name="labelimage">
+         <widget class="label_2" name="label_2">
           <property name="mouseTracking">
            <bool>true</bool>
           </property>
@@ -126,9 +126,9 @@ QPushButton:pressed
  </widget>
  <customwidgets>
   <customwidget>
-   <class>labelimage</class>
+   <class>label_2</class>
    <extends>QLabel</extends>
-   <header>labelimage.h</header>
+   <header>label_2.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
