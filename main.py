@@ -191,12 +191,12 @@ class MyWindow(QtWidgets.QMainWindow):
     def areaSelection(self):
         self.drawing = drawing_file.MyWidget(self.ui, self.ui.imagelabel.pixmap())
         self.drawing.show()
-        if self.pixmap:
-            self.pixmap = self.ui.imagelabel.pixmap()
-        elif self.image:
-            self.image = self.ui.imagelabel.pixmap()
-        else:
-            print("Warning")
+        # if self.pixmap:
+        #     self.pixmap = self.ui.imagelabel.pixmap()
+        # elif self.image:
+        #     self.image = self.ui.imagelabel.pixmap()
+        # else:
+        #     print("Warning")
 
     def black_and_white(self, state):
         operations.blackandwhite = state
@@ -329,6 +329,8 @@ class MyWindow(QtWidgets.QMainWindow):
     def browsebutton(self):
         filename = QtWidgets.QFileDialog.getOpenFileName(filter='Images (*.png *.xpm *.jpg *.jpeg)',
                                                          caption='Select image')
+
+        print(filename)
         self.ui.lineEdit.setText(filename[0])
         self.image = QImage(filename[0])
         self.image_for_enchance_reset = QImage(filename[0])
