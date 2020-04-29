@@ -23,7 +23,12 @@ class MyWidget(QtWidgets.QMainWindow, ui_drawing.Ui_MainWindow):
             print('fail load picture')
 
     def savepicture(self):
-        self.Parent.imagelabel.setPixmap(self.labelimage.pixmap())
+        self.Parent.ui.imagelabel.setPixmap(self.labelimage.pixmap())
+        if self.Parent.pixmap:
+            self.Parent.pixmap = self.labelimage.pixmap()
+        else:
+            self.Parent.image = self.labelimage.pixmap()
+
         self.close()
 
 

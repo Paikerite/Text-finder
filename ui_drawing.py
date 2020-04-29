@@ -71,6 +71,7 @@ class Ui_MainWindow(object):
         self.labelimage.setAutoFillBackground(False)
         self.labelimage.setText("")
         self.labelimage.setObjectName("labelimage")
+        self.labelimage.setAlignment(QtCore.Qt.AlignTop)
         self.verticalLayout_2.addWidget(self.labelimage)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
