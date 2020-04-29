@@ -10,7 +10,7 @@ from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox, QMainWindow
 import img_helper
 from ui import ui, about_tf
-import drawing
+from areaselection import drawing
 
 images_type = ['.jpg', '.png', 'jpeg']
 
