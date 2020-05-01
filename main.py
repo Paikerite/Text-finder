@@ -13,6 +13,7 @@ from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplicatio
 # from PyQt5.QtCore import QObject
 import img_helper
 import ui
+import instruction as ins
 # import about_tf
 import drawing as drawing_file
 
@@ -204,7 +205,7 @@ class MyWindow(QMainWindow):
         QMessageBox.aboutQt(self)
 
     def instruction(self):
-        self.ins = QtUiTools.QUiLoader().load("instruction.ui")
+        self.ins = ins.Instruction(self)
         self.ins.show()
 
     def about(self):

@@ -35,4 +35,4 @@ if __name__ == "__main__":
     application = MyWidget()
     application.show()
 
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
