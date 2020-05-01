@@ -3,18 +3,17 @@
 # Form implementation generated from reading ui file 'instruction.ui',
 # licensing of 'instruction.ui' applies.
 #
-# Created: Fri May  1 21:44:32 2020
+# Created: Fri May  1 23:37:37 2020
 #      by: pyside2-uic  running on PySide2 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
 from PySide2 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(852, 687)
+        MainWindow.resize(852, 698)
         MainWindow.setMaximumSize(QtCore.QSize(1852, 1025))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ebook.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -659,25 +658,134 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setStretch(1, 1)
         self.stackedWidget.addWidget(self.page_areaselection_continue)
         self.verticalLayout.addWidget(self.stackedWidget)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_previous = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_previous.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Icons/left-arrow.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_previous.setIcon(icon1)
-        self.pushButton_previous.setObjectName("pushButton_previous")
-        self.horizontalLayout.addWidget(self.pushButton_previous)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.pushButton_next = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_next.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Icons/skip.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_next.setIcon(icon2)
-        self.pushButton_next.setObjectName("pushButton_next")
-        self.horizontalLayout.addWidget(self.pushButton_next)
-        self.verticalLayout.addLayout(self.horizontalLayout)
+
+        self.ButtonGroup_pages = QtWidgets.QButtonGroup()
+        self.ButtonGroup_pages.setObjectName("ButtonGroup_pages")
+        self.layout_for_pages = QtWidgets.QHBoxLayout()
+
+        self.pushButton_1page = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_1page.sizePolicy().hasHeightForWidth())
+        self.pushButton_1page.setSizePolicy(sizePolicy)
+        self.pushButton_1page.setStyleSheet("QPushButton\n"
+"{\n"
+"    color: #b1b1b1;\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
+"    border-width: 2px;\n"
+"    border-color: #1e1e1e;\n"
+"    border-style: solid;\n"
+"    border-radius: 1;\n"
+"    padding: 3px;\n"
+"    font-size: 20px;\n"
+"    padding-left: 5px;\n"
+"    padding-right: 5px;\n"
+"    min-width: 40px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
+"}\n"
+"\n"
+"QPushButton::checked \n"
+"{\n"
+"    border-color: rgb(255, 160, 47);\n"
+"    background-color: rgb(28, 28, 28);\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    border-color: rgb(255, 160, 47);\n"
+"}")
+        self.pushButton_1page.setCheckable(True)
+        self.pushButton_1page.setChecked(True)
+        self.pushButton_1page.setObjectName("pushButton_1page")
+        self.ButtonGroup_pages.addButton(self.pushButton_1page, 0)
+        self.layout_for_pages.addWidget(self.pushButton_1page)
+        self.pushButton_2page = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_2page.sizePolicy().hasHeightForWidth())
+        self.pushButton_2page.setSizePolicy(sizePolicy)
+        self.pushButton_2page.setStyleSheet("QPushButton\n"
+"{\n"
+"    color: #b1b1b1;\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
+"    border-width: 2px;\n"
+"    border-color: #1e1e1e;\n"
+"    border-style: solid;\n"
+"    border-radius: 1;\n"
+"    padding: 3px;\n"
+"    font-size: 20px;\n"
+"    padding-left: 5px;\n"
+"    padding-right: 5px;\n"
+"    min-width: 40px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
+"}\n"
+"\n"
+"QPushButton::checked \n"
+"{\n"
+"    border-color: rgb(255, 160, 47);\n"
+"    background-color: rgb(28, 28, 28);\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    border-color: rgb(255, 160, 47);\n"
+"}")
+        self.pushButton_2page.setCheckable(True)
+        self.pushButton_2page.setObjectName("pushButton_2page")
+        self.ButtonGroup_pages.addButton(self.pushButton_2page, 1)
+        self.layout_for_pages.addWidget(self.pushButton_2page)
+        self.pushButton_3page = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_3page.sizePolicy().hasHeightForWidth())
+        self.pushButton_3page.setSizePolicy(sizePolicy)
+        self.pushButton_3page.setStyleSheet("QPushButton\n"
+"{\n"
+"    color: #b1b1b1;\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
+"    border-width: 2px;\n"
+"    border-color: #1e1e1e;\n"
+"    border-style: solid;\n"
+"    border-radius: 1;\n"
+"    padding: 3px;\n"
+"    font-size: 20px;\n"
+"    padding-left: 5px;\n"
+"    padding-right: 5px;\n"
+"    min-width: 40px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
+"}\n"
+"\n"
+"QPushButton::checked \n"
+"{\n"
+"    border-color: rgb(255, 160, 47);\n"
+"    background-color: rgb(28, 28, 28);\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    border-color: rgb(255, 160, 47);\n"
+"}")
+        self.pushButton_3page.setCheckable(True)
+        self.pushButton_3page.setObjectName("pushButton_3page")
+        self.ButtonGroup_pages.addButton(self.pushButton_3page, 2)
+        self.layout_for_pages.addWidget(self.pushButton_3page)
+        # self.layout_for_pages.addWidget(self.ButtonGroup_pages)
+        self.verticalLayout.addLayout(self.layout_for_pages)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -689,7 +797,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Instruction", None, -1))
-        self.label_Instruction.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">1/3</span></p><p><span style=\" font-size:14pt;\">После запуска программы, вам следует загрузить</span></p><p><span style=\" font-size:14pt;\">картинку/фотографию. Что бы это сделать, </span></p><p><span style=\" font-size:14pt;\">вам нужно нажать на кнопку </span><span style=\" font-size:14pt; font-weight:600;\">&quot;Browse&quot;</span><span style=\" font-size:14pt;\">, после чего </span></p><p><span style=\" font-size:14pt;\">выбрать файл.</span></p></body></html>", None, -1))
-        self.label_Instruction_2.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">2/3</span></p><p><span style=\" font-size:14pt;\">Возможно, вам потребуеться просканировать </span></p><p><span style=\" font-size:14pt;\">какуе-ту область, а не всю картину.</span></p><p><span style=\" font-size:14pt;\">Для этого нужно перейти в раздел &quot;</span><span style=\" font-size:14pt; font-weight:600;\">Area selection</span><span style=\" font-size:14pt;\">&quot;</span></p><p><span style=\" font-size:14pt;\">...</span></p></body></html>", None, -1))
-        self.label_Instruction_3.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">3/3</span></p><p><span style=\" font-size:12pt;\">Затем зажать на левую кнопку мышь на выбраной области и выделить,</span></p><p><span style=\" font-size:12pt;\">после чего он обрежется. Потом нажать на кнопку &quot;</span><span style=\" font-size:12pt; font-weight:600;\">Save</span><span style=\" font-size:12pt;\">&quot;.</span></p><p><span style=\" font-size:12pt;\">Если вы промазали,нажмите на кнопку &quot;</span><span style=\" font-size:12pt; font-weight:600;\">Reset</span><span style=\" font-size:12pt;\">&quot;.</span><br/></p></body></html>", None, -1))
+        self.label_Instruction.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">1/3</span></p><p><span style=\" font-size:14pt;\">После запуска программы, следует загрузить</span></p><p><span style=\" font-size:14pt;\">картинку/фотографию. Что бы это сделать, </span></p><p><span style=\" font-size:14pt;\">нужно нажать на кнопку </span><span style=\" font-size:14pt; font-weight:600;\">&quot;Browse&quot;</span><span style=\" font-size:14pt;\">, после чего </span></p><p><span style=\" font-size:14pt;\">выбрать файл.</span></p></body></html>", None, -1))
+        self.label_Instruction_2.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">2/3</span></p><p><span style=\" font-size:14pt;\">Возможно вам потребуется просканировать </span></p><p><span style=\" font-size:14pt;\">конкретную область, а не все изображение.</span></p><p><span style=\" font-size:14pt;\">Для этого нужно перейти в раздел &quot;</span><span style=\" font-size:14pt; font-weight:600;\">Area selection</span><span style=\" font-size:14pt;\">&quot;</span></p><p><span style=\" font-size:14pt;\">...</span></p></body></html>", None, -1))
+        self.label_Instruction_3.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">3/3</span></p><p><span style=\" font-size:12pt;\">Затем зажать левую кнопку мыши на выбранной области и выделить ее,</span></p><p><span style=\" font-size:12pt;\">после чего изображение будет обрезано. Потом нажать на кнопку &quot;</span><span style=\" font-size:12pt; font-weight:600;\">Save</span><span style=\" font-size:12pt;\">&quot;.</span></p><p><span style=\" font-size:12pt;\">Если вы ошиблись, нажмите на кнопку &quot;</span><span style=\" font-size:12pt; font-weight:600;\">Reset</span><span style=\" font-size:12pt;\">&quot;.</span><br/></p></body></html>", None, -1))
+        self.pushButton_1page.setText(QtWidgets.QApplication.translate("MainWindow", "1", None, -1))
+        self.pushButton_2page.setText(QtWidgets.QApplication.translate("MainWindow", "2", None, -1))
+        self.pushButton_3page.setText(QtWidgets.QApplication.translate("MainWindow", "3", None, -1))
 

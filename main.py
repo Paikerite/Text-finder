@@ -371,7 +371,7 @@ class MyWindow(QMainWindow):
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
     def browsebutton(self):
-        filename = QFileDialog.getOpenFileName(filter='Images (*.png *.xpm *.jpg *.jpeg)',
+        filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg)',
                                                          caption='Select image')
 
         print(filename)
@@ -413,7 +413,6 @@ class MyWindow(QMainWindow):
 
         else:
             pass
-
 
     def buttonbegin(self):
         value_for_PB = 0
