@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>852</width>
+    <height>687</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1852</width>
+    <height>1025</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Instruction</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
   </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
@@ -572,10 +581,10 @@ QGroupBox::indicator:checked
        <number>4</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_browse">
-       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,1">
         <item>
          <widget class="QLabel" name="label_Instruction">
           <property name="font">
@@ -615,7 +624,7 @@ QGroupBox::indicator:checked
        </layout>
       </widget>
       <widget class="QWidget" name="page_areaselection">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,1">
         <item>
          <widget class="QLabel" name="label_Instruction_2">
           <property name="font">
@@ -651,7 +660,7 @@ QGroupBox::indicator:checked
        </layout>
       </widget>
       <widget class="QWidget" name="page_areaselection_continue">
-       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,0">
         <item>
          <widget class="QLabel" name="label_Instruction_3">
           <property name="sizePolicy">
@@ -666,10 +675,13 @@ QGroupBox::indicator:checked
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;3/3&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Затем зажать на левую кнопку мышь&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;на выбраной области и выделить,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;после чего он обрежется. Потом &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;нажать на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Save&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;.Если вы&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;промазали,нажмите на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Reset&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;3/3&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Затем зажать на левую кнопку мышь на выбраной области и выделить,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;после чего он обрежется. Потом нажать на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Save&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Если вы промазали,нажмите на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Reset&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="textFormat">
            <enum>Qt::AutoText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
          </widget>
         </item>
@@ -691,6 +703,12 @@ QGroupBox::indicator:checked
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>800</width>
+            <height>400</height>
+           </size>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -700,11 +718,53 @@ QGroupBox::indicator:checked
           <property name="scaledContents">
            <bool>true</bool>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
          </widget>
         </item>
        </layout>
       </widget>
      </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_previous">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/left-arrow.svg</normaloff>Icons/left-arrow.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_next">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/skip.svg</normaloff>Icons/skip.svg</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

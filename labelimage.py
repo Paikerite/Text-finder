@@ -9,7 +9,7 @@ from PIL import Image
 import drawing
 
 
-class labelimage(QLabel):
+class labelimage(QLabel, QObject): # QLabel
     def __init__(self, parent):
         super(labelimage, self).__init__(parent=parent)
 

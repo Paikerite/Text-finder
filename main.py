@@ -8,6 +8,7 @@ from PIL import Image, ImageEnhance, ImageShow, ImageFilter
 from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox, QMainWindow
+from PyQt5.QtCore import QObject
 import img_helper
 import ui
 import about_tf
