@@ -5,7 +5,6 @@ All image operations should go thorough this module
 """
 
 from PIL import Image, ImageEnhance, ImageFilter
-import logging
 
 # constants
 CONTRAST_FACTOR_MAX = 1.5

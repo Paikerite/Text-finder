@@ -2,16 +2,18 @@
 # Только Бог и я, разбирались в этом дерьме,
 # Теперь только Бог. Удачи!
 ##############################################
+
 import sys
 import pytesseract
-from PIL import Image, ImageEnhance, ImageShow, ImageFilter
-from PyQt5 import QtCore, QtWidgets, uic
-from PyQt5.QtGui import QPixmap, QImage, QIntValidator, QPainter, QBrush, QColor
-from PyQt5.QtWidgets import QDesktopWidget, QApplication, QMessageBox, QMainWindow
-from PyQt5.QtCore import QObject
+from PIL import Image
+from PySide2 import QtUiTools
+from PySide2.QtCore import Qt
+from PySide2.QtGui import QPixmap, QImage, QIntValidator
+from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication
+# from PyQt5.QtCore import QObject
 import img_helper
 import ui
-import about_tf
+# import about_tf
 import drawing as drawing_file
 
 images_type = ['.jpg', '.png', 'jpeg']
@@ -135,7 +137,7 @@ def calculating(from_slider_value, min, max):
     return value
 
 
-class MyWindow(QtWidgets.QMainWindow):
+class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         # self.threadpool = QtCore.QThreadPool()
@@ -202,11 +204,11 @@ class MyWindow(QtWidgets.QMainWindow):
         QMessageBox.aboutQt(self)
 
     def instruction(self):
-        self.ins = uic.loadUi("instruction.ui")
+        self.ins = QtUiTools.QUiLoader().load("instruction.ui")
         self.ins.show()
 
     def about(self):
-        self.ab = uic.loadUi("about.ui")
+        self.ab = QtUiTools.QUiLoader().load("about.ui")
         self.ab.show()
 
     def areaSelection(self):
@@ -361,14 +363,14 @@ class MyWindow(QtWidgets.QMainWindow):
             pass
         else:
             try:
-                self.pixmap = self.image.scaled(width, height, QtCore.Qt.KeepAspectRatio)
+                self.pixmap = self.image.scaled(width, height, Qt.KeepAspectRatio)
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
             except NameError as ne:
                 print(ne)
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
     def browsebutton(self):
-        filename = QtWidgets.QFileDialog.getOpenFileName(filter='Images (*.png *.xpm *.jpg *.jpeg)',
+        filename = QFileDialog.getOpenFileName(filter='Images (*.png *.xpm *.jpg *.jpeg)',
                                                          caption='Select image')
 
         print(filename)
@@ -457,7 +459,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
             res = msg.exec_()
             if res == QMessageBox.Save:
-                name = QtWidgets.QFileDialog.getSaveFileName(self, "Save result", "",
+                name = QFileDialog.getSaveFileName(self, "Save result", "",
                                                              filter="*.txt",
                                                              )
                 try:
@@ -470,8 +472,8 @@ class MyWindow(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
+    app = QApplication([])
     application = MyWindow()
     application.show()
 
-    sys.exit(app.exec())
+    sys.exit(app.exec_())

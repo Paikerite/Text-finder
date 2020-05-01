@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Instruction</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>ebook.svg</normaloff>ebook.svg</iconset>
+  </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>

@@ -1,12 +1,7 @@
 import sys
 
-# from PyQt5 import QtCore
-#import PyQt5.QtWidgets.QRubberBand
-from PyQt5.QtWidgets import QRubberBand, QLabel, QWidget
-from PyQt5.QtCore import Qt, QPoint, QRect, QObject, pyqtSignal, QEvent, QSize
-from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QPainterPath, QBrush
-from PIL import Image
-import drawing
+from PySide2.QtWidgets import QRubberBand, QLabel
+from PySide2.QtCore import Qt, QPoint, QRect, QObject, QSize
 
 
 class labelimage(QLabel, QObject): # QLabel
