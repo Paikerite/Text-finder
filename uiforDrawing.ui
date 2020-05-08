@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Icons/find.svg</normaloff>../Icons/find.svg</iconset>
+    <normaloff>Icons/find.svg</normaloff>Icons/find.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
@@ -45,6 +45,14 @@ QPushButton:pressed
 {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
 }
+
+QMainWindow{
+	
+	background-color: rgb(80, 80, 80);
+}
+QLabel{
+	color: rgb(255, 255, 255);
+}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -57,7 +65,7 @@ QPushButton:pressed
        </font>
       </property>
       <property name="text">
-       <string>Mouse position - 0, 0</string>
+       <string>Select certain field</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -66,6 +74,23 @@ QPushButton:pressed
     </item>
     <item>
      <widget class="QScrollArea" name="scrollArea">
+      <property name="styleSheet">
+       <string notr="true">QScrollArea{
+	background-color: rgb(90, 90, 90);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::WinPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -74,13 +99,25 @@ QPushButton:pressed
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>780</width>
-         <height>499</height>
+         <width>778</width>
+         <height>495</height>
         </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	
+	background-color: rgb(95, 95, 95);
+}</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="labelimage" name="labelimage">
+          <property name="cursor">
+           <cursorShape>CrossCursor</cursorShape>
+          </property>
           <property name="mouseTracking">
            <bool>true</bool>
           </property>
@@ -118,12 +155,23 @@ QPushButton:pressed
         <property name="text">
          <string>Save</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/save.svg</normaloff>Icons/save.svg</iconset>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="resetPicture">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Reset</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/arr_repeat.svg</normaloff>Icons/arr_repeat.svg</iconset>
         </property>
        </widget>
       </item>

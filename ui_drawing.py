@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'uiforDrawing.ui'
+# Form implementation generated from reading ui file 'uiforDrawing.ui',
+# licensing of 'uiforDrawing.ui' applies.
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created: Fri May  8 15:17:02 2020
+#      by: pyside2-uic  running on PySide2 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PySide2 import QtCore, QtGui, QtWidgets
 
-
-class Ui_MainWindow(object): #object
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Icons/find.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/find.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QToolTip\n"
 "{\n"
@@ -44,6 +44,14 @@ class Ui_MainWindow(object): #object
 "{\n"
 "    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
 "}\n"
+"\n"
+"QMainWindow{\n"
+"    \n"
+"    background-color: rgb(80, 80, 80);\n"
+"}\n"
+"QLabel{\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -57,30 +65,52 @@ class Ui_MainWindow(object): #object
         self.positin_label.setObjectName("positin_label")
         self.verticalLayout.addWidget(self.positin_label)
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setStyleSheet("QScrollArea{\n"
+"    background-color: rgb(90, 90, 90);\n"
+"}")
+        self.scrollArea.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.scrollArea.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.scrollArea.setLineWidth(1)
+        self.scrollArea.setMidLineWidth(0)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 780, 499))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 778, 495))
+        self.scrollAreaWidgetContents.setAutoFillBackground(False)
+        self.scrollAreaWidgetContents.setStyleSheet("QWidget {\n"
+"    \n"
+"    background-color: rgb(95, 95, 95);\n"
+"}")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.labelimage = labelimage.labelimage(self.scrollAreaWidgetContents)
+        self.labelimage = labelimage(self.scrollAreaWidgetContents)
+        self.labelimage.setCursor(QtCore.Qt.CrossCursor)
         self.labelimage.setMouseTracking(True)
         self.labelimage.setFocusPolicy(QtCore.Qt.NoFocus)
         self.labelimage.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.labelimage.setAutoFillBackground(False)
         self.labelimage.setText("")
+        self.labelimage.setScaledContents(False)
+        self.labelimage.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.labelimage.setWordWrap(False)
         self.labelimage.setObjectName("labelimage")
-        self.labelimage.setAlignment(QtCore.Qt.AlignTop)
         self.verticalLayout_2.addWidget(self.labelimage)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.SaveChangedPic = QtWidgets.QPushButton(self.centralwidget)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("Icons/save.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.SaveChangedPic.setIcon(icon1)
         self.SaveChangedPic.setObjectName("SaveChangedPic")
         self.horizontalLayout.addWidget(self.SaveChangedPic)
         self.resetPicture = QtWidgets.QPushButton(self.centralwidget)
+        self.resetPicture.setStyleSheet("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("Icons/arr_repeat.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.resetPicture.setIcon(icon2)
         self.resetPicture.setObjectName("resetPicture")
         self.horizontalLayout.addWidget(self.resetPicture)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -93,20 +123,9 @@ class Ui_MainWindow(object): #object
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Size off"))
-        self.positin_label.setText(_translate("MainWindow", "Mouse position - 0, 0"))
-        self.SaveChangedPic.setText(_translate("MainWindow", "Save"))
-        self.resetPicture.setText(_translate("MainWindow", "Reset"))
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Size off", None, -1))
+        self.positin_label.setText(QtWidgets.QApplication.translate("MainWindow", "Select certain field", None, -1))
+        self.SaveChangedPic.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
+        self.resetPicture.setText(QtWidgets.QApplication.translate("MainWindow", "Reset", None, -1))
 
-
-import labelimage
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+from labelimage import labelimage
