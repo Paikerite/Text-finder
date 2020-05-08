@@ -297,11 +297,12 @@ class MyWindow(QMainWindow):
         self.place_preview_img()
 
     def enchancereset(self):
-        try:
-            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
-        except TypeError as ne:
-            print(ne)
+        if self.pixmap:
+            self.ui.imagelabel.setPixmap(self.pixmap)
+        elif self.image:
             self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image)) # self.image_for_enchance_reset
+        else:
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image_for_enchance_reset))
 
         self.ui.horizontalSlider_color_blalance.setValue(0)
         self.ui.horizontalSlider.setValue(0)

@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'text_finder_search.ui'
+# Form implementation generated from reading ui file 'text_finder_search.ui',
+# licensing of 'text_finder_search.ui' applies.
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created: Fri May  8 16:48:29 2020
+#      by: pyside2-uic  running on PySide2 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PySide2 import QtCore, QtGui, QtWidgets
 
-
-class Ui_MainWindow(object): # object
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1220, 754)
+        MainWindow.resize(1230, 750)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -333,15 +333,20 @@ class Ui_MainWindow(object): # object
 "QDockWidget::title\n"
 "{\n"
 "    text-align: center;\n"
-"    spacing: 3px; /* spacing between items in the tool bar */\n"
-"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);\n"
+"    spacing: 3px; /* spacing between items in the tool bar */    \n"
+"    \n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.318182, x2:0.693, y2:0.563, stop:0.147727 rgba(50, 50, 50, 255), stop:0.732955 rgba(235, 144, 37, 255));\n"
+"\n"
+"/*    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232); */\n"
+"    border-radius: 5;\n"
 "}\n"
 "\n"
 "QDockWidget::close-button, QDockWidget::float-button\n"
 "{\n"
 "    text-align: center;\n"
 "    spacing: 1px; /* spacing between items in the tool bar */\n"
-"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);\n"
+"    background-color: rgb(235, 144, 37);\n"
+"   /*  background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232); */\n"
 "}\n"
 "\n"
 "QDockWidget::close-button:hover, QDockWidget::float-button:hover\n"
@@ -354,24 +359,7 @@ class Ui_MainWindow(object): # object
 "    padding: 1px -1px -1px 1px;\n"
 "}\n"
 "\n"
-"QMainWindow::separator\n"
-"{\n"
-"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #161616, stop: 0.5 #151515, stop: 0.6 #212121, stop:1 #343434);\n"
-"    color: white;\n"
-"    padding-left: 4px;\n"
-"    border: 1px solid #4c4c4c;\n"
-"    spacing: 3px; /* spacing between items in the tool bar */\n"
-"}\n"
 "\n"
-"QMainWindow::separator:hover\n"
-"{\n"
-"\n"
-"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #d7801a, stop:0.5 #b56c17 stop:1 #ffa02f);\n"
-"    color: white;\n"
-"    padding-left: 4px;\n"
-"    border: 1px solid #6c6c6c;\n"
-"    spacing: 3px; /* spacing between items in the tool bar */\n"
-"}\n"
 "\n"
 "QToolBar::handle\n"
 "{\n"
@@ -573,7 +561,34 @@ class Ui_MainWindow(object): # object
 "{\n"
 "    background-color: rgb(255, 170, 0);\n"
 "    color: rgb(255, 170, 0);\n"
-"}")
+"}\n"
+"\n"
+"/* QMainWindow::separator\n"
+"{\n"
+"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #161616, stop: 0.5 #151515, stop: 0.6 #212121, stop:1 #343434);\n"
+"    color: white;\n"
+"    padding-left: 4px;\n"
+"    border: 1px solid #4c4c4c;\n"
+"    spacing: 3px;  spacing between items in the tool bar \n"
+"}\n"
+"\n"
+"QMainWindow::separator:hover\n"
+"{\n"
+"\n"
+"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #d7801a, stop:0.5 #b56c17 stop:1 #ffa02f);\n"
+"    color: white;\n"
+"    padding-left: 4px;\n"
+"    border: 1px solid #6c6c6c;\n"
+"    spacing: 3px; /* spacing between items in the tool bar\n"
+"}\n"
+"*/\n"
+"\n"
+"QMainWindow::separator\n"
+"{\n"
+"    width:0px; \n"
+"    height:0px;\n"
+"}\n"
+"")
         MainWindow.setIconSize(QtCore.QSize(64, 64))
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -604,10 +619,10 @@ class Ui_MainWindow(object): # object
         font.setPointSize(-1)
         self.pushButton_2.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Icons/find.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Icons/upload.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout_2.addWidget(self.pushButton_2, 0, QtCore.Qt.AlignVCenter)
+        self.horizontalLayout_2.addWidget(self.pushButton_2)
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit.setMaximumSize(QtCore.QSize(955, 20))
         self.lineEdit.setDragEnabled(True)
@@ -616,8 +631,8 @@ class Ui_MainWindow(object): # object
         self.verticalLayout_4.addLayout(self.horizontalLayout_2)
         self.verticalLayout_2.addLayout(self.verticalLayout_4)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout.setSpacing(6)
+        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setFocusPolicy(QtCore.Qt.ClickFocus)
@@ -625,7 +640,7 @@ class Ui_MainWindow(object): # object
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1088, 589))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1086, 585))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -638,24 +653,71 @@ class Ui_MainWindow(object): # object
         self.verticalLayout_3.addWidget(self.imagelabel)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout.addWidget(self.scrollArea)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_5.setEnabled(False)
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.horizontalLayout_3.addWidget(self.pushButton_5)
+        self.pushButton_rotate_left = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_rotate_left.setEnabled(False)
+        self.pushButton_rotate_left.setObjectName("pushButton_rotate_left")
+        self.horizontalLayout_3.addWidget(self.pushButton_rotate_left)
+        self.pushButton_rotate_right = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_rotate_right.setEnabled(False)
+        self.pushButton_rotate_right.setObjectName("pushButton_rotate_right")
+        self.horizontalLayout_3.addWidget(self.pushButton_rotate_right)
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setEnabled(False)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.horizontalLayout_3.addWidget(self.pushButton_4)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_2.setStretch(1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menuBar = QtWidgets.QMenuBar(MainWindow)
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1230, 21))
+        self.menuBar.setObjectName("menuBar")
+        self.Info = QtWidgets.QMenu(self.menuBar)
+        self.Info.setObjectName("Info")
+        MainWindow.setMenuBar(self.menuBar)
+        self.statusBar = QtWidgets.QStatusBar(MainWindow)
+        self.statusBar.setObjectName("statusBar")
+        MainWindow.setStatusBar(self.statusBar)
+        self.dockWidget_editor = QtWidgets.QDockWidget(MainWindow)
+        self.dockWidget_editor.setMaximumSize(QtCore.QSize(120, 99999))
+        self.dockWidget_editor.setStyleSheet("")
+        self.dockWidget_editor.setFloating(False)
+        self.dockWidget_editor.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
+        self.dockWidget_editor.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea|QtCore.Qt.RightDockWidgetArea)
+        self.dockWidget_editor.setObjectName("dockWidget_editor")
+        self.dockWidgetContents_3 = QtWidgets.QWidget()
+        self.dockWidgetContents_3.setObjectName("dockWidgetContents_3")
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.dockWidgetContents_3)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSpacing(7)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton = QtWidgets.QPushButton(self.dockWidgetContents_3)
         self.pushButton.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
         self.pushButton.setSizePolicy(sizePolicy)
         self.pushButton.setMinimumSize(QtCore.QSize(52, 32))
         self.pushButton.setMaximumSize(QtCore.QSize(100, 32))
+        self.pushButton.setSizeIncrement(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        self.pushButton.setFont(font)
+        self.pushButton.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.pushButton.setCheckable(False)
         self.pushButton.setDefault(False)
         self.pushButton.setFlat(False)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
-        self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
+        self.progressBar = QtWidgets.QProgressBar(self.dockWidgetContents_3)
         self.progressBar.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -674,12 +736,12 @@ class Ui_MainWindow(object): # object
         self.progressBar.setOrientation(QtCore.Qt.Horizontal)
         self.progressBar.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
         self.progressBar.setObjectName("progressBar")
-        self.verticalLayout.addWidget(self.progressBar, 0, QtCore.Qt.AlignRight)
-        self.label_for_language = QtWidgets.QLabel(self.centralwidget)
+        self.verticalLayout.addWidget(self.progressBar)
+        self.label_for_language = QtWidgets.QLabel(self.dockWidgetContents_3)
         self.label_for_language.setAlignment(QtCore.Qt.AlignCenter)
         self.label_for_language.setObjectName("label_for_language")
         self.verticalLayout.addWidget(self.label_for_language)
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox = QtWidgets.QComboBox(self.dockWidgetContents_3)
         self.comboBox.setEnabled(False)
         self.comboBox.setEditable(False)
         self.comboBox.setCurrentText("")
@@ -689,14 +751,14 @@ class Ui_MainWindow(object): # object
         self.comboBox.setFrame(True)
         self.comboBox.setObjectName("comboBox")
         self.verticalLayout.addWidget(self.comboBox)
-        self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_2 = QtWidgets.QCheckBox(self.dockWidgetContents_3)
         self.checkBox_2.setEnabled(False)
         self.checkBox_2.setMinimumSize(QtCore.QSize(100, 13))
         self.checkBox_2.setMaximumSize(QtCore.QSize(100, 13))
         self.checkBox_2.setTristate(False)
         self.checkBox_2.setObjectName("checkBox_2")
-        self.verticalLayout.addWidget(self.checkBox_2, 0, QtCore.Qt.AlignRight)
-        self.ContrastGroup = QtWidgets.QTabWidget(self.centralwidget)
+        self.verticalLayout.addWidget(self.checkBox_2)
+        self.ContrastGroup = QtWidgets.QTabWidget(self.dockWidgetContents_3)
         self.ContrastGroup.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -709,9 +771,9 @@ class Ui_MainWindow(object): # object
         self.ContrastGroupPage1_2 = QtWidgets.QWidget()
         self.ContrastGroupPage1_2.setObjectName("ContrastGroupPage1_2")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.ContrastGroupPage1_2)
+        self.verticalLayout_6.setSpacing(4)
         self.verticalLayout_6.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.verticalLayout_6.setContentsMargins(2, 5, 2, -1)
-        self.verticalLayout_6.setSpacing(4)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.label_for_contrast = QtWidgets.QLabel(self.ContrastGroupPage1_2)
         self.label_for_contrast.setAlignment(QtCore.Qt.AlignCenter)
@@ -772,15 +834,14 @@ class Ui_MainWindow(object): # object
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pushButton_Reset_enhance.sizePolicy().hasHeightForWidth())
         self.pushButton_Reset_enhance.setSizePolicy(sizePolicy)
-        self.pushButton_Reset_enhance.setMinimumSize(QtCore.QSize(52, 0))
-        self.pushButton_Reset_enhance.setMaximumSize(QtCore.QSize(86, 32))
+        self.pushButton_Reset_enhance.setMinimumSize(QtCore.QSize(0, 0))
+        self.pushButton_Reset_enhance.setMaximumSize(QtCore.QSize(9999, 9999))
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.pushButton_Reset_enhance.setFont(font)
         self.pushButton_Reset_enhance.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.pushButton_Reset_enhance.setObjectName("pushButton_Reset_enhance")
-        self.verticalLayout_6.addWidget(self.pushButton_Reset_enhance, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_6.addWidget(self.pushButton_Reset_enhance)
         self.ContrastGroup.addTab(self.ContrastGroupPage1_2, "")
         self.ContrastGroupPage2 = QtWidgets.QWidget()
         self.ContrastGroupPage2.setObjectName("ContrastGroupPage2")
@@ -828,18 +889,16 @@ class Ui_MainWindow(object): # object
         font = QtGui.QFont()
         font.setUnderline(False)
         font.setStrikeOut(False)
-        font.setKerning(True)
-        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.checkBox_medianfilter.setFont(font)
         self.checkBox_medianfilter.setStyleSheet("QCheckBox {\n"
 "    padding-left: 5px\n"
 "}")
         self.checkBox_medianfilter.setTristate(False)
         self.checkBox_medianfilter.setObjectName("checkBox_medianfilter")
-        self.verticalLayout_7.addWidget(self.checkBox_medianfilter, 0, QtCore.Qt.AlignTop)
+        self.verticalLayout_7.addWidget(self.checkBox_medianfilter)
         self.ContrastGroup.addTab(self.ContrastGroupPage2, "")
         self.verticalLayout.addWidget(self.ContrastGroup)
-        self.ScaleCheckBox = QtWidgets.QGroupBox(self.centralwidget)
+        self.ScaleCheckBox = QtWidgets.QGroupBox(self.dockWidgetContents_3)
         self.ScaleCheckBox.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -890,38 +949,9 @@ class Ui_MainWindow(object): # object
         self.resetScale.setObjectName("resetScale")
         self.verticalLayout_5.addWidget(self.resetScale)
         self.verticalLayout.addWidget(self.ScaleCheckBox)
-        self.horizontalLayout.addLayout(self.verticalLayout)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setEnabled(False)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.horizontalLayout_3.addWidget(self.pushButton_5)
-        self.pushButton_rotate_left = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_rotate_left.setEnabled(False)
-        self.pushButton_rotate_left.setObjectName("pushButton_rotate_left")
-        self.horizontalLayout_3.addWidget(self.pushButton_rotate_left)
-        self.pushButton_rotate_right = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_rotate_right.setEnabled(False)
-        self.pushButton_rotate_right.setObjectName("pushButton_rotate_right")
-        self.horizontalLayout_3.addWidget(self.pushButton_rotate_right)
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setEnabled(False)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.horizontalLayout_3.addWidget(self.pushButton_4)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
-        self.verticalLayout_2.setStretch(1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1220, 21))
-        self.menuBar.setObjectName("menuBar")
-        self.Info = QtWidgets.QMenu(self.menuBar)
-        self.Info.setObjectName("Info")
-        MainWindow.setMenuBar(self.menuBar)
-        self.statusBar = QtWidgets.QStatusBar(MainWindow)
-        self.statusBar.setObjectName("statusBar")
-        MainWindow.setStatusBar(self.statusBar)
+        self.verticalLayout_8.addLayout(self.verticalLayout)
+        self.dockWidget_editor.setWidget(self.dockWidgetContents_3)
+        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget_editor)
         self.About = QtWidgets.QAction(MainWindow)
         self.About.setShortcutContext(QtCore.Qt.WindowShortcut)
         self.About.setMenuRole(QtWidgets.QAction.TextHeuristicRole)
@@ -947,48 +977,49 @@ class Ui_MainWindow(object): # object
         MainWindow.setTabOrder(self.lineEdit, self.checkBox_2)
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Text Finder"))
-        self.areaSelection_button.setStatusTip(_translate("MainWindow", " Allocate area for recognition"))
-        self.areaSelection_button.setWhatsThis(_translate("MainWindow", " Allocate area for recognition"))
-        self.areaSelection_button.setText(_translate("MainWindow", "Area selection"))
-        self.pushButton_2.setToolTip(_translate("MainWindow", "Open the picture"))
-        self.pushButton_2.setStatusTip(_translate("MainWindow", "Open the picture"))
-        self.pushButton_2.setText(_translate("MainWindow", "Browse"))
-        self.pushButton.setStatusTip(_translate("MainWindow", "Recognize text on the picture"))
-        self.pushButton.setWhatsThis(_translate("MainWindow", "Recognize text on the picture"))
-        self.pushButton.setText(_translate("MainWindow", "Begin"))
-        self.progressBar.setFormat(_translate("MainWindow", "%p%"))
-        self.label_for_language.setText(_translate("MainWindow", "Languages"))
-        self.checkBox_2.setText(_translate("MainWindow", "Gray"))
-        self.label_for_contrast.setText(_translate("MainWindow", "Contrast"))
-        self.lable_for_brightness.setText(_translate("MainWindow", "Brightness"))
-        self.label_for_color_balance.setText(_translate("MainWindow", "Color balance"))
-        self.label_for_sharpness.setText(_translate("MainWindow", "Sharpness"))
-        self.pushButton_Reset_enhance.setStatusTip(_translate("MainWindow", "Reset enhancer on the picture"))
-        self.pushButton_Reset_enhance.setText(_translate("MainWindow", "Reset"))
-        self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage1_2), _translate("MainWindow", "1"))
-        self.label.setText(_translate("MainWindow", "Unsharp Mask"))
-        self.label_GaussianBlur.setText(_translate("MainWindow", "Gaussian Blur"))
-        self.checkBox_medianfilter.setText(_translate("MainWindow", "Median Filter"))
-        self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage2), _translate("MainWindow", "2"))
-        self.ScaleCheckBox.setTitle(_translate("MainWindow", "Scale"))
-        self.height_label.setText(_translate("MainWindow", "Width"))
-        self.width_label.setText(_translate("MainWindow", "Height"))
-        self.pushButton_3.setStatusTip(_translate("MainWindow", "Change the resolution with keep resolution"))
-        self.pushButton_3.setWhatsThis(_translate("MainWindow", "Change the resolution"))
-        self.pushButton_3.setText(_translate("MainWindow", "Scale"))
-        self.resetScale.setStatusTip(_translate("MainWindow", "Reset scale"))
-        self.resetScale.setText(_translate("MainWindow", "Reset"))
-        self.pushButton_5.setStatusTip(_translate("MainWindow", "Invert the picture"))
-        self.pushButton_5.setText(_translate("MainWindow", "↑↓"))
-        self.pushButton_rotate_left.setStatusTip(_translate("MainWindow", "Rotate the picture -90°"))
-        self.pushButton_rotate_left.setText(_translate("MainWindow", "↺ 90°"))
-        self.pushButton_rotate_right.setStatusTip(_translate("MainWindow", "Rotate the picture +90°"))
-        self.pushButton_rotate_right.setText(_translate("MainWindow", "↻ 90°"))
-        self.pushButton_4.setStatusTip(_translate("MainWindow", "Invert the picture"))
-        self.pushButton_4.setText(_translate("MainWindow", "⇆"))
-        self.Info.setTitle(_translate("MainWindow", "Info"))
-        self.About.setText(_translate("MainWindow", "About..."))
-        self.actionInstructiom.setText(_translate("MainWindow", "Instruction"))
-        self.actionAbout_Qt.setText(_translate("MainWindow", "About Qt"))
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Text Finder", None, -1))
+        self.areaSelection_button.setStatusTip(QtWidgets.QApplication.translate("MainWindow", " Allocate area for recognition", None, -1))
+        self.areaSelection_button.setWhatsThis(QtWidgets.QApplication.translate("MainWindow", " Allocate area for recognition", None, -1))
+        self.areaSelection_button.setText(QtWidgets.QApplication.translate("MainWindow", "Area selection", None, -1))
+        self.pushButton_2.setToolTip(QtWidgets.QApplication.translate("MainWindow", "Open the picture", None, -1))
+        self.pushButton_2.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Open the picture", None, -1))
+        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainWindow", "Browse", None, -1))
+        self.pushButton_5.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Invert the picture", None, -1))
+        self.pushButton_5.setText(QtWidgets.QApplication.translate("MainWindow", "↑↓", None, -1))
+        self.pushButton_rotate_left.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Rotate the picture -90°", None, -1))
+        self.pushButton_rotate_left.setText(QtWidgets.QApplication.translate("MainWindow", "↺ 90°", None, -1))
+        self.pushButton_rotate_right.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Rotate the picture +90°", None, -1))
+        self.pushButton_rotate_right.setText(QtWidgets.QApplication.translate("MainWindow", "↻ 90°", None, -1))
+        self.pushButton_4.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Invert the picture", None, -1))
+        self.pushButton_4.setText(QtWidgets.QApplication.translate("MainWindow", "⇆", None, -1))
+        self.Info.setTitle(QtWidgets.QApplication.translate("MainWindow", "Info", None, -1))
+        self.dockWidget_editor.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Editor", None, -1))
+        self.pushButton.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Recognize text on the picture", None, -1))
+        self.pushButton.setWhatsThis(QtWidgets.QApplication.translate("MainWindow", "Recognize text on the picture", None, -1))
+        self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Begin", None, -1))
+        self.progressBar.setFormat(QtWidgets.QApplication.translate("MainWindow", "%p%", None, -1))
+        self.label_for_language.setText(QtWidgets.QApplication.translate("MainWindow", "Languages", None, -1))
+        self.checkBox_2.setText(QtWidgets.QApplication.translate("MainWindow", "Gray", None, -1))
+        self.label_for_contrast.setText(QtWidgets.QApplication.translate("MainWindow", "Contrast", None, -1))
+        self.lable_for_brightness.setText(QtWidgets.QApplication.translate("MainWindow", "Brightness", None, -1))
+        self.label_for_color_balance.setText(QtWidgets.QApplication.translate("MainWindow", "Color balance", None, -1))
+        self.label_for_sharpness.setText(QtWidgets.QApplication.translate("MainWindow", "Sharpness", None, -1))
+        self.pushButton_Reset_enhance.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Reset enhancer on the picture", None, -1))
+        self.pushButton_Reset_enhance.setText(QtWidgets.QApplication.translate("MainWindow", "Reset", None, -1))
+        self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage1_2), QtWidgets.QApplication.translate("MainWindow", "1", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Unsharp Mask", None, -1))
+        self.label_GaussianBlur.setText(QtWidgets.QApplication.translate("MainWindow", "Gaussian Blur", None, -1))
+        self.checkBox_medianfilter.setText(QtWidgets.QApplication.translate("MainWindow", "Median Filter", None, -1))
+        self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage2), QtWidgets.QApplication.translate("MainWindow", "2", None, -1))
+        self.ScaleCheckBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Scale", None, -1))
+        self.height_label.setText(QtWidgets.QApplication.translate("MainWindow", "Width", None, -1))
+        self.width_label.setText(QtWidgets.QApplication.translate("MainWindow", "Height", None, -1))
+        self.pushButton_3.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Change the resolution with keep resolution", None, -1))
+        self.pushButton_3.setWhatsThis(QtWidgets.QApplication.translate("MainWindow", "Change the resolution", None, -1))
+        self.pushButton_3.setText(QtWidgets.QApplication.translate("MainWindow", "Scale", None, -1))
+        self.resetScale.setStatusTip(QtWidgets.QApplication.translate("MainWindow", "Reset scale", None, -1))
+        self.resetScale.setText(QtWidgets.QApplication.translate("MainWindow", "Reset", None, -1))
+        self.About.setText(QtWidgets.QApplication.translate("MainWindow", "About...", None, -1))
+        self.actionInstructiom.setText(QtWidgets.QApplication.translate("MainWindow", "Instruction", None, -1))
+        self.actionAbout_Qt.setText(QtWidgets.QApplication.translate("MainWindow", "About Qt", None, -1))
+
