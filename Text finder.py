@@ -436,7 +436,7 @@ class MyWindow(QMainWindow):
             self.ui.progressBar.setValue(value_for_PB)
         except pytesseract.pytesseract.TesseractError as te:
             print(te)
-        except pytesseract.pytesseract.TesseractNotFoundError as fe
+        except pytesseract.pytesseract.TesseractNotFoundError as fe:
             print(fe)
             QMessageBox.about(self, 'Error', 'Tesseract not found')
                
