@@ -156,39 +156,22 @@ class MyWindow(QMainWindow):
         self.ins = None
 
         self.ui.pushButton.clicked.connect(self.buttonbegin)
-
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
-
         self.ui.checkBox_2.clicked.connect(self.black_and_white)
-
         self.ui.pushButton_3.clicked.connect(self.scalecheck)
-
         self.ui.resetScale.clicked.connect(self.scalereset)
-
         self.ui.areaSelection_button.clicked.connect(self.areaSelection)
-
         self.ui.pushButton_Reset_enhance.clicked.connect(self.enchancereset)
-
         self.ui.horizontalSlider.sliderReleased.connect(self.highcontrast)
-
         self.ui.horizontalSlider_brightness.sliderReleased.connect(self.brightness)
-
         self.ui.horizontalSlider_color_blalance.sliderReleased.connect(self.colorbalance)
-
         self.ui.horizontalSlider_for_sharpness.sliderReleased.connect(self.sharpness)
-
         self.ui.checkBox_medianfilter.clicked.connect(self.medianfilter)
-
         self.ui.horizontalSlider_unsharmask.sliderReleased.connect(self.unsharmask)
-
         self.ui.horizontalSlider_gaussian.sliderReleased.connect(self.gaussianblur)
-
         self.ui.pushButton_rotate_left.clicked.connect(self.on_rotate_left)
-
         self.ui.pushButton_rotate_right.clicked.connect(self.on_rotate_right)
-
         self.ui.pushButton_4.clicked.connect(self.on_flip_left)
-
         self.ui.pushButton_5.clicked.connect(self.on_flip_top)
 
         self.ui.comboBox.addItems(
