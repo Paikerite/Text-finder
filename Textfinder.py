@@ -7,15 +7,15 @@ import sys
 import pytesseract
 from PIL import Image
 from PySide2 import QtUiTools
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, Signal, Slot
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
 from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication
-# from PyQt5.QtCore import QObject
 import img_helper
 import ui
 import instruction as ins
 # import about_tf
 import drawing as drawing_file
+# from imagelabel_frommainui import imagelabel_fromMainUi
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -145,6 +145,8 @@ class MyWindow(QMainWindow):
 
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
+        # send_pic = pyqtSignal(str)
+        # self.imagelabel = imagelabel_fromMainUi(self)
 
         self.drawing = None
         self.image = None
@@ -154,6 +156,8 @@ class MyWindow(QMainWindow):
         self.image_for_enchance_reset = None
         self.ab = None
         self.ins = None
+
+        # self.imagelabel.dropEvent_Signal.connect(self.guion)
 
         self.ui.pushButton.clicked.connect(self.buttonbegin)
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
@@ -198,6 +202,7 @@ class MyWindow(QMainWindow):
     def areaSelection(self):
         self.drawing = drawing_file.MyWidget(self, self.ui.imagelabel.pixmap())
         self.drawing.show()
+
         # if self.pixmap:
         #     self.pixmap = self.ui.imagelabel.pixmap()
         # elif self.image:
@@ -354,47 +359,51 @@ class MyWindow(QMainWindow):
                 print(ne)
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
+    def guion(self, file_local):
+        print(f"file_local - {file_local}")
+        self.ui.lineEdit.setText(file_local)
+        self.image = QImage(file_local)
+        self.image_for_enchance_reset = QImage(file_local)
+        self.pixmap = None
+
+        self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+        self.ui.checkBox_2.setChecked(False)
+
+        self.ui.areaSelection_button.setEnabled(True)
+        self.ui.ScaleCheckBox.setEnabled(True)
+        self.ui.pushButton.setEnabled(True)
+        self.ui.checkBox_2.setEnabled(True)
+        self.ui.ContrastGroup.setEnabled(True)
+        self.ui.progressBar.setEnabled(True)
+        self.ui.comboBox.setEnabled(True)
+        self.ui.pushButton_4.setEnabled(True)
+        self.ui.pushButton_5.setEnabled(True)
+        self.ui.pushButton_rotate_right.setEnabled(True)
+        self.ui.pushButton_rotate_left.setEnabled(True)
+        self.ui.horizontalSlider.setEnabled(True)
+
+        self.ui.horizontalSlider_color_blalance.setValue(0)
+        self.ui.horizontalSlider.setValue(0)
+        self.ui.horizontalSlider_brightness.setValue(0)
+        self.ui.horizontalSlider_for_sharpness.setValue(0)
+        self.ui.horizontalSlider_unsharmask.setValue(-100)
+        self.ui.horizontalSlider_gaussian.setValue(-100)
+        self.ui.checkBox_2.setChecked(False)
+        self.ui.checkBox_medianfilter.setChecked(False)
+
+        operations.unsharmask = operations.gaussianblur = operations.color_balance = \
+            operations.brightness = operations.contrast = operations.sharpness = 0
+
+        operations.medianfilter = operations.blackandwhite = False
+
     def browsebutton(self):
         filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg)',
                                                          caption='Select image')
 
-        print(filename)
+        print(f"filename - {filename}")
+
         if filename[0] != '':
-            self.ui.lineEdit.setText(filename[0])
-            self.image = QImage(filename[0])
-            self.image_for_enchance_reset = QImage(filename[0])
-            self.pixmap = None
-
-            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
-            self.ui.checkBox_2.setChecked(False)
-
-            self.ui.areaSelection_button.setEnabled(True)
-            self.ui.ScaleCheckBox.setEnabled(True)
-            self.ui.pushButton.setEnabled(True)
-            self.ui.checkBox_2.setEnabled(True)
-            self.ui.ContrastGroup.setEnabled(True)
-            self.ui.progressBar.setEnabled(True)
-            self.ui.comboBox.setEnabled(True)
-            self.ui.pushButton_4.setEnabled(True)
-            self.ui.pushButton_5.setEnabled(True)
-            self.ui.pushButton_rotate_right.setEnabled(True)
-            self.ui.pushButton_rotate_left.setEnabled(True)
-            self.ui.horizontalSlider.setEnabled(True)
-
-            self.ui.horizontalSlider_color_blalance.setValue(0)
-            self.ui.horizontalSlider.setValue(0)
-            self.ui.horizontalSlider_brightness.setValue(0)
-            self.ui.horizontalSlider_for_sharpness.setValue(0)
-            self.ui.horizontalSlider_unsharmask.setValue(-100)
-            self.ui.horizontalSlider_gaussian.setValue(-100)
-            self.ui.checkBox_2.setChecked(False)
-            self.ui.checkBox_medianfilter.setChecked(False)
-
-            operations.unsharmask = operations.gaussianblur = operations.color_balance =\
-                operations.brightness = operations.contrast = operations.sharpness = 0
-
-            operations.medianfilter = operations.blackandwhite = False
-
+            self.guion(file_local=filename[0])
         else:
             pass
 
