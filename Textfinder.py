@@ -7,9 +7,9 @@ import sys
 import pytesseract
 from PIL import Image
 from PySide2 import QtUiTools
-from PySide2.QtCore import Qt, Signal, Slot
+from PySide2.QtCore import Qt, Signal, Slot, QThread
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
-from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication
+from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget
 import img_helper
 import ui
 import instruction as ins
@@ -138,6 +138,62 @@ def calculating(from_slider_value, min, max):
     return value
 
 
+class RecognizeBegin(QThread):
+    def __init__(self, mainwindow, mainui, parent=None):
+        super().__init__()
+        self.mainwindow = mainwindow
+        self.mainui = mainui
+
+    def run(self):
+        self.mainui.progressBar.setMaximum(0)
+        self.mainwindow.guioff()
+
+        fortxt = self.mainui.imagelabel.pixmap()
+
+        fortxt = Image.fromqpixmap(fortxt)
+        pytesseract.pytesseract.tesseract_cmd = dir
+
+        try:
+            pytesseract.image_to_osd(fortxt)
+        except pytesseract.pytesseract.TesseractError as te:
+            print(te)
+        except pytesseract.pytesseract.TesseractNotFoundError as fe:
+            print(fe)
+            QMessageBox.about(self, 'Error', 'Tesseract not found')
+
+        lang = self.mainui.comboBox.currentText()
+
+        text = pytesseract.image_to_string(fortxt, lang=languages[lang])
+
+        if text == '':
+            print("empty text")
+            QMessageBox.about(self, 'Error', "Text hasn't found")
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("Success")
+            msg.setInformativeText("")
+            msg.setWindowTitle("Result")
+            msg.setDetailedText(text)
+            msg.setStandardButtons(QMessageBox.Save | QMessageBox.Close)
+
+            res = msg.exec_()
+            if res == QMessageBox.Save:
+                name = QFileDialog.getSaveFileName(self, "Save result", "",
+                                                   filter="*.txt",
+                                                   )
+                try:
+                    file = open(name[0], 'w')
+                    file.write(text)
+                    file.close()
+                except FileNotFoundError as fe:
+                    print(fe)
+
+        self.mainwindow.guion()
+        self.mainui.progressBar.setMaximum(1)
+
+
 class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
@@ -147,6 +203,7 @@ class MyWindow(QMainWindow):
         self.ui.setupUi(self)
         # send_pic = pyqtSignal(str)
         # self.imagelabel = imagelabel_fromMainUi(self)
+        self.RecognizeBegin = RecognizeBegin(mainwindow=self, mainui=self.ui)
 
         self.drawing = None
         self.image = None
@@ -177,6 +234,8 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_rotate_right.clicked.connect(self.on_rotate_right)
         self.ui.pushButton_4.clicked.connect(self.on_flip_left)
         self.ui.pushButton_5.clicked.connect(self.on_flip_top)
+        self.ui.progressBar.setMinimum(0)
+        self.ui.progressBar.setValue(0)
 
         self.ui.comboBox.addItems(
             ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
@@ -359,7 +418,7 @@ class MyWindow(QMainWindow):
                 print(ne)
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
-    def guion(self, file_local):
+    def guion_withloadfile(self, file_local):
         print(f"file_local - {file_local}")
         self.ui.lineEdit.setText(file_local)
         self.image = QImage(file_local)
@@ -396,6 +455,38 @@ class MyWindow(QMainWindow):
 
         operations.medianfilter = operations.blackandwhite = False
 
+    def guioff(self):
+        self.ui.lineEdit.setEnabled(False)
+        self.ui.pushButton_2.setEnabled(False)
+        self.ui.areaSelection_button.setEnabled(False)
+        self.ui.ScaleCheckBox.setEnabled(False)
+        self.ui.pushButton.setEnabled(False)
+        self.ui.checkBox_2.setEnabled(False)
+        self.ui.ContrastGroup.setEnabled(False)
+        self.ui.progressBar.setEnabled(False)
+        self.ui.comboBox.setEnabled(False)
+        self.ui.pushButton_4.setEnabled(False)
+        self.ui.pushButton_5.setEnabled(False)
+        self.ui.pushButton_rotate_right.setEnabled(False)
+        self.ui.pushButton_rotate_left.setEnabled(False)
+        self.ui.horizontalSlider.setEnabled(False)
+
+    def guion(self):
+        self.ui.lineEdit.setEnabled(True)
+        self.ui.pushButton_2.setEnabled(True)
+        self.ui.areaSelection_button.setEnabled(True)
+        self.ui.ScaleCheckBox.setEnabled(True)
+        self.ui.pushButton.setEnabled(True)
+        self.ui.checkBox_2.setEnabled(True)
+        self.ui.ContrastGroup.setEnabled(True)
+        self.ui.progressBar.setEnabled(True)
+        self.ui.comboBox.setEnabled(True)
+        self.ui.pushButton_4.setEnabled(True)
+        self.ui.pushButton_5.setEnabled(True)
+        self.ui.pushButton_rotate_right.setEnabled(True)
+        self.ui.pushButton_rotate_left.setEnabled(True)
+        self.ui.horizontalSlider.setEnabled(True)
+
     def browsebutton(self):
         filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg)',
                                                          caption='Select image')
@@ -403,71 +494,12 @@ class MyWindow(QMainWindow):
         print(f"filename - {filename}")
 
         if filename[0] != '':
-            self.guion(file_local=filename[0])
+            self.guion_withloadfile(file_local=filename[0])
         else:
             pass
 
     def buttonbegin(self):
-        value_for_PB = 0
-        fortxt = self.ui.imagelabel.pixmap()
-
-        value_for_PB += 1
-        self.ui.progressBar.setValue(value_for_PB)
-        fortxt = Image.fromqpixmap(fortxt)
-
-        value_for_PB += 1
-        self.ui.progressBar.setValue(value_for_PB)
-        pytesseract.pytesseract.tesseract_cmd = dir
-
-        value_for_PB += 1
-        self.ui.progressBar.setValue(value_for_PB)
-
-        try:
-            pytesseract.image_to_osd(fortxt)
-            value_for_PB += 1
-            self.ui.progressBar.setValue(value_for_PB)
-        except pytesseract.pytesseract.TesseractError as te:
-            print(te)
-        except pytesseract.pytesseract.TesseractNotFoundError as fe:
-            print(fe)
-            QMessageBox.about(self, 'Error', 'Tesseract not found')
-               
-        lang = self.ui.comboBox.currentText()
-        value_for_PB += 1
-
-        self.ui.progressBar.setValue(value_for_PB)
-        text = pytesseract.image_to_string(fortxt, lang=languages[lang])
-        value_for_PB += 1
-
-        self.ui.progressBar.setValue(value_for_PB)
-        if text == '':
-            value_for_PB += 1
-            self.ui.progressBar.setValue(value_for_PB)
-            QMessageBox.about(self, 'Error', "Text hasn't found")
-        else:
-            value_for_PB += 1
-            self.ui.progressBar.setValue(value_for_PB)
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
-
-            msg.setText("Success")
-            msg.setInformativeText("")
-            msg.setWindowTitle("Result")
-            msg.setDetailedText(text)
-            msg.setStandardButtons(QMessageBox.Save | QMessageBox.Close)
-
-            res = msg.exec_()
-            if res == QMessageBox.Save:
-                name = QFileDialog.getSaveFileName(self, "Save result", "",
-                                                             filter="*.txt",
-                                                             )
-                try:
-                    file = open(name[0], 'w')
-                    file.write(text)
-                    file.close()
-                except FileNotFoundError as fe:
-                    print(fe)
-        self.ui.progressBar.setValue(0)
+        self.RecognizeBegin.start()
 
 
 if __name__ == "__main__":

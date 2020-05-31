@@ -3,14 +3,14 @@ import sys
 from PySide2.QtCore import QObject, Signal
 from PySide2.QtWidgets import QLabel
 
-from Textfinder import MyWindow
+# from Textfinder import MyWindow
 
 
-class imagelabel_fromMainUi(QLabel, MyWindow):  # QLabel, QObject
+class imagelabel_fromMainUi(QLabel):  # QLabel, QObject
     # dropEvent_Signal = Signal(str)
     def __init__(self, parent):
         super(imagelabel_fromMainUi, self).__init__(parent=parent)  # imagelabel_fromMainUi
-        self.mainUi = MyWindow
+        # self.mainUi = MyWindow
         self.file_dir = None
 
     def dragEnterEvent(self, event):
