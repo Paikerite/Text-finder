@@ -9,13 +9,13 @@ from PIL import Image
 from PySide2 import QtUiTools
 from PySide2.QtCore import Qt, Signal, Slot, QThread
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
-from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget
+from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget, QErrorMessage
 import img_helper
 import ui
 import instruction as ins
 # import about_tf
 import drawing as drawing_file
-# from imagelabel_frommainui import imagelabel_fromMainUi
+from imagelabel_frommainui import imagelabel_fromMainUi
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -139,16 +139,18 @@ def calculating(from_slider_value, min, max):
 
 
 class RecognizeBegin(QThread):
-    def __init__(self, mainwindow, mainui, parent=None):
-        super().__init__()
-        self.mainwindow = mainwindow
-        self.mainui = mainui
+    signalMain = Signal()
+    signalResult = Signal(str)
+
+    def __init__(self, parent=None):
+        super(RecognizeBegin, self).__init__(parent=parent)
+        # self.mw = MyWindow()
 
     def run(self):
-        self.mainui.progressBar.setMaximum(0)
-        self.mainwindow.guioff()
+        self.parent().ui.progressBar.setMaximum(0)
+        self.parent().guioff()
 
-        fortxt = self.mainui.imagelabel.pixmap()
+        fortxt = self.parent().ui.imagelabel.pixmap()
 
         fortxt = Image.fromqpixmap(fortxt)
         pytesseract.pytesseract.tesseract_cmd = dir
@@ -161,37 +163,24 @@ class RecognizeBegin(QThread):
             print(fe)
             QMessageBox.about(self, 'Error', 'Tesseract not found')
 
-        lang = self.mainui.comboBox.currentText()
+        lang = self.parent().ui.comboBox.currentText()
 
         text = pytesseract.image_to_string(fortxt, lang=languages[lang])
 
         if text == '':
             print("empty text")
-            QMessageBox.about(self, 'Error', "Text hasn't found")
+            self.signalMain.emit()
+            # self.mw.notfoundtexterr()
+            # self.signals.notfoundtexterr()
+            # QMessageBox.about(self, 'Error', "Text hasn't found")
+
+            # error_dialog = QErrorMessage()
+            # error_dialog.showMessage("Text hasn't found")
         else:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
+            self.signalResult.emit(text)
 
-            msg.setText("Success")
-            msg.setInformativeText("")
-            msg.setWindowTitle("Result")
-            msg.setDetailedText(text)
-            msg.setStandardButtons(QMessageBox.Save | QMessageBox.Close)
-
-            res = msg.exec_()
-            if res == QMessageBox.Save:
-                name = QFileDialog.getSaveFileName(self, "Save result", "",
-                                                   filter="*.txt",
-                                                   )
-                try:
-                    file = open(name[0], 'w')
-                    file.write(text)
-                    file.close()
-                except FileNotFoundError as fe:
-                    print(fe)
-
-        self.mainwindow.guion()
-        self.mainui.progressBar.setMaximum(1)
+        self.parent().guion()
+        self.parent().ui.progressBar.setMaximum(1)
 
 
 class MyWindow(QMainWindow):
@@ -202,8 +191,10 @@ class MyWindow(QMainWindow):
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
         # send_pic = pyqtSignal(str)
-        # self.imagelabel = imagelabel_fromMainUi(self)
-        self.RecognizeBegin = RecognizeBegin(mainwindow=self, mainui=self.ui)
+        # self.imagelabel = imagelabel_fromMainUi(parent=self)
+        self.RecognizeBegin = RecognizeBegin(parent=self)
+        self.RecognizeBegin.signalMain.connect(self.notfoundtexterr)
+        self.RecognizeBegin.signalResult.connect(self.saveresult)
 
         self.drawing = None
         self.image = None
@@ -214,7 +205,9 @@ class MyWindow(QMainWindow):
         self.ab = None
         self.ins = None
 
-        # self.imagelabel.dropEvent_Signal.connect(self.guion)
+        self.ui.imagelabel.dropEvent_Signal.connect(self.guion_withloadfile)
+        # self.imagelabel_fromMainUi = imagelabel_fromMainUi()
+        # self.imagelabel_fromMainUi.dropEvent_Signal.connect(self.guion_withloadfile)
 
         self.ui.pushButton.clicked.connect(self.buttonbegin)
         self.ui.pushButton_2.clicked.connect(self.browsebutton)
@@ -262,21 +255,9 @@ class MyWindow(QMainWindow):
         self.drawing = drawing_file.MyWidget(self, self.ui.imagelabel.pixmap())
         self.drawing.show()
 
-        # if self.pixmap:
-        #     self.pixmap = self.ui.imagelabel.pixmap()
-        # elif self.image:
-        #     self.image = self.ui.imagelabel.pixmap()
-        # else:
-        #     print("Warning")
-
     def black_and_white(self, state):
         operations.blackandwhite = state
         self.place_preview_img()
-
-        # if state is True:
-        #     operations.blackandwhite = True
-        # elif state is False:
-        #     operations.blackandwhite = False
 
     def medianfilter(self, state):
         operations.medianfilter = state
@@ -418,6 +399,7 @@ class MyWindow(QMainWindow):
                 print(ne)
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
+    @Slot(str)
     def guion_withloadfile(self, file_local):
         print(f"file_local - {file_local}")
         self.ui.lineEdit.setText(file_local)
@@ -500,6 +482,36 @@ class MyWindow(QMainWindow):
 
     def buttonbegin(self):
         self.RecognizeBegin.start()
+
+###########################################
+# Next function for Thread and ImageLabel #
+###########################################
+
+    def notfoundtexterr(self):
+        QMessageBox.about(self, 'Error', "Text hasn't found")
+
+    @Slot(str)
+    def saveresult(self, text):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+
+        msg.setText("Success")
+        msg.setInformativeText("")
+        msg.setWindowTitle("Result")
+        msg.setDetailedText(text)
+        msg.setStandardButtons(QMessageBox.Save | QMessageBox.Close)
+
+        res = msg.exec_()
+        if res == QMessageBox.Save:
+            name = QFileDialog.getSaveFileName(self, "Save result", "",
+                                               filter="*.txt",
+                                               )
+            try:
+                file = open(name[0], 'w')
+                file.write(text)
+                file.close()
+            except FileNotFoundError as fe:
+                print(fe)
 
 
 if __name__ == "__main__":
