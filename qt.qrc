@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="inst_areselection">
+    <file>instruction/9.png</file>
+    <file>instruction/2.png</file>
+    <file>instruction/10.png</file>
+    <file>instruction/81.png</file>
+    <file>instruction/71.png</file>
+    <file>instruction/3_4_5.png</file>
+  </qresource>
+</RCC>

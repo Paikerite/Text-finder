@@ -1,25 +1,33 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'instruction.ui',
-# licensing of 'instruction.ui' applies.
-#
-# Created: Fri May  1 23:37:37 2020
-#      by: pyside2-uic  running on PySide2 5.12.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'instruction.ui'
+##
+## Created by: Qt User Interface Compiler version 5.14.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+
+import data
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(852, 698)
-        MainWindow.setMaximumSize(QtCore.QSize(1852, 1025))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ebook.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1114, 748)
+        MainWindow.setMaximumSize(QSize(1852, 1025))
+        icon = QIcon()
+        icon.addFile(u"../../../Progri/Python/Text finder/ebook.svg", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setWindowOpacity(1.0)
-        MainWindow.setStyleSheet("QToolTip\n"
+        MainWindow.setWindowOpacity(1.000000000000000)
+        MainWindow.setStyleSheet(u"QToolTip\n"
 "{\n"
 "     border: 1px solid black;\n"
 "     background-color: #ffa02f;\n"
@@ -68,7 +76,8 @@ class Ui_MainWindow(object):
 "    border: 1px solid #000;\n"
 "    background-color: QLinearGradient(\n"
 "        x1:0, y1:0,\n"
-"        x2:0, y2:1,\n"
+" "
+                        "       x2:0, y2:1,\n"
 "        stop:1 #212121,\n"
 "        stop:0.4 #343434/*,\n"
 "        stop:0.2 #343434,\n"
@@ -118,7 +127,8 @@ class Ui_MainWindow(object):
 "    border-radius: 5;\n"
 "}\n"
 "\n"
-"QPushButton\n"
+"QPushBu"
+                        "tton\n"
 "{\n"
 "    color: #b1b1b1;\n"
 "    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
@@ -148,7 +158,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox:hover,QPushButton:hover\n"
-"{\n"
+"{"
+                        "\n"
 "    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);\n"
 "}\n"
 "\n"
@@ -180,20 +191,21 @@ class Ui_MainWindow(object):
 "     border-bottom-right-radius: 3px;\n"
 " }\n"
 "\n"
-"QComboBox::down-arrow\n"
+"QComboB"
+                        "ox::down-arrow\n"
 "{\n"
 "     image: url(:/dark_orange/img/down_arrow.png);\n"
 "}\n"
 "\n"
 "QGroupBox\n"
 "{   \n"
-"    border: 1px solid black;\n"
+"	border: 1px solid black;\n"
 "    margin-top: 10px;\n"
 "}\n"
 "\n"
 "QGroupBox:focus\n"
 "{\n"
-"    border: 1px solid rgb(33,33,33)\n"
+"	border: 1px solid rgb(33,33,33)\n"
 "}\n"
 "\n"
 "QTextEdit:focus\n"
@@ -219,7 +231,8 @@ class Ui_MainWindow(object):
 "      border: 1px solid #1b1b19;\n"
 "      border-radius: 2px;\n"
 "      background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #ffa02f, stop: 1 #d7801a);\n"
-"      width: 14px;\n"
+"      w"
+                        "idth: 14px;\n"
 "      subcontrol-position: right;\n"
 "      subcontrol-origin: margin;\n"
 "}\n"
@@ -256,7 +269,8 @@ class Ui_MainWindow(object):
 "\n"
 "QScrollBar::handle:vertical\n"
 "{\n"
-"      background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 0.5 #d7801a, stop: 1 #ffa02f);\n"
+"  "
+                        "    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 0.5 #d7801a, stop: 1 #ffa02f);\n"
 "      min-height: 20px;\n"
 "      border-radius: 2px;\n"
 "}\n"
@@ -290,7 +304,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+"QS"
+                        "crollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
 "{\n"
 "      background: none;\n"
 "}\n"
@@ -315,7 +330,7 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox:disabled\n"
 "{\n"
-"    color: #414141;\n"
+"	color: #414141;\n"
 "}\n"
 "\n"
 "QDockWidget::title\n"
@@ -329,7 +344,8 @@ class Ui_MainWindow(object):
 "{\n"
 "    text-align: center;\n"
 "    spacing: 1px; /* spacing between items in the tool bar */\n"
-"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);\n"
+"    background-color: QLinearGradient(x1:0, y1:"
+                        "0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);\n"
 "}\n"
 "\n"
 "QDockWidget::close-button:hover, QDockWidget::float-button:hover\n"
@@ -363,7 +379,8 @@ class Ui_MainWindow(object):
 "\n"
 "QToolBar::handle\n"
 "{\n"
-"     spacing: 3px; /* spacing between items in the tool bar */\n"
+"     spacing: 3px; /* s"
+                        "pacing between items in the tool bar */\n"
 "     background: url(:/dark_orange/img/handle.png);\n"
 "}\n"
 "\n"
@@ -407,7 +424,8 @@ class Ui_MainWindow(object):
 "    border: 1px solid #444;\n"
 "    top: 1px;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "QTabBar::tab:last\n"
 "{\n"
 "    margin-right: 0; /* the last selected tab has nothing to overlap with on the right */\n"
@@ -416,7 +434,7 @@ class Ui_MainWindow(object):
 "\n"
 "QTabBar::tab:first:!selected\n"
 "{\n"
-"     margin-left: 0px; /* the last selected tab has nothing to overlap with on the right */\n"
+"	 margin-left: 0px; /* the last selected tab has nothing to overlap with on the right */\n"
 "\n"
 "\n"
 "    border-top-left-radius: 3px;\n"
@@ -443,7 +461,8 @@ class Ui_MainWindow(object):
 "    padding-bottom: 3px;*/\n"
 "    border-top-left-radius: 3px;\n"
 "    border-top-right-radius: 3px;\n"
-"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);\n"
+"    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, st"
+                        "op:0.2 #343434, stop:0.1 #ffaa00);\n"
 "}\n"
 "\n"
 "QRadioButton::indicator:checked, QRadioButton::indicator:unchecked{\n"
@@ -484,10 +503,11 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator:checked\n"
 "{\n"
-"    image:url(:/dark_orange/img/checkbox.png);\n"
-"    background-color: rgb(255, 170, 0);\n"
-"    color: rgb(255, 170, 0);\n"
-"}\n"
+"	image:url(:/dark_orange/img/checkbox.png);\n"
+"	background-color: rgb(255, 170, 0);\n"
+"	color: rgb(255, 170, 0);\n"
+""
+                        "}\n"
 "\n"
 "QCheckBox::indicator:disabled, QRadioButton::indicator:disabled\n"
 "{\n"
@@ -526,7 +546,8 @@ class Ui_MainWindow(object):
 "      stop: 0.2 #a8a8a8, stop: 1 #727272);\n"
 "    border: 1px solid #3A3939;\n"
 "    width: 14px;\n"
-"    height: 14px;\n"
+"    height: 14"
+                        "px;\n"
 "    margin: 0 -4px;\n"
 "    border-radius: 2px;\n"
 "}\n"
@@ -540,15 +561,15 @@ class Ui_MainWindow(object):
 "    min-width: 50px;\n"
 "}\n"
 "QMainWindow{\n"
-"    border-top: 2px solid black;\n"
+"	border-top: 2px solid black;\n"
 "}\n"
 "\n"
 "QGroupBox{\n"
-"    border-color:rgb(33,33,33)\n"
+"	border-color:rgb(33,33,33)\n"
 "}\n"
 "\n"
 "QGroupBox:hover{\n"
-"    border-color:rgb(33,33,33)\n"
+"	border-color:rgb(33,33,33)\n"
 "}\n"
 "\n"
 "QGroupBox::indicator {\n"
@@ -559,248 +580,259 @@ class Ui_MainWindow(object):
 "\n"
 "QGroupBox::indicator:checked\n"
 "{\n"
-"    background-color: rgb(255, 170, 0);\n"
-"    color: rgb(255, 170, 0);\n"
+"	background-color: rgb(255, 170, 0);\n"
+"	color: rgb(255, 170, 0);\n"
 "}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setFrameShape(QtWidgets.QFrame.Box)
-        self.stackedWidget.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.treeWidget = QTreeWidget(self.centralwidget)
+        brush = QBrush(QColor(181, 181, 181, 255))
+        brush.setStyle(Qt.NoBrush)
+        brush1 = QBrush(QColor(0, 0, 0, 255))
+        brush1.setStyle(Qt.NoBrush)
+        QTreeWidgetItem(self.treeWidget)
+        __qtreewidgetitem = QTreeWidgetItem(self.treeWidget)
+        __qtreewidgetitem.setBackground(0, brush);
+        QTreeWidgetItem(__qtreewidgetitem)
+        QTreeWidgetItem(__qtreewidgetitem)
+        __qtreewidgetitem1 = QTreeWidgetItem(self.treeWidget)
+        QTreeWidgetItem(__qtreewidgetitem1)
+        __qtreewidgetitem2 = QTreeWidgetItem(__qtreewidgetitem1)
+        __qtreewidgetitem2.setBackground(0, brush1);
+        QTreeWidgetItem(__qtreewidgetitem1)
+        QTreeWidgetItem(__qtreewidgetitem1)
+        QTreeWidgetItem(__qtreewidgetitem1)
+        self.treeWidget.setObjectName(u"treeWidget")
+        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.treeWidget.sizePolicy().hasHeightForWidth())
+        self.treeWidget.setSizePolicy(sizePolicy)
+        font = QFont()
+        font.setFamily(u"Microsoft YaHei UI Light")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        font.setKerning(True)
+        font.setStyleStrategy(QFont.PreferDefault)
+        self.treeWidget.setFont(font)
+        self.treeWidget.setStyleSheet(u"QTreeView {\n"
+"	/**color: rgb(255, 255, 255);**/\n"
+"	background-color: #323232;\n"
+"	/**border-color: rgb(255, 255, 255);**/\n"
+"}\n"
+"\n"
+"QTreeView::item:hover {\n"
+"	background: rgb(238, 147, 38);\n"
+"}\n"
+"\n"
+"QTreeView::item:selected {\n"
+"	background-color:  rgb(238, 147, 38);\n"
+"	selection-background-color: rgb(238, 147, 38);\n"
+"}")
+
+        self.horizontalLayout.addWidget(self.treeWidget)
+
+        self.stackedWidget = QStackedWidget(self.centralwidget)
+        self.stackedWidget.setObjectName(u"stackedWidget")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.stackedWidget.sizePolicy().hasHeightForWidth())
+        self.stackedWidget.setSizePolicy(sizePolicy1)
+        self.stackedWidget.setFrameShape(QFrame.Box)
+        self.stackedWidget.setFrameShadow(QFrame.Raised)
         self.stackedWidget.setLineWidth(4)
-        self.stackedWidget.setObjectName("stackedWidget")
-        self.page_browse = QtWidgets.QWidget()
-        self.page_browse.setObjectName("page_browse")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.page_browse)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label_Instruction = QtWidgets.QLabel(self.page_browse)
-        font = QtGui.QFont()
-        font.setFamily("Microsoft YaHei UI Light")
-        font.setPointSize(14)
-        self.label_Instruction.setFont(font)
-        self.label_Instruction.setObjectName("label_Instruction")
-        self.verticalLayout_2.addWidget(self.label_Instruction)
-        self.line = QtWidgets.QFrame(self.page_browse)
-        self.line.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.page_loadfile = QWidget()
+        self.page_loadfile.setObjectName(u"page_loadfile")
+        self.verticalLayout_2 = QVBoxLayout(self.page_loadfile)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.label_Instruction_loadfile = QLabel(self.page_loadfile)
+        self.label_Instruction_loadfile.setObjectName(u"label_Instruction_loadfile")
+        font1 = QFont()
+        font1.setFamily(u"Microsoft YaHei UI Light")
+        font1.setPointSize(14)
+        self.label_Instruction_loadfile.setFont(font1)
+
+        self.verticalLayout_2.addWidget(self.label_Instruction_loadfile)
+
+        self.line = QFrame(self.page_loadfile)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShadow(QFrame.Raised)
         self.line.setLineWidth(4)
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
+        self.line.setFrameShape(QFrame.HLine)
+
         self.verticalLayout_2.addWidget(self.line)
-        self.label_image_for_instruction = QtWidgets.QLabel(self.page_browse)
-        self.label_image_for_instruction.setText("")
-        self.label_image_for_instruction.setPixmap(QtGui.QPixmap("instruction/1.png"))
-        self.label_image_for_instruction.setObjectName("label_image_for_instruction")
-        self.verticalLayout_2.addWidget(self.label_image_for_instruction)
+
+        self.label_image_for_instruction_loadfile = QLabel(self.page_loadfile)
+        self.label_image_for_instruction_loadfile.setObjectName(u"label_image_for_instruction_loadfile")
+        self.label_image_for_instruction_loadfile.setPixmap(QPixmap(
+            u"../../Progri/Python/Text finder/instruction/1.png"))
+        self.label_image_for_instruction_loadfile.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+
+        self.verticalLayout_2.addWidget(self.label_image_for_instruction_loadfile)
+
         self.verticalLayout_2.setStretch(2, 1)
-        self.stackedWidget.addWidget(self.page_browse)
-        self.page_areaselection = QtWidgets.QWidget()
-        self.page_areaselection.setObjectName("page_areaselection")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.page_areaselection)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.label_Instruction_2 = QtWidgets.QLabel(self.page_areaselection)
-        font = QtGui.QFont()
-        font.setFamily("Microsoft YaHei UI Light")
-        self.label_Instruction_2.setFont(font)
-        self.label_Instruction_2.setObjectName("label_Instruction_2")
-        self.verticalLayout_3.addWidget(self.label_Instruction_2)
-        self.line_2 = QtWidgets.QFrame(self.page_areaselection)
-        self.line_2.setLineWidth(4)
-        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_2.setObjectName("line_2")
-        self.verticalLayout_3.addWidget(self.line_2)
-        self.label_image_for_instruction_2 = QtWidgets.QLabel(self.page_areaselection)
-        self.label_image_for_instruction_2.setText("")
-        self.label_image_for_instruction_2.setPixmap(QtGui.QPixmap("instruction/2.png"))
-        self.label_image_for_instruction_2.setObjectName("label_image_for_instruction_2")
-        self.verticalLayout_3.addWidget(self.label_image_for_instruction_2)
-        self.verticalLayout_3.setStretch(2, 1)
+        self.stackedWidget.addWidget(self.page_loadfile)
+        self.page_areaselection = QWidget()
+        self.page_areaselection.setObjectName(u"page_areaselection")
+        self.verticalLayout = QVBoxLayout(self.page_areaselection)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label_Instruction_areaselection = QLabel(self.page_areaselection)
+        self.label_Instruction_areaselection.setObjectName(u"label_Instruction_areaselection")
+        font2 = QFont()
+        font2.setFamily(u"Microsoft YaHei UI Light")
+        self.label_Instruction_areaselection.setFont(font2)
+
+        self.verticalLayout.addWidget(self.label_Instruction_areaselection)
+
+        self.label_areaselection2 = QLabel(self.page_areaselection)
+        self.label_areaselection2.setObjectName(u"label_areaselection2")
+        self.label_areaselection2.setFont(font2)
+        self.label_areaselection2.setScaledContents(False)
+
+        self.verticalLayout.addWidget(self.label_areaselection2)
+
         self.stackedWidget.addWidget(self.page_areaselection)
-        self.page_areaselection_continue = QtWidgets.QWidget()
-        self.page_areaselection_continue.setObjectName("page_areaselection_continue")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page_areaselection_continue)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.label_Instruction_3 = QtWidgets.QLabel(self.page_areaselection_continue)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_Instruction_3.sizePolicy().hasHeightForWidth())
-        self.label_Instruction_3.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Microsoft YaHei UI Light")
-        self.label_Instruction_3.setFont(font)
-        self.label_Instruction_3.setTextFormat(QtCore.Qt.AutoText)
-        self.label_Instruction_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.label_Instruction_3.setObjectName("label_Instruction_3")
-        self.verticalLayout_4.addWidget(self.label_Instruction_3)
-        self.line_3 = QtWidgets.QFrame(self.page_areaselection_continue)
-        self.line_3.setLineWidth(4)
-        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_3.setObjectName("line_3")
-        self.verticalLayout_4.addWidget(self.line_3)
-        self.label_image_for_instruction_3 = QtWidgets.QLabel(self.page_areaselection_continue)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_image_for_instruction_3.sizePolicy().hasHeightForWidth())
-        self.label_image_for_instruction_3.setSizePolicy(sizePolicy)
-        self.label_image_for_instruction_3.setMaximumSize(QtCore.QSize(800, 400))
-        self.label_image_for_instruction_3.setText("")
-        self.label_image_for_instruction_3.setPixmap(QtGui.QPixmap("instruction/3_4_5.png"))
-        self.label_image_for_instruction_3.setScaledContents(True)
-        self.label_image_for_instruction_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.label_image_for_instruction_3.setObjectName("label_image_for_instruction_3")
-        self.verticalLayout_4.addWidget(self.label_image_for_instruction_3)
-        self.verticalLayout_4.setStretch(1, 1)
-        self.stackedWidget.addWidget(self.page_areaselection_continue)
-        self.verticalLayout.addWidget(self.stackedWidget)
+        self.page_DragandDrop = QWidget()
+        self.page_DragandDrop.setObjectName(u"page_DragandDrop")
+        self.verticalLayout_3 = QVBoxLayout(self.page_DragandDrop)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.label_DragandDrop = QLabel(self.page_DragandDrop)
+        self.label_DragandDrop.setObjectName(u"label_DragandDrop")
+        self.label_DragandDrop.setFont(font1)
 
-        self.ButtonGroup_pages = QtWidgets.QButtonGroup()
-        self.ButtonGroup_pages.setObjectName("ButtonGroup_pages")
-        self.layout_for_pages = QtWidgets.QHBoxLayout()
+        self.verticalLayout_3.addWidget(self.label_DragandDrop)
 
-        self.pushButton_1page = QtWidgets.QPushButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_1page.sizePolicy().hasHeightForWidth())
-        self.pushButton_1page.setSizePolicy(sizePolicy)
-        self.pushButton_1page.setStyleSheet("QPushButton\n"
-"{\n"
-"    color: #b1b1b1;\n"
-"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
-"    border-width: 2px;\n"
-"    border-color: #1e1e1e;\n"
-"    border-style: solid;\n"
-"    border-radius: 1;\n"
-"    padding: 3px;\n"
-"    font-size: 20px;\n"
-"    padding-left: 5px;\n"
-"    padding-right: 5px;\n"
-"    min-width: 40px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed\n"
-"{\n"
-"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
-"}\n"
-"\n"
-"QPushButton::checked \n"
-"{\n"
-"    border-color: rgb(255, 160, 47);\n"
-"    background-color: rgb(28, 28, 28);\n"
-"}\n"
-"\n"
-"QPushButton:hover\n"
-"{\n"
-"    border-color: rgb(255, 160, 47);\n"
-"}")
-        self.pushButton_1page.setCheckable(True)
-        self.pushButton_1page.setChecked(True)
-        self.pushButton_1page.setObjectName("pushButton_1page")
-        self.ButtonGroup_pages.addButton(self.pushButton_1page, 0)
-        self.layout_for_pages.addWidget(self.pushButton_1page)
-        self.pushButton_2page = QtWidgets.QPushButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_2page.sizePolicy().hasHeightForWidth())
-        self.pushButton_2page.setSizePolicy(sizePolicy)
-        self.pushButton_2page.setStyleSheet("QPushButton\n"
-"{\n"
-"    color: #b1b1b1;\n"
-"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
-"    border-width: 2px;\n"
-"    border-color: #1e1e1e;\n"
-"    border-style: solid;\n"
-"    border-radius: 1;\n"
-"    padding: 3px;\n"
-"    font-size: 20px;\n"
-"    padding-left: 5px;\n"
-"    padding-right: 5px;\n"
-"    min-width: 40px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed\n"
-"{\n"
-"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
-"}\n"
-"\n"
-"QPushButton::checked \n"
-"{\n"
-"    border-color: rgb(255, 160, 47);\n"
-"    background-color: rgb(28, 28, 28);\n"
-"}\n"
-"\n"
-"QPushButton:hover\n"
-"{\n"
-"    border-color: rgb(255, 160, 47);\n"
-"}")
-        self.pushButton_2page.setCheckable(True)
-        self.pushButton_2page.setObjectName("pushButton_2page")
-        self.ButtonGroup_pages.addButton(self.pushButton_2page, 1)
-        self.layout_for_pages.addWidget(self.pushButton_2page)
-        self.pushButton_3page = QtWidgets.QPushButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_3page.sizePolicy().hasHeightForWidth())
-        self.pushButton_3page.setSizePolicy(sizePolicy)
-        self.pushButton_3page.setStyleSheet("QPushButton\n"
-"{\n"
-"    color: #b1b1b1;\n"
-"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
-"    border-width: 2px;\n"
-"    border-color: #1e1e1e;\n"
-"    border-style: solid;\n"
-"    border-radius: 1;\n"
-"    padding: 3px;\n"
-"    font-size: 20px;\n"
-"    padding-left: 5px;\n"
-"    padding-right: 5px;\n"
-"    min-width: 40px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed\n"
-"{\n"
-"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
-"}\n"
-"\n"
-"QPushButton::checked \n"
-"{\n"
-"    border-color: rgb(255, 160, 47);\n"
-"    background-color: rgb(28, 28, 28);\n"
-"}\n"
-"\n"
-"QPushButton:hover\n"
-"{\n"
-"    border-color: rgb(255, 160, 47);\n"
-"}")
-        self.pushButton_3page.setCheckable(True)
-        self.pushButton_3page.setObjectName("pushButton_3page")
-        self.ButtonGroup_pages.addButton(self.pushButton_3page, 2)
-        self.layout_for_pages.addWidget(self.pushButton_3page)
-        # self.layout_for_pages.addWidget(self.ButtonGroup_pages)
-        self.verticalLayout.addLayout(self.layout_for_pages)
+        self.line_3 = QFrame(self.page_DragandDrop)
+        self.line_3.setObjectName(u"line_3")
+        self.line_3.setFrameShape(QFrame.HLine)
+        self.line_3.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_3.addWidget(self.line_3)
+
+        self.horizontalLayout_DragandDrop = QHBoxLayout()
+        self.horizontalLayout_DragandDrop.setObjectName(u"horizontalLayout_DragandDrop")
+        self.label_DragandDrop_3 = QLabel(self.page_DragandDrop)
+        self.label_DragandDrop_3.setObjectName(u"label_DragandDrop_3")
+        self.label_DragandDrop_3.setFont(font1)
+
+        self.horizontalLayout_DragandDrop.addWidget(self.label_DragandDrop_3)
+
+        self.line_2 = QFrame(self.page_DragandDrop)
+        self.line_2.setObjectName(u"line_2")
+        self.line_2.setLineWidth(5)
+        self.line_2.setMidLineWidth(0)
+        self.line_2.setFrameShape(QFrame.VLine)
+        self.line_2.setFrameShadow(QFrame.Sunken)
+
+        self.horizontalLayout_DragandDrop.addWidget(self.line_2)
+
+        self.label_DragandDrop_2 = QLabel(self.page_DragandDrop)
+        self.label_DragandDrop_2.setObjectName(u"label_DragandDrop_2")
+        self.label_DragandDrop_2.setFont(font1)
+
+        self.horizontalLayout_DragandDrop.addWidget(self.label_DragandDrop_2)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_DragandDrop)
+
+        self.stackedWidget.addWidget(self.page_DragandDrop)
+        self.page_Scale = QWidget()
+        self.page_Scale.setObjectName(u"page_Scale")
+        self.verticalLayout_4 = QVBoxLayout(self.page_Scale)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.label_Scale = QLabel(self.page_Scale)
+        self.label_Scale.setObjectName(u"label_Scale")
+        self.label_Scale.setFont(font1)
+
+        self.verticalLayout_4.addWidget(self.label_Scale)
+
+        self.stackedWidget.addWidget(self.page_Scale)
+        self.page_position = QWidget()
+        self.page_position.setObjectName(u"page_position")
+        self.page_position.setFont(font1)
+        self.verticalLayout_5 = QVBoxLayout(self.page_position)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.label_position = QLabel(self.page_position)
+        self.label_position.setObjectName(u"label_position")
+        self.label_position.setFont(font1)
+        self.label_position.setScaledContents(False)
+        self.label_position.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_5.addWidget(self.label_position)
+
+        self.stackedWidget.addWidget(self.page_position)
+        self.page_begin = QWidget()
+        self.page_begin.setObjectName(u"page_begin")
+        self.verticalLayout_6 = QVBoxLayout(self.page_begin)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.label_about = QLabel(self.page_begin)
+        self.label_about.setObjectName(u"label_about")
+        self.label_about.setFont(font1)
+        self.label_about.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+
+        self.verticalLayout_6.addWidget(self.label_about)
+
+        self.stackedWidget.addWidget(self.page_begin)
+
+        self.horizontalLayout.addWidget(self.stackedWidget)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self.stackedWidget.setCurrentIndex(5)
+
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Instruction", None, -1))
-        self.label_Instruction.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">1/3</span></p><p><span style=\" font-size:14pt;\">После запуска программы, следует загрузить</span></p><p><span style=\" font-size:14pt;\">картинку/фотографию. Что бы это сделать, </span></p><p><span style=\" font-size:14pt;\">нужно нажать на кнопку </span><span style=\" font-size:14pt; font-weight:600;\">&quot;Browse&quot;</span><span style=\" font-size:14pt;\">, после чего </span></p><p><span style=\" font-size:14pt;\">выбрать файл.</span></p></body></html>", None, -1))
-        self.label_Instruction_2.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">2/3</span></p><p><span style=\" font-size:14pt;\">Возможно вам потребуется просканировать </span></p><p><span style=\" font-size:14pt;\">конкретную область, а не все изображение.</span></p><p><span style=\" font-size:14pt;\">Для этого нужно перейти в раздел &quot;</span><span style=\" font-size:14pt; font-weight:600;\">Area selection</span><span style=\" font-size:14pt;\">&quot;</span></p><p><span style=\" font-size:14pt;\">...</span></p></body></html>", None, -1))
-        self.label_Instruction_3.setText(QtWidgets.QApplication.translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">3/3</span></p><p><span style=\" font-size:12pt;\">Затем зажать левую кнопку мыши на выбранной области и выделить ее,</span></p><p><span style=\" font-size:12pt;\">после чего изображение будет обрезано. Потом нажать на кнопку &quot;</span><span style=\" font-size:12pt; font-weight:600;\">Save</span><span style=\" font-size:12pt;\">&quot;.</span></p><p><span style=\" font-size:12pt;\">Если вы ошиблись, нажмите на кнопку &quot;</span><span style=\" font-size:12pt; font-weight:600;\">Reset</span><span style=\" font-size:12pt;\">&quot;.</span><br/></p></body></html>", None, -1))
-        self.pushButton_1page.setText(QtWidgets.QApplication.translate("MainWindow", "1", None, -1))
-        self.pushButton_2page.setText(QtWidgets.QApplication.translate("MainWindow", "2", None, -1))
-        self.pushButton_3page.setText(QtWidgets.QApplication.translate("MainWindow", "3", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Instruction", None))
+        ___qtreewidgetitem = self.treeWidget.headerItem()
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f", None));
+
+        __sortingEnabled = self.treeWidget.isSortingEnabled()
+        self.treeWidget.setSortingEnabled(False)
+        ___qtreewidgetitem1 = self.treeWidget.topLevelItem(0)
+        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0431 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0435", None));
+        ___qtreewidgetitem2 = self.treeWidget.topLevelItem(1)
+        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("MainWindow", u"1. \u041d\u0430\u0447\u0430\u043b\u043e", None));
+        ___qtreewidgetitem3 = ___qtreewidgetitem2.child(0)
+        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438", None));
+        ___qtreewidgetitem4 = ___qtreewidgetitem2.child(1)
+        ___qtreewidgetitem4.setText(0, QCoreApplication.translate("MainWindow", u"Drag & Drop", None));
+        ___qtreewidgetitem5 = self.treeWidget.topLevelItem(2)
+        ___qtreewidgetitem5.setText(0, QCoreApplication.translate("MainWindow", u"2. \u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440", None));
+        ___qtreewidgetitem6 = ___qtreewidgetitem5.child(0)
+        ___qtreewidgetitem6.setText(0, QCoreApplication.translate("MainWindow", u"\u041a\u043e\u0440\u0440\u0435\u043a\u0446\u0438\u044f", None));
+        ___qtreewidgetitem7 = ___qtreewidgetitem5.child(1)
+        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u043e\u0432", None));
+        ___qtreewidgetitem8 = ___qtreewidgetitem5.child(2)
+        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440", None));
+        ___qtreewidgetitem9 = ___qtreewidgetitem5.child(3)
+        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u044b", None));
+        ___qtreewidgetitem10 = ___qtreewidgetitem5.child(4)
+        ___qtreewidgetitem10.setText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u0435\u0437\u043a\u0430 \u043f\u043e \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044e", None));
+        self.treeWidget.setSortingEnabled(__sortingEnabled)
+
+        self.label_Instruction_loadfile.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u041f\u043e\u0441\u043b\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b, \u0441\u043b\u0435\u0434\u0443\u0435\u0442 \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c</p><p>\u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443/\u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044e. \u0427\u0442\u043e \u0431\u044b \u044d\u0442\u043e \u0441\u0434\u0435\u043b\u0430\u0442\u044c, </p><p>\u043d\u0443\u0436\u043d\u043e \u043d\u0430\u0436\u0430\u0442\u044c \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 <span style=\" font-weight:600;\">&quot;Browse&quot;</span>, \u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e </p><p>\u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0444\u0430\u0439\u043b.</p></body></html>", None))
+        self.label_image_for_instruction_loadfile.setText("")
+        self.label_Instruction_areaselection.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043f\u0440\u043e\u0441\u043a\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u0442\u044c </span></p><p><span style=\" font-size:14pt;\">\u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u0443\u044e \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0430 \u043d\u0435 \u0432\u0441\u0435 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435. </span></p><p><span style=\" font-size:14pt;\">\u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u043d\u0443\u0436\u043d\u043e \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0432 \u0440\u0430\u0437\u0434\u0435\u043b &quot;</span><span style=\" font-size:14pt; font-weight:600;\">Area selection</span><span style=\" font-size:14pt;\">&quot;</span></p><p><img src=\":/inst_areselection/instruction/2.png\"/></p></body></html>", None))
+        self.label_areaselection2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">\u0417\u0430\u0442\u0435\u043c \u0437\u0430\u0436\u0430\u0442\u044c \u043b\u0435\u0432\u0443\u044e \u043a\u043d\u043e\u043f\u043a\u0443 \u043c\u044b\u0448\u0438 \u043d\u0430 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438 \u0438 \u0432\u044b\u0434\u0435\u043b\u0438\u0442\u044c \u0435\u0435,</span></p><p><span style=\" font-size:14pt;\">\u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0431\u0443\u0434\u0435\u0442 \u043e\u0431\u0440\u0435\u0437\u0430\u043d\u043e. \u041f\u043e\u0442\u043e\u043c \u043d\u0430\u0436\u0430\u0442\u044c \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 &quot;</span><span style=\" font-size:14pt; font-weight:600;\">Save</span><span style=\" font-size:14pt;\">&quot;.</span></p><p><span style=\" font-size:14pt;\">\u0415\u0441\u043b\u0438 \u0432\u044b \u043e\u0448\u0438\u0431\u043b\u0438\u0441\u044c, \u043d\u0430"
+                        "\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 &quot;</span><span style=\" font-size:14pt; font-weight:600;\">Reset</span><span style=\" font-size:14pt;\">&quot;.</span><br/><img src=\":/inst_areselection/instruction/3_4_5.png\"/></p></body></html>", None))
+        self.label_DragandDrop.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u0431\u044b\u0441\u0442\u0440\u0430\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439, \u0431\u043b\u043e\u0433\u0430\u0434\u0430\u0440\u044f Drag &amp; Drop.</p><p>\u0414\u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u0437\u0430\u0436\u0430\u0442\u044c \u0438 \u043f\u0435\u0440\u0435\u0442\u044f\u043d\u0443\u0442\u044c \u0444\u0430\u0439\u043b...<br/></p></body></html>", None))
+        self.label_DragandDrop_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p><p align=\"center\"><img src=\":/inst_areselection/instruction/71.png\"/></p></body></html>", None))
+        self.label_DragandDrop_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p><p align=\"center\"><img src=\":/inst_areselection/instruction/81.png\"/></p></body></html>", None))
+        self.label_Scale.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0415\u0441\u0442\u044c \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u044b \u0441 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435\u043c \u043f\u0440\u043e\u043f\u043e\u0440\u0446\u044b\u0439.</p><p>\u041d\u0443\u0436\u043d\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u043d\u0443\u0436\u043d\u044b\u0439 \u0432\u0430\u043c\u0438 \u0448\u0438\u0440\u0438\u043d\u0443 \u0438 \u0432\u044b\u0441\u043e\u0442\u0443.</p><p>Reset - \u0441\u0431\u0440\u0430\u0441\u044b\u0432\u0430\u0435\u0442 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u044b.</p><p><br/></p><p align=\"center\"><img src=\":/inst_areselection/instruction/9.png\"/></p></body></html>", None))
+        self.label_position.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u044b, \u043c\u043e\u0436\u043d\u043e \u0431\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u044f \u043a\u043d\u043e\u043f\u043a\u0430\u043c \u0440\u0430\u0437\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u044b\u0445 \u0432\u043d\u0438\u0437\u0443.</p><p><br/></p><p><img src=\":/inst_areselection/instruction/10.png\"/></p></body></html>", None))
+        self.label_about.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600;\">Text finder</span></p><p align=\"center\">\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f \u043f\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b<br/></p><p><br/></p></body></html>", None))
+    # retranslateUi
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>852</width>
-    <height>698</height>
+    <width>1114</width>
+    <height>748</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>ebook.svg</normaloff>ebook.svg</iconset>
+    <normaloff>../../../Progri/Python/Text finder/ebook.svg</normaloff>../../../Progri/Python/Text finder/ebook.svg</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -572,9 +572,125 @@ QGroupBox::indicator:checked
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI Light</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+        <strikeout>false</strikeout>
+        <stylestrategy>PreferDefault</stylestrategy>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTreeView {
+	/**color: rgb(255, 255, 255);**/
+	background-color: #323232;
+	/**border-color: rgb(255, 255, 255);**/
+}
+
+QTreeView::item:hover {
+	background: rgb(238, 147, 38);
+}
+
+QTreeView::item:selected {
+	background-color:  rgb(238, 147, 38);
+	selection-background-color: rgb(238, 147, 38);
+}</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>Инструкция</string>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>Об программе</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1. Начало</string>
+       </property>
+       <property name="background">
+        <brush brushstyle="NoBrush">
+         <color alpha="255">
+          <red>181</red>
+          <green>181</green>
+          <blue>181</blue>
+         </color>
+        </brush>
+       </property>
+       <item>
+        <property name="text">
+         <string>Загрузка картинки</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Drag &amp; Drop</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>2. Редактор</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Коррекция</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Расположение инструментов</string>
+        </property>
+        <property name="background">
+         <brush brushstyle="NoBrush">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Размер</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Положение картины</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Обрезка по выделению</string>
+        </property>
+       </item>
+      </item>
+     </widget>
+    </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
@@ -585,12 +701,12 @@ QGroupBox::indicator:checked
        <number>4</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
-      <widget class="QWidget" name="page_browse">
+      <widget class="QWidget" name="page_loadfile">
        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,1">
         <item>
-         <widget class="QLabel" name="label_Instruction">
+         <widget class="QLabel" name="label_Instruction_loadfile">
           <property name="font">
            <font>
             <family>Microsoft YaHei UI Light</family>
@@ -598,7 +714,7 @@ QGroupBox::indicator:checked
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;1/3&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;После запуска программы, следует загрузить&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;картинку/фотографию. Что бы это сделать, &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;нужно нажать на кнопку &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;&amp;quot;Browse&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;, после чего &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;выбрать файл.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;После запуска программы, следует загрузить&lt;/p&gt;&lt;p&gt;картинку/фотографию. Что бы это сделать, &lt;/p&gt;&lt;p&gt;нужно нажать на кнопку &lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Browse&amp;quot;&lt;/span&gt;, после чего &lt;/p&gt;&lt;p&gt;выбрать файл.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -616,111 +732,176 @@ QGroupBox::indicator:checked
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_image_for_instruction">
+         <widget class="QLabel" name="label_image_for_instruction_loadfile">
           <property name="text">
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>instruction/1.png</pixmap>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_areaselection">
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,1">
-        <item>
-         <widget class="QLabel" name="label_Instruction_2">
-          <property name="font">
-           <font>
-            <family>Microsoft YaHei UI Light</family>
-           </font>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;2/3&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Возможно вам потребуется просканировать &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;конкретную область, а не все изображение.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Для этого нужно перейти в раздел &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Area selection&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="Line" name="line_2">
-          <property name="lineWidth">
-           <number>4</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_image_for_instruction_2">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap>instruction/2.png</pixmap>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_areaselection_continue">
-       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,0">
-        <item>
-         <widget class="QLabel" name="label_Instruction_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Microsoft YaHei UI Light</family>
-           </font>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;3/3&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Затем зажать левую кнопку мыши на выбранной области и выделить ее,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;после чего изображение будет обрезано. Потом нажать на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Save&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Если вы ошиблись, нажмите на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Reset&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::AutoText</enum>
+           <pixmap>../../../Progri/Python/Text finder/instruction/1.png</pixmap>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
          </widget>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_areaselection">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_Instruction_areaselection">
+          <property name="font">
+           <font>
+            <family>Microsoft YaHei UI Light</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Возможно вам потребуется просканировать &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;конкретную область, а не все изображение. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Для этого нужно перейти в раздел &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Area selection&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/inst_areselection/instruction/2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_areaselection2">
+          <property name="font">
+           <font>
+            <family>Microsoft YaHei UI Light</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Затем зажать левую кнопку мыши на выбранной области и выделить ее,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;после чего изображение будет обрезано. Потом нажать на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Save&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Если вы ошиблись, нажмите на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Reset&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;br/&gt;&lt;img src=&quot;:/inst_areselection/instruction/3_4_5.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_DragandDrop">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_DragandDrop">
+          <property name="font">
+           <font>
+            <family>Microsoft YaHei UI Light</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Доступно быстрая загрузка изображений, блогадаря Drag &amp;amp; Drop.&lt;/p&gt;&lt;p&gt;Достаточно просто зажать и перетянуть файл...&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="Line" name="line_3">
-          <property name="lineWidth">
-           <number>4</number>
-          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_image_for_instruction_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>800</width>
-            <height>400</height>
-           </size>
+         <layout class="QHBoxLayout" name="horizontalLayout_DragandDrop">
+          <item>
+           <widget class="QLabel" name="label_DragandDrop_3">
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei UI Light</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/inst_areselection/instruction/71.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line_2">
+            <property name="lineWidth">
+             <number>5</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_DragandDrop_2">
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei UI Light</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/inst_areselection/instruction/81.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_Scale">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_Scale">
+          <property name="font">
+           <font>
+            <family>Microsoft YaHei UI Light</family>
+            <pointsize>14</pointsize>
+           </font>
           </property>
           <property name="text">
-           <string/>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Есть возможность изменить разрешение картины с сохранением пропорцый.&lt;/p&gt;&lt;p&gt;Нужно ввести нужный вами ширину и высоту.&lt;/p&gt;&lt;p&gt;Reset - сбрасывает разрешение картины.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/inst_areselection/instruction/9.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="pixmap">
-           <pixmap>instruction/3_4_5.png</pixmap>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_position">
+       <property name="font">
+        <font>
+         <family>Microsoft YaHei UI Light</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_position">
+          <property name="font">
+           <font>
+            <family>Microsoft YaHei UI Light</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Изменить положение картины, можно благодаря кнопкам разположеных внизу.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/inst_areselection/instruction/10.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="scaledContents">
-           <bool>true</bool>
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_begin">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_about">
+          <property name="font">
+           <font>
+            <family>Microsoft YaHei UI Light</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Text finder&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Инструкция по использование программы&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -731,161 +912,12 @@ QGroupBox::indicator:checked
       </widget>
      </widget>
     </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_pages">
-      <item>
-       <widget class="QPushButton" name="pushButton_1page">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton
-{
-    color: #b1b1b1;
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
-    border-width: 2px;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-radius: 1;
-    padding: 3px;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    min-width: 40px;
-}
-
-QPushButton:pressed
-{
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
-}
-
-QPushButton::checked 
-{
-	border-color: rgb(255, 160, 47);
-	background-color: rgb(28, 28, 28);
-}
-
-QPushButton:hover
-{
-	border-color: rgb(255, 160, 47);
-}</string>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_2page">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton
-{
-    color: #b1b1b1;
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
-    border-width: 2px;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-radius: 1;
-    padding: 3px;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    min-width: 40px;
-}
-
-QPushButton:pressed
-{
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
-}
-
-QPushButton::checked 
-{
-	border-color: rgb(255, 160, 47);
-	background-color: rgb(28, 28, 28);
-}
-
-QPushButton:hover
-{
-	border-color: rgb(255, 160, 47);
-}</string>
-        </property>
-        <property name="text">
-         <string>2</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_3page">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton
-{
-    color: #b1b1b1;
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
-    border-width: 2px;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-radius: 1;
-    padding: 3px;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    min-width: 40px;
-}
-
-QPushButton:pressed
-{
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
-}
-
-QPushButton::checked 
-{
-	border-color: rgb(255, 160, 47);
-	background-color: rgb(28, 28, 28);
-}
-
-QPushButton:hover
-{
-	border-color: rgb(255, 160, 47);
-}</string>
-        </property>
-        <property name="text">
-         <string>3</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../qt.qrc"/>
+ </resources>
  <connections/>
 </ui>

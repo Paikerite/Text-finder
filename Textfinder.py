@@ -244,6 +244,7 @@ class MyWindow(QMainWindow):
         QMessageBox.aboutQt(self)
 
     def instruction(self):
+        print("instruction")
         self.ins = ins.Instruction(self)
         self.ins.show()
 
@@ -519,4 +520,5 @@ if __name__ == "__main__":
     application = MyWindow()
     application.show()
 
+    print("Textfinder [Version 1.0]")
     sys.exit(app.exec_())
