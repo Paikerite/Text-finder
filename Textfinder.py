@@ -205,7 +205,9 @@ class MyWindow(QMainWindow):
         self.ab = None
         self.ins = None
 
+        self.ui.imagelabel.resetEvent_signal.connect(self.reset)
         self.ui.imagelabel.dropEvent_Signal.connect(self.guion_withloadfile)
+        self.ui.imagelabel.pastEvent_signal.connect(self.guion_withpastefile)
         # self.imagelabel_fromMainUi = imagelabel_fromMainUi()
         # self.imagelabel_fromMainUi.dropEvent_Signal.connect(self.guion_withloadfile)
 
@@ -402,13 +404,15 @@ class MyWindow(QMainWindow):
 
     @Slot(str)
     def guion_withloadfile(self, file_local):
-        print(f"file_local - {file_local}")
-        self.ui.lineEdit.setText(file_local)
-        self.image = QImage(file_local)
-        self.image_for_enchance_reset = QImage(file_local)
-        self.pixmap = None
+        if file_local:
+            print(f"file_local - {file_local}")
+            self.ui.lineEdit.setText(file_local)
+            self.image = QImage(file_local)
+            self.image_for_enchance_reset = QImage(file_local)
+            self.pixmap = None
 
-        self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+            self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+
         self.ui.checkBox_2.setChecked(False)
 
         self.ui.areaSelection_button.setEnabled(True)
@@ -471,7 +475,7 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider.setEnabled(True)
 
     def browsebutton(self):
-        filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg)',
+        filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg *.bmp *.tiff)',
                                                          caption='Select image')
 
         print(f"filename - {filename}")
@@ -513,6 +517,35 @@ class MyWindow(QMainWindow):
                 file.close()
             except FileNotFoundError as fe:
                 print(fe)
+
+    @Slot(list)
+    def guion_withpastefile(self, image):
+        self.image = image[0]
+        self.image_for_enchance_reset = image
+        self.pixmap = None
+
+        self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+        self.guion()
+
+    @Slot()
+    def reset(self):
+        self.guioff()
+        self.ui.pushButton_2.setEnabled(True)
+        self.ui.lineEdit.setEnabled(True)
+
+        self.ui.horizontalSlider_color_blalance.setValue(0)
+        self.ui.horizontalSlider.setValue(0)
+        self.ui.horizontalSlider_brightness.setValue(0)
+        self.ui.horizontalSlider_for_sharpness.setValue(0)
+        self.ui.horizontalSlider_unsharmask.setValue(-100)
+        self.ui.horizontalSlider_gaussian.setValue(-100)
+        self.ui.checkBox_2.setChecked(False)
+        self.ui.checkBox_medianfilter.setChecked(False)
+
+        operations.unsharmask = operations.gaussianblur = operations.color_balance = \
+            operations.brightness = operations.contrast = operations.sharpness = 0
+
+        operations.medianfilter = operations.blackandwhite = False
 
 
 if __name__ == "__main__":

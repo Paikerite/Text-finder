@@ -1,10 +1,12 @@
 import sys
 
 from PySide2.QtWidgets import QRubberBand, QLabel
-from PySide2.QtCore import Qt, QPoint, QRect, QObject, QSize
+from PySide2.QtCore import Qt, QPoint, QRect, QObject, QSize, Signal
 
 
 class labelimage(QLabel, QObject): # QLabel
+    signalPos = Signal(list)
+
     def __init__(self, parent):
         super(labelimage, self).__init__(parent=parent)
 
@@ -26,9 +28,11 @@ class labelimage(QLabel, QObject): # QLabel
     def mouseMoveEvent(self, event):
         if self.drawing:
             self.end = event.pos()
-            self.setStatusTip(f"Mouse position. begin - {self.begin.x()} {self.begin.y()} "
-                              f"end - {self.end.x()} {self.end.y()}")
+            lst_pos = [self.begin.x(), self.begin.y(), self.end.x(), self.end.y()]
+            # self.setStatusTip(f"Mouse position. begin - {self.begin.x()} {self.begin.y()} "
+            #                   f"end - {self.end.x()} {self.end.y()}")
 
+            self.signalPos.emit(lst_pos)
             self.currentQRubberBand.setGeometry(QRect(self.originQPoint, event.pos()).normalized())
 
     def mouseReleaseEvent(self, event):
