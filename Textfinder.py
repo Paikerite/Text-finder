@@ -4,12 +4,14 @@
 ##############################################
 
 import sys
+from copy import copy, deepcopy
+
 import pytesseract
 from PIL import Image
 from PySide2 import QtUiTools
 from PySide2.QtCore import Qt, Signal, Slot, QThread
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
-from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget, QErrorMessage
+from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget, QErrorMessage, QComboBox
 import img_helper
 import ui
 import instruction as ins
@@ -21,7 +23,7 @@ images_type = ['.jpg', '.png', 'jpeg']
 
 _img_preview = None
 
-dir = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+dir = r'Tesseract-OCR\tesseract.exe'
 
 BRIGHTNESS_FACTOR_MIN = 0.5
 BRIGHTNESS_FACTOR_MAX = 1.5
@@ -165,7 +167,7 @@ class RecognizeBegin(QThread):
 
         lang = self.parent().ui.comboBox.currentText()
 
-        text = pytesseract.image_to_string(fortxt, lang=languages[lang])
+        text = pytesseract.image_to_string(fortxt, lang=languages[lang]) #eng+rus
 
         if text == '':
             print("empty text")
@@ -229,11 +231,13 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_rotate_right.clicked.connect(self.on_rotate_right)
         self.ui.pushButton_4.clicked.connect(self.on_flip_left)
         self.ui.pushButton_5.clicked.connect(self.on_flip_top)
+        self.ui.pushButton_add.clicked.connect(self.addcombobox_leng)
+        self.ui.pushButton_remove.clicked.connect(self.removecombobox_leng)
         self.ui.progressBar.setMinimum(0)
         self.ui.progressBar.setValue(0)
+        self.lang = ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"]
 
-        self.ui.comboBox.addItems(
-            ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"])
+        self.ui.comboBox.addItems(self.lang)
 
         self.ui.About.triggered.connect(self.about)
         self.ui.actionInstructiom.triggered.connect(self.instruction)
@@ -326,6 +330,22 @@ class MyWindow(QMainWindow):
 
         operations.sharpness = value
         self.place_preview_img()
+
+    def addcombobox_leng(self):
+        print("addcombobox")
+
+        comboBox = QComboBox(self.ui.scrollAreaWidgetContents_combobox)
+        comboBox.addItems(self.lang)
+        self.ui.verticalLayout_9.addWidget(comboBox)
+
+        self.countcombobox = self.ui.verticalLayout_9.count()
+
+        print(f"количество комбобоксов - {self.countcombobox}")
+
+    def removecombobox_leng(self):
+        # self.ui.verticalLayout_9.removeWidget()
+        if self.countcombobox != 1:
+            self.ui.verticalLayout_9.removeWidget(self.ui.comboBox)
 
     def enchancereset(self):
         if self.pixmap:
@@ -427,6 +447,9 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_rotate_right.setEnabled(True)
         self.ui.pushButton_rotate_left.setEnabled(True)
         self.ui.horizontalSlider.setEnabled(True)
+        self.ui.pushButton_add.setEnabled(True)
+        self.ui.pushButton_remove.setEnabled(True)
+        self.ui.scrollArea_forcombobox.setEnabled(True)
 
         self.ui.horizontalSlider_color_blalance.setValue(0)
         self.ui.horizontalSlider.setValue(0)
@@ -457,6 +480,9 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_rotate_right.setEnabled(False)
         self.ui.pushButton_rotate_left.setEnabled(False)
         self.ui.horizontalSlider.setEnabled(False)
+        self.ui.pushButton_remove.setEnabled(False)
+        self.ui.pushButton_add.setEnabled(False)
+        self.ui.scrollArea_forcombobox.setEnabled(False)
 
     def guion(self):
         self.ui.lineEdit.setEnabled(True)
@@ -473,6 +499,9 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_rotate_right.setEnabled(True)
         self.ui.pushButton_rotate_left.setEnabled(True)
         self.ui.horizontalSlider.setEnabled(True)
+        self.ui.pushButton_add.setEnabled(True)
+        self.ui.pushButton_remove.setEnabled(True)
+        self.ui.scrollArea_forcombobox.setEnabled(True)
 
     def browsebutton(self):
         filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg *.bmp *.tiff)',
@@ -509,7 +538,7 @@ class MyWindow(QMainWindow):
         res = msg.exec_()
         if res == QMessageBox.Save:
             name = QFileDialog.getSaveFileName(self, "Save result", "",
-                                               filter="*.txt",
+                                               filter="*.txt;;*.doc;;*.docx;;*.rtf",
                                                )
             try:
                 file = open(name[0], 'w')

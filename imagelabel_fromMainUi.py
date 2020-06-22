@@ -34,7 +34,10 @@ class imagelabel_fromMainUi(QLabel):
         print("copy")
         clipboard = QGuiApplication.clipboard()
         image = self.pixmap()
-        clipboard.setImage(QPixmap.toImage(image))
+        try:
+            clipboard.setImage(QPixmap.toImage(image))
+        except TypeError:
+            print("[err] Coping empty file")
 
     def context_trigger_paste(self):
         clipboard = QGuiApplication.clipboard()

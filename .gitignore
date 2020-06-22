@@ -2,14 +2,9 @@
 /__pycache__/
 /.idea/
 /data/
-/Icons/
 /areaselection/
 /back/
-
-/__pycache__/
-/__pycache__/
 /debug.svg
 /instruction/
-/__pycache__/
-/__pycache__/
-/instruction/
+/Tesseract-OCR/
+/ebook.ico
