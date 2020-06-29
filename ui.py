@@ -17,13 +17,14 @@ from PySide2.QtWidgets import *
 
 from imagelabel_frommainui import imagelabel_fromMainUi
 
+import data_main
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1270, 750)
+        MainWindow.resize(1270, 777)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -37,7 +38,7 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         MainWindow.setMouseTracking(False)
         icon = QIcon()
-        icon.addFile(u"Icons/ebook.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/main_icon/Icons/ebook.svg", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet(u"QToolTip\n"
@@ -620,7 +621,7 @@ class Ui_MainWindow(object):
         self.actionInstructiom = QAction(MainWindow)
         self.actionInstructiom.setObjectName(u"actionInstructiom")
         icon1 = QIcon()
-        icon1.addFile(u"Icons/question.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/main_icon/Icons/question.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.actionInstructiom.setIcon(icon1)
         self.actionAbout_Qt = QAction(MainWindow)
         self.actionAbout_Qt.setObjectName(u"actionAbout_Qt")
@@ -644,6 +645,7 @@ class Ui_MainWindow(object):
 
         self.pushButton_2 = QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setEnabled(True)
         sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
@@ -654,7 +656,8 @@ class Ui_MainWindow(object):
         font1 = QFont()
         self.pushButton_2.setFont(font1)
         icon2 = QIcon()
-        icon2.addFile(u"Icons/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/main_icon/Icons/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/main_icon/Icons/upload \u2014 \u043a\u043e\u043f\u0438\u044f.svg", QSize(), QIcon.Disabled, QIcon.Off)
         self.pushButton_2.setIcon(icon2)
 
         self.horizontalLayout_2.addWidget(self.pushButton_2, 0, Qt.AlignVCenter)
@@ -683,7 +686,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1126, 585))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1126, 612))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.imagelabel = imagelabel_fromMainUi(self.scrollAreaWidgetContents)
@@ -794,63 +797,45 @@ class Ui_MainWindow(object):
         self.progressBar.setOrientation(Qt.Horizontal)
         self.progressBar.setTextDirection(QProgressBar.TopToBottom)
 
-        self.verticalLayout.addWidget(self.progressBar, 0, Qt.AlignRight)
+        self.verticalLayout.addWidget(self.progressBar)
 
-        self.label_for_language = QLabel(self.dockWidgetContents_3)
-        self.label_for_language.setObjectName(u"label_for_language")
-        self.label_for_language.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout.addWidget(self.label_for_language)
-
-        self.horizontalLayout_for2button = QHBoxLayout()
-        self.horizontalLayout_for2button.setSpacing(0)
-        self.horizontalLayout_for2button.setObjectName(u"horizontalLayout_for2button")
-        self.pushButton_add = QPushButton(self.dockWidgetContents_3)
-        self.pushButton_add.setObjectName(u"pushButton_add")
-        self.pushButton_add.setEnabled(False)
-        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.pushButton_add.sizePolicy().hasHeightForWidth())
-        self.pushButton_add.setSizePolicy(sizePolicy3)
-        self.pushButton_add.setMinimumSize(QSize(30, 0))
-        self.pushButton_add.setMaximumSize(QSize(30, 16777215))
-        font3 = QFont()
-        font3.setFamily(u"MS Serif")
-        self.pushButton_add.setFont(font3)
-        self.pushButton_add.setLayoutDirection(Qt.LeftToRight)
-        self.pushButton_add.setInputMethodHints(Qt.ImhNone)
-
-        self.horizontalLayout_for2button.addWidget(self.pushButton_add)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.MinimumExpanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_for2button.addItem(self.horizontalSpacer)
-
-        self.pushButton_remove = QPushButton(self.dockWidgetContents_3)
-        self.pushButton_remove.setObjectName(u"pushButton_remove")
-        self.pushButton_remove.setEnabled(False)
-        self.pushButton_remove.setMinimumSize(QSize(30, 0))
-        self.pushButton_remove.setMaximumSize(QSize(30, 16777215))
-        self.pushButton_remove.setFont(font3)
-
-        self.horizontalLayout_for2button.addWidget(self.pushButton_remove)
-
-        self.horizontalLayout_for2button.setStretch(1, 5)
-
-        self.verticalLayout.addLayout(self.horizontalLayout_for2button)
-
-        self.scrollArea_forcombobox = QScrollArea(self.dockWidgetContents_3)
-        self.scrollArea_forcombobox.setObjectName(u"scrollArea_forcombobox")
-        self.scrollArea_forcombobox.setEnabled(False)
-        self.scrollArea_forcombobox.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_combobox = QWidget()
-        self.scrollAreaWidgetContents_combobox.setObjectName(u"scrollAreaWidgetContents_combobox")
-        self.scrollAreaWidgetContents_combobox.setGeometry(QRect(0, 0, 98, 62))
-        self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_combobox)
+        self.groupBox_lang = QGroupBox(self.dockWidgetContents_3)
+        self.groupBox_lang.setObjectName(u"groupBox_lang")
+        self.groupBox_lang.setEnabled(False)
+        self.groupBox_lang.setStyleSheet(u"QPushButton\n"
+"{\n"
+"    color: #b1b1b1;\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);\n"
+"    border-width: 2px;\n"
+"    border-color: #1e1e1e;\n"
+"    border-style: solid;\n"
+"    border-radius: 0;\n"
+"    padding: 1px;\n"
+"    font-size: 15px;\n"
+"    padding-left: 1px;\n"
+"    padding-right: 1px;\n"
+"    min-width: 0px;\n"
+"}\n"
+"QPushButton:disabled {\n"
+"	color: #808080;\n"
+"	background-color: #323232;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);\n"
+"}\n"
+"\n"
+"QComboBox:hover,QPushButton:hover\n"
+"{\n"
+"    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);\n"
+"}")
+        self.groupBox_lang.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
+        self.groupBox_lang.setFlat(False)
+        self.verticalLayout_9 = QVBoxLayout(self.groupBox_lang)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(5, -1, 5, -1)
-        self.comboBox = QComboBox(self.scrollAreaWidgetContents_combobox)
+        self.verticalLayout_9.setContentsMargins(-1, 20, -1, -1)
+        self.comboBox = QComboBox(self.groupBox_lang)
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setEnabled(False)
         self.comboBox.setEditable(False)
@@ -861,9 +846,57 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_9.addWidget(self.comboBox)
 
-        self.scrollArea_forcombobox.setWidget(self.scrollAreaWidgetContents_combobox)
+        self.horizontalLayout_for2button = QHBoxLayout()
+        self.horizontalLayout_for2button.setSpacing(0)
+        self.horizontalLayout_for2button.setObjectName(u"horizontalLayout_for2button")
+        self.horizontalLayout_for2button.setSizeConstraint(QLayout.SetMaximumSize)
+        self.horizontalLayout_for2button.setContentsMargins(0, 0, 0, 0)
+        self.pushButton_add = QPushButton(self.groupBox_lang)
+        self.pushButton_add.setObjectName(u"pushButton_add")
+        self.pushButton_add.setEnabled(False)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Expanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.pushButton_add.sizePolicy().hasHeightForWidth())
+        self.pushButton_add.setSizePolicy(sizePolicy3)
+        self.pushButton_add.setMinimumSize(QSize(6, 0))
+        self.pushButton_add.setMaximumSize(QSize(16777210, 16777215))
+        self.pushButton_add.setSizeIncrement(QSize(0, 0))
+        self.pushButton_add.setBaseSize(QSize(0, 0))
+        font3 = QFont()
+        font3.setFamily(u"MS Serif")
+        self.pushButton_add.setFont(font3)
+        self.pushButton_add.setLayoutDirection(Qt.LeftToRight)
+        self.pushButton_add.setStyleSheet(u"QPushButtoon {\n"
+"	min-width: 30px;\n"
+"}")
+        self.pushButton_add.setInputMethodHints(Qt.ImhNone)
 
-        self.verticalLayout.addWidget(self.scrollArea_forcombobox)
+        self.horizontalLayout_for2button.addWidget(self.pushButton_add)
+
+        self.pushButton_remove = QPushButton(self.groupBox_lang)
+        self.pushButton_remove.setObjectName(u"pushButton_remove")
+        self.pushButton_remove.setEnabled(False)
+        sizePolicy2.setHeightForWidth(self.pushButton_remove.sizePolicy().hasHeightForWidth())
+        self.pushButton_remove.setSizePolicy(sizePolicy2)
+        self.pushButton_remove.setMinimumSize(QSize(6, 0))
+        self.pushButton_remove.setMaximumSize(QSize(16777215, 16777215))
+        self.pushButton_remove.setFont(font3)
+
+        self.horizontalLayout_for2button.addWidget(self.pushButton_remove)
+
+
+        self.verticalLayout_9.addLayout(self.horizontalLayout_for2button)
+
+        self.textBrowser_lang = QTextBrowser(self.groupBox_lang)
+        self.textBrowser_lang.setObjectName(u"textBrowser_lang")
+        self.textBrowser_lang.setFrameShape(QFrame.Box)
+
+        self.verticalLayout_9.addWidget(self.textBrowser_lang)
+
+        self.verticalLayout_9.setStretch(2, 5)
+
+        self.verticalLayout.addWidget(self.groupBox_lang)
 
         self.checkBox_2 = QCheckBox(self.dockWidgetContents_3)
         self.checkBox_2.setObjectName(u"checkBox_2")
@@ -872,7 +905,7 @@ class Ui_MainWindow(object):
         self.checkBox_2.setMaximumSize(QSize(100, 13))
         self.checkBox_2.setTristate(False)
 
-        self.verticalLayout.addWidget(self.checkBox_2, 0, Qt.AlignRight)
+        self.verticalLayout.addWidget(self.checkBox_2)
 
         self.ContrastGroup = QTabWidget(self.dockWidgetContents_3)
         self.ContrastGroup.setObjectName(u"ContrastGroup")
@@ -970,6 +1003,10 @@ class Ui_MainWindow(object):
         font4.setStyleStrategy(QFont.PreferDefault)
         self.pushButton_Reset_enhance.setFont(font4)
         self.pushButton_Reset_enhance.setFocusPolicy(Qt.StrongFocus)
+        icon3 = QIcon()
+        icon3.addFile(u":/main_icon/Icons/arr_repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/main_icon/Icons/arr_repeat_blacklivesmatter.svg", QSize(), QIcon.Disabled, QIcon.Off)
+        self.pushButton_Reset_enhance.setIcon(icon3)
 
         self.verticalLayout_6.addWidget(self.pushButton_Reset_enhance)
 
@@ -1082,6 +1119,10 @@ class Ui_MainWindow(object):
 
         self.pushButton_3 = QPushButton(self.ScaleCheckBox)
         self.pushButton_3.setObjectName(u"pushButton_3")
+        icon4 = QIcon()
+        icon4.addFile(u":/main_icon/Icons/scale_whitelivesmatter.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/main_icon/Icons/scale.svg", QSize(), QIcon.Disabled, QIcon.Off)
+        self.pushButton_3.setIcon(icon4)
 
         self.verticalLayout_5.addWidget(self.pushButton_3)
 
@@ -1090,6 +1131,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.resetScale.sizePolicy().hasHeightForWidth())
         self.resetScale.setSizePolicy(sizePolicy1)
         self.resetScale.setMaximumSize(QSize(16777215, 16777215))
+        self.resetScale.setIcon(icon3)
 
         self.verticalLayout_5.addWidget(self.resetScale)
 
@@ -1166,10 +1208,12 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(whatsthis)
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Begin", None))
         self.progressBar.setFormat(QCoreApplication.translate("MainWindow", u"%p%", None))
-        self.label_for_language.setText(QCoreApplication.translate("MainWindow", u"Languages", None))
+        self.groupBox_lang.setTitle(QCoreApplication.translate("MainWindow", u"Languages", None))
+        self.comboBox.setCurrentText("")
         self.pushButton_add.setText(QCoreApplication.translate("MainWindow", u"+", None))
         self.pushButton_remove.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.comboBox.setCurrentText("")
+        self.textBrowser_lang.setMarkdown("")
+        self.textBrowser_lang.setPlaceholderText(QCoreApplication.translate("MainWindow", u"languages...", None))
         self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Gray", None))
         self.label_for_contrast.setText(QCoreApplication.translate("MainWindow", u"Contrast", None))
         self.lable_for_brightness.setText(QCoreApplication.translate("MainWindow", u"Brightness", None))

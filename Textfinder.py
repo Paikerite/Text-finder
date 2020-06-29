@@ -143,6 +143,8 @@ def calculating(from_slider_value, min, max):
 class RecognizeBegin(QThread):
     signalMain = Signal()
     signalResult = Signal(str)
+    signalGuion = Signal()
+    signalGuioff = Signal()
 
     def __init__(self, parent=None):
         super(RecognizeBegin, self).__init__(parent=parent)
@@ -150,7 +152,8 @@ class RecognizeBegin(QThread):
 
     def run(self):
         self.parent().ui.progressBar.setMaximum(0)
-        self.parent().guioff()
+        # self.parent().guioff()
+        self.signalGuioff.emit()
 
         fortxt = self.parent().ui.imagelabel.pixmap()
 
@@ -165,9 +168,9 @@ class RecognizeBegin(QThread):
             print(fe)
             QMessageBox.about(self, 'Error', 'Tesseract not found')
 
-        lang = self.parent().ui.comboBox.currentText()
+        # lang = self.parent().ui.comboBox.currentText()
 
-        text = pytesseract.image_to_string(fortxt, lang=languages[lang]) #eng+rus
+        text = pytesseract.image_to_string(fortxt, lang='+'.join(self.parent().lang_lst)) #eng+rus
 
         if text == '':
             print("empty text")
@@ -181,7 +184,8 @@ class RecognizeBegin(QThread):
         else:
             self.signalResult.emit(text)
 
-        self.parent().guion()
+        # self.parent().guion()
+        self.signalGuion.emit()
         self.parent().ui.progressBar.setMaximum(1)
 
 
@@ -197,6 +201,8 @@ class MyWindow(QMainWindow):
         self.RecognizeBegin = RecognizeBegin(parent=self)
         self.RecognizeBegin.signalMain.connect(self.notfoundtexterr)
         self.RecognizeBegin.signalResult.connect(self.saveresult)
+        self.RecognizeBegin.signalGuion.connect(self.guion)
+        self.RecognizeBegin.signalGuioff.connect(self.guioff)
 
         self.drawing = None
         self.image = None
@@ -206,6 +212,7 @@ class MyWindow(QMainWindow):
         self.image_for_enchance_reset = None
         self.ab = None
         self.ins = None
+        self.lang_lst = []
 
         self.ui.imagelabel.resetEvent_signal.connect(self.reset)
         self.ui.imagelabel.dropEvent_Signal.connect(self.guion_withloadfile)
@@ -231,10 +238,12 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_rotate_right.clicked.connect(self.on_rotate_right)
         self.ui.pushButton_4.clicked.connect(self.on_flip_left)
         self.ui.pushButton_5.clicked.connect(self.on_flip_top)
-        self.ui.pushButton_add.clicked.connect(self.addcombobox_leng)
-        self.ui.pushButton_remove.clicked.connect(self.removecombobox_leng)
+        self.ui.pushButton_add.clicked.connect(self.add_leng)
+        self.ui.pushButton_remove.clicked.connect(self.remove_leng)
         self.ui.progressBar.setMinimum(0)
         self.ui.progressBar.setValue(0)
+        self.toknowresolution_of_pixmap()
+
         self.lang = ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"]
 
         self.ui.comboBox.addItems(self.lang)
@@ -245,6 +254,14 @@ class MyWindow(QMainWindow):
 
         self.ui.width.setValidator(QIntValidator())
         self.ui.height.setValidator(QIntValidator())
+
+    def toknowresolution_of_pixmap(self):
+        try:
+            self.width_pixmap = self.ui.imagelabel.pixmap().width()
+            self.height_pixmap = self.ui.imagelabel.pixmap().height()
+            self.ui.imagelabel.setStatusTip(f"current resolution - {self.width_pixmap}x{self.height_pixmap}")
+        except AttributeError as AE:
+            print(AE)
 
     def aboutPyqt(self):
         QMessageBox.aboutQt(self)
@@ -331,21 +348,29 @@ class MyWindow(QMainWindow):
         operations.sharpness = value
         self.place_preview_img()
 
-    def addcombobox_leng(self):
-        print("addcombobox")
+    def add_leng(self):
+        lang = self.ui.comboBox.currentText()
 
-        comboBox = QComboBox(self.ui.scrollAreaWidgetContents_combobox)
-        comboBox.addItems(self.lang)
-        self.ui.verticalLayout_9.addWidget(comboBox)
+        if languages[lang] in self.lang_lst:
+            print("already exists in languages list")
+        else:
+            self.lang_lst.append(languages[lang])
 
-        self.countcombobox = self.ui.verticalLayout_9.count()
+        print(self.lang_lst)
+        self.ui.textBrowser_lang.setText(str('\n'.join(self.lang_lst)))
 
-        print(f"количество комбобоксов - {self.countcombobox}")
+    def remove_leng(self):
+        # lang = self.ui.comboBox.currentText()
 
-    def removecombobox_leng(self):
-        # self.ui.verticalLayout_9.removeWidget()
-        if self.countcombobox != 1:
-            self.ui.verticalLayout_9.removeWidget(self.ui.comboBox)
+        # if languages[lang] in self.lang_lst:
+        #     # self.lang_lst.remove(self.lang_lst.index(languages[lang]))
+        #     self.lang_lst.remove(languages[lang])
+        try:
+            self.lang_lst.pop()
+        except IndexError as IE:
+            print(IE)
+
+        self.ui.textBrowser_lang.setText(str('\n'.join(self.lang_lst)))
 
     def enchancereset(self):
         if self.pixmap:
@@ -402,6 +427,8 @@ class MyWindow(QMainWindow):
             print(ne)
             QMessageBox.about(self, 'Error', 'Image not found, upload it')
 
+        self.toknowresolution_of_pixmap()
+
     def scalecheck(self):
         try:
             width = int(self.ui.width.text())
@@ -421,6 +448,8 @@ class MyWindow(QMainWindow):
             except NameError as ne:
                 print(ne)
                 QMessageBox.about(self, 'Error', 'Image not found, upload it')
+
+        self.toknowresolution_of_pixmap()
 
     @Slot(str)
     def guion_withloadfile(self, file_local):
@@ -449,7 +478,7 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider.setEnabled(True)
         self.ui.pushButton_add.setEnabled(True)
         self.ui.pushButton_remove.setEnabled(True)
-        self.ui.scrollArea_forcombobox.setEnabled(True)
+        self.ui.groupBox_lang.setEnabled(True)
 
         self.ui.horizontalSlider_color_blalance.setValue(0)
         self.ui.horizontalSlider.setValue(0)
@@ -482,7 +511,7 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider.setEnabled(False)
         self.ui.pushButton_remove.setEnabled(False)
         self.ui.pushButton_add.setEnabled(False)
-        self.ui.scrollArea_forcombobox.setEnabled(False)
+        self.ui.groupBox_lang.setEnabled(False)
 
     def guion(self):
         self.ui.lineEdit.setEnabled(True)
@@ -501,7 +530,7 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider.setEnabled(True)
         self.ui.pushButton_add.setEnabled(True)
         self.ui.pushButton_remove.setEnabled(True)
-        self.ui.scrollArea_forcombobox.setEnabled(True)
+        self.ui.groupBox_lang.setEnabled(True)
 
     def browsebutton(self):
         filename = QFileDialog.getOpenFileName(filter='Images (*.png *.jpg *.jpeg *.bmp *.tiff)',
@@ -514,8 +543,13 @@ class MyWindow(QMainWindow):
         else:
             pass
 
+        self.toknowresolution_of_pixmap()
+
     def buttonbegin(self):
-        self.RecognizeBegin.start()
+        if self.lang_lst:
+            self.RecognizeBegin.start()
+        else:
+            QMessageBox.about(self, 'Error', "No language selected")
 
 ###########################################
 # Next function for Thread and ImageLabel #

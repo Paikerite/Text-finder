@@ -156,8 +156,8 @@ QLabel{
          <string>Save</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>Icons/save.svg</normaloff>Icons/save.svg</iconset>
+         <iconset resource="../qt_for_main.qrc">
+          <normaloff>:/main_icon/Icons/save.svg</normaloff>:/main_icon/Icons/save.svg</iconset>
         </property>
        </widget>
       </item>
@@ -170,8 +170,8 @@ QLabel{
          <string>Reset</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>Icons/arr_repeat.svg</normaloff>Icons/arr_repeat.svg</iconset>
+         <iconset resource="../qt_for_main.qrc">
+          <normaloff>:/main_icon/Icons/arr_repeat.svg</normaloff>:/main_icon/Icons/arr_repeat.svg</iconset>
         </property>
        </widget>
       </item>
@@ -188,6 +188,8 @@ QLabel{
    <header>labelimage.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../qt_for_main.qrc"/>
+ </resources>
  <connections/>
 </ui>

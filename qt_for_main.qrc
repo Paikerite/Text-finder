@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="main_icon">
+    <file>Icons/arr_repeat_blacklivesmatter.svg</file>
+    <file>Icons/upload.svg</file>
+    <file>Icons/upload — копия.svg</file>
+    <file>Icons/skip.svg</file>
+    <file>Icons/save.svg</file>
+    <file>Icons/question.svg</file>
+    <file>Icons/left-arrow.svg</file>
+    <file>Icons/find.svg</file>
+    <file>Icons/ebook.svg</file>
+    <file>Icons/arr_repeat.svg</file>
+    <file>Icons/scale.svg</file>
+    <file>Icons/scale_whitelivesmatter.svg</file>
+  </qresource>
+</RCC>
