@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1270</width>
-    <height>777</height>
+    <height>804</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -748,7 +748,7 @@ QMainWindow::separator
            <x>0</x>
            <y>0</y>
            <width>1126</width>
-           <height>612</height>
+           <height>639</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1644,6 +1644,14 @@ QComboBox:hover,QPushButton:hover
             </property>
             <property name="inputMethodHints">
              <set>Qt::ImhPreferNumbers</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_keepAssRatio">
+            <property name="text">
+             <string>Keep
+proportions</string>
             </property>
            </widget>
           </item>

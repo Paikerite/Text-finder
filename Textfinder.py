@@ -2,9 +2,8 @@
 # Только Бог и я, разбирались в этом дерьме,
 # Теперь только Бог. Удачи!
 ##############################################
-
+import os
 import sys
-from copy import copy, deepcopy
 
 import pytesseract
 from PIL import Image
@@ -12,11 +11,14 @@ from PySide2 import QtUiTools
 from PySide2.QtCore import Qt, Signal, Slot, QThread
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
 from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget, QErrorMessage, QComboBox
+import cv2
+
 import img_helper
 import ui
 import instruction as ins
 # import about_tf
 import drawing as drawing_file
+import result
 from imagelabel_frommainui import imagelabel_fromMainUi
 
 images_type = ['.jpg', '.png', 'jpeg']
@@ -142,7 +144,7 @@ def calculating(from_slider_value, min, max):
 
 class RecognizeBegin(QThread):
     signalMain = Signal()
-    signalResult = Signal(str)
+    signalResult = Signal(str, list)
     signalGuion = Signal()
     signalGuioff = Signal()
 
@@ -157,20 +159,33 @@ class RecognizeBegin(QThread):
 
         fortxt = self.parent().ui.imagelabel.pixmap()
 
+        fortxt.toImage().save('temp.png', 'png')
+        forimage_box = cv2.imread('temp.png')
+        os.remove('temp.png')
+
         fortxt = Image.fromqpixmap(fortxt)
         pytesseract.pytesseract.tesseract_cmd = dir
 
-        try:
-            pytesseract.image_to_osd(fortxt)
-        except pytesseract.pytesseract.TesseractError as te:
-            print(te)
-        except pytesseract.pytesseract.TesseractNotFoundError as fe:
-            print(fe)
-            QMessageBox.about(self, 'Error', 'Tesseract not found')
+        # try:
+        #     pytesseract.image_to_osd(fortxt)
+        # except pytesseract.pytesseract.TesseractError as te:
+        #     print(te)
+        # except pytesseract.pytesseract.TesseractNotFoundError as fe:
+        #     print(fe)
+        #     QMessageBox.about(self, 'Error', 'Tesseract not found')
 
         # lang = self.parent().ui.comboBox.currentText()
 
         text = pytesseract.image_to_string(fortxt, lang='+'.join(self.parent().lang_lst)) #eng+rus
+        dict_data = pytesseract.image_to_boxes(fortxt, lang='+'.join(self.parent().lang_lst))
+
+        h, w, _ = forimage_box.shape  # assumes color image
+
+        for b in dict_data.splitlines():
+            b = b.split(' ')
+            img = cv2.rectangle(forimage_box, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 1)
+
+        print(dict_data)
 
         if text == '':
             print("empty text")
@@ -182,7 +197,7 @@ class RecognizeBegin(QThread):
             # error_dialog = QErrorMessage()
             # error_dialog.showMessage("Text hasn't found")
         else:
-            self.signalResult.emit(text)
+            self.signalResult.emit(text, [img])
 
         # self.parent().guion()
         self.signalGuion.emit()
@@ -200,7 +215,7 @@ class MyWindow(QMainWindow):
         # self.imagelabel = imagelabel_fromMainUi(parent=self)
         self.RecognizeBegin = RecognizeBegin(parent=self)
         self.RecognizeBegin.signalMain.connect(self.notfoundtexterr)
-        self.RecognizeBegin.signalResult.connect(self.saveresult)
+        self.RecognizeBegin.signalResult.connect(self.resultWindow)
         self.RecognizeBegin.signalGuion.connect(self.guion)
         self.RecognizeBegin.signalGuioff.connect(self.guioff)
 
@@ -443,7 +458,10 @@ class MyWindow(QMainWindow):
             pass
         else:
             try:
-                self.pixmap = self.image.scaled(width, height, Qt.KeepAspectRatio)
+                if self.ui.radioButton_keepAssRatio.isChecked():
+                    self.pixmap = self.image.scaled(width, height, Qt.KeepAspectRatio)
+                else:
+                    self.pixmap = self.image.scaled(width, height)
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
             except NameError as ne:
                 print(ne)
@@ -554,6 +572,11 @@ class MyWindow(QMainWindow):
 ###########################################
 # Next function for Thread and ImageLabel #
 ###########################################
+    @Slot(str, list)
+    def resultWindow(self, text, image_data):
+
+        self.result = result.ResultWidget(self, text, image_data[0])
+        self.result.show()
 
     def notfoundtexterr(self):
         QMessageBox.about(self, 'Error', "Text hasn't found")

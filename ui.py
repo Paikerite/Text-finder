@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'text_finder_search.ui'
+## Form generated from reading UI file 'text_finder_searchdKkGuT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.2
 ##
@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1270, 777)
+        MainWindow.resize(1270, 804)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -686,7 +686,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1126, 612))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1126, 639))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.imagelabel = imagelabel_fromMainUi(self.scrollAreaWidgetContents)
@@ -1117,6 +1117,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addWidget(self.height)
 
+        self.radioButton_keepAssRatio = QRadioButton(self.ScaleCheckBox)
+        self.radioButton_keepAssRatio.setObjectName(u"radioButton_keepAssRatio")
+
+        self.verticalLayout_5.addWidget(self.radioButton_keepAssRatio)
+
         self.pushButton_3 = QPushButton(self.ScaleCheckBox)
         self.pushButton_3.setObjectName(u"pushButton_3")
         icon4 = QIcon()
@@ -1231,6 +1236,8 @@ class Ui_MainWindow(object):
         self.ScaleCheckBox.setTitle(QCoreApplication.translate("MainWindow", u"Scale", None))
         self.height_label.setText(QCoreApplication.translate("MainWindow", u"Width", None))
         self.width_label.setText(QCoreApplication.translate("MainWindow", u"Height", None))
+        self.radioButton_keepAssRatio.setText(QCoreApplication.translate("MainWindow", u"Keep\n"
+"proportions", None))
 #if QT_CONFIG(statustip)
         self.pushButton_3.setStatusTip(QCoreApplication.translate("MainWindow", u"Change the resolution with keep resolution", None))
 #endif // QT_CONFIG(statustip)
