@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'result.ui'
+## Form generated from reading UI file 'settingszJGOdI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.2
 ##
@@ -15,18 +15,15 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-import data_main
+from showrectangle import showRectangle
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(640, 480)
-        MainWindow.setMinimumSize(QSize(640, 480))
-        icon = QIcon()
-        icon.addFile(u":/main_icon/Icons/ebook.svg", QSize(), QIcon.Normal, QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"QToolTip\n"
+
+class Ui_Form(object):
+    def setupUi(self, Form):
+        if not Form.objectName():
+            Form.setObjectName(u"Form")
+        Form.resize(640, 480)
+        Form.setStyleSheet(u"QToolTip\n"
 "{\n"
 "     border: 1px solid black;\n"
 "     background-color: #ffa02f;\n"
@@ -136,7 +133,7 @@ class Ui_MainWindow(object):
 "    border-style: solid;\n"
 "    border-radius: 6;\n"
 "    padding: 3px;\n"
-"    font-size: 17px;\n"
+"    font-size: 20px;\n"
 "    padding-left: 5px;\n"
 "    padding-right: 5px;\n"
 "    min-width: 40px;\n"
@@ -597,137 +594,71 @@ class Ui_MainWindow(object):
 "	height:0px;\n"
 "}\n"
 "")
-        self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout = QVBoxLayout(Form)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.label_timer = QLabel(self.centralwidget)
-        self.label_timer.setObjectName(u"label_timer")
-        font = QFont()
-        font.setPointSize(10)
-        font.setKerning(True)
-        self.label_timer.setFont(font)
-        self.label_timer.setScaledContents(False)
-        self.label_timer.setMargin(0)
-        self.label_timer.setIndent(10)
-        self.label_timer.setTextInteractionFlags(Qt.NoTextInteraction)
+        self.groupBox_reactColor = QGroupBox(Form)
+        self.groupBox_reactColor.setObjectName(u"groupBox_reactColor")
+        self.groupBox_reactColor.setCheckable(True)
+        self.horizontalLayout = QHBoxLayout(self.groupBox_reactColor)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(9, 20, -1, -1)
+        self.graphicsView = showRectangle(self.groupBox_reactColor)
+        self.graphicsView.setObjectName(u"graphicsView")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.graphicsView.sizePolicy().hasHeightForWidth())
+        self.graphicsView.setSizePolicy(sizePolicy)
+        self.graphicsView.setFrameShape(QFrame.Panel)
+        brush = QBrush(QColor(255, 255, 255, 255))
+        brush.setStyle(Qt.NoBrush)
+        self.graphicsView.setBackgroundBrush(brush)
+        brush1 = QBrush(QColor(255, 255, 255, 255))
+        brush1.setStyle(Qt.NoBrush)
+        self.graphicsView.setForegroundBrush(brush1)
+        self.graphicsView.setSceneRect(QRectF(2, 2, 3, 3))
+        self.graphicsView.setDragMode(QGraphicsView.NoDrag)
 
-        self.verticalLayout.addWidget(self.label_timer)
+        self.horizontalLayout.addWidget(self.graphicsView)
 
-        self.stackedWidget = QStackedWidget(self.centralwidget)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.verticalLayout_2 = QVBoxLayout(self.page)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.textBrowser_result = QTextBrowser(self.page)
-        self.textBrowser_result.setObjectName(u"textBrowser_result")
-        font1 = QFont()
-        font1.setPointSize(12)
-        self.textBrowser_result.setFont(font1)
-        self.textBrowser_result.setStyleSheet(u"QDockWidget:pressed\n"
-"{\n"
-"	border-color: rgb(0, 0, 0);\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	/*background-color: rgb(235, 144, 37); */\n"
-"   /*  background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232); */\n"
-"}")
-        self.textBrowser_result.setFrameShape(QFrame.Panel)
-        self.textBrowser_result.setFrameShadow(QFrame.Sunken)
-        self.textBrowser_result.setLineWidth(1)
-        self.textBrowser_result.setMidLineWidth(0)
-        self.textBrowser_result.setReadOnly(False)
+        self.pushButton_colorChange = QPushButton(self.groupBox_reactColor)
+        self.pushButton_colorChange.setObjectName(u"pushButton_colorChange")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.pushButton_colorChange.sizePolicy().hasHeightForWidth())
+        self.pushButton_colorChange.setSizePolicy(sizePolicy1)
 
-        self.verticalLayout_2.addWidget(self.textBrowser_result)
+        self.horizontalLayout.addWidget(self.pushButton_colorChange)
 
-        self.stackedWidget.addWidget(self.page)
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.verticalLayout_3 = QVBoxLayout(self.page_2)
-        self.verticalLayout_3.setSpacing(6)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(9, 9, 9, 9)
-        self.scrollArea = QScrollArea(self.page_2)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 602, 335))
-        self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.label_dataimage = QLabel(self.scrollAreaWidgetContents)
-        self.label_dataimage.setObjectName(u"label_dataimage")
+        self.label_2 = QLabel(self.groupBox_reactColor)
+        self.label_2.setObjectName(u"label_2")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy2)
+        self.label_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.verticalLayout_4.addWidget(self.label_dataimage)
-
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-
-        self.verticalLayout_3.addWidget(self.scrollArea)
-
-        self.stackedWidget.addWidget(self.page_2)
-
-        self.verticalLayout.addWidget(self.stackedWidget)
-
-        self.groupBox_buttons = QGroupBox(self.centralwidget)
-        self.groupBox_buttons.setObjectName(u"groupBox_buttons")
-        self.groupBox_buttons.setAutoFillBackground(False)
-        self.groupBox_buttons.setStyleSheet(u"QPushButton {\n"
-"	font-size: 14;\n"
-"}")
-        self.groupBox_buttons.setCheckable(False)
-        self.horizontalLayout_2 = QHBoxLayout(self.groupBox_buttons)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.pushButton_save = QPushButton(self.groupBox_buttons)
-        self.pushButton_save.setObjectName(u"pushButton_save")
-        font2 = QFont()
-        self.pushButton_save.setFont(font2)
-
-        self.horizontalLayout_2.addWidget(self.pushButton_save)
-
-        self.pushButton_showtext = QPushButton(self.groupBox_buttons)
-        self.pushButton_showtext.setObjectName(u"pushButton_showtext")
-
-        self.horizontalLayout_2.addWidget(self.pushButton_showtext)
-
-        self.pushButton_showimage = QPushButton(self.groupBox_buttons)
-        self.pushButton_showimage.setObjectName(u"pushButton_showimage")
-        self.pushButton_showimage.setFont(font2)
-
-        self.horizontalLayout_2.addWidget(self.pushButton_showimage)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer)
-
-        self.pushButton_back = QPushButton(self.groupBox_buttons)
-        self.pushButton_back.setObjectName(u"pushButton_back")
-
-        self.horizontalLayout_2.addWidget(self.pushButton_back)
+        self.horizontalLayout.addWidget(self.label_2)
 
 
-        self.verticalLayout.addWidget(self.groupBox_buttons)
+        self.verticalLayout.addWidget(self.groupBox_reactColor)
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.retranslateUi(MainWindow)
-
-        self.stackedWidget.setCurrentIndex(0)
+        self.verticalLayout.addItem(self.verticalSpacer)
 
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(Form)
+
+        QMetaObject.connectSlotsByName(Form)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Result", None))
-        self.label_timer.setText(QCoreApplication.translate("MainWindow", u"\u0432\u0440\u0435\u043c\u044f \u0440\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0432\u0430\u043d\u0438\u0435 - ", None))
-        self.label_dataimage.setText("")
-        self.groupBox_buttons.setTitle("")
-        self.pushButton_save.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
-        self.pushButton_showtext.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0442\u0435\u043a\u0441\u0442", None))
-        self.pushButton_showimage.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c data-image", None))
-        self.pushButton_back.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0435\u0440\u043d\u0443\u0442\u044c\u0441\u044f", None))
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        self.groupBox_reactColor.setTitle(QCoreApplication.translate("Form", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043e\u0431\u0440\u043e\u0431\u043e\u0442\u043a\u0430", None))
+        self.pushButton_colorChange.setText(QCoreApplication.translate("Form", u"\u0426\u0432\u0435\u0442", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"\u0421\u043c\u0435\u043d\u0438\u0442\u044c \u0446\u0432\u0435\u0442 \u043a\u0432\u0430\u0434\u0440\u0430\u0442\u043e\u0432", None))
     # retranslateUi
 

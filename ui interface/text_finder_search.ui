@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1270</width>
-    <height>804</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -639,7 +639,7 @@ QMainWindow::separator
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0">
         <item>
          <widget class="QPushButton" name="areaSelection_button">
           <property name="enabled">
@@ -652,13 +652,13 @@ QMainWindow::separator
            </size>
           </property>
           <property name="statusTip">
-           <string> Allocate area for recognition</string>
+           <string>Обрезать изображение для распознавание</string>
           </property>
           <property name="whatsThis">
-           <string> Allocate area for recognition</string>
+           <string>Обрезать изображение для распознавание</string>
           </property>
           <property name="text">
-           <string>Area selection</string>
+           <string>Обрезать</string>
           </property>
          </widget>
         </item>
@@ -691,13 +691,18 @@ QMainWindow::separator
            </font>
           </property>
           <property name="toolTip">
-           <string>Open the picture</string>
+           <string>Загрузить изображение</string>
           </property>
           <property name="statusTip">
-           <string>Open the picture</string>
+           <string>Загрузить изображение</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	font-size: 15px;
+}</string>
           </property>
           <property name="text">
-           <string>Browse</string>
+           <string>Загрузить</string>
           </property>
           <property name="icon">
            <iconset resource="../qt_for_main.qrc">
@@ -748,7 +753,7 @@ QMainWindow::separator
            <x>0</x>
            <y>0</y>
            <width>1126</width>
-           <height>639</height>
+           <height>635</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -785,7 +790,10 @@ QMainWindow::separator
          <bool>false</bool>
         </property>
         <property name="statusTip">
-         <string>Invert the picture</string>
+         <string>Инвертировать картинку вертикально</string>
+        </property>
+        <property name="whatsThis">
+         <string>Инвертировать картинку</string>
         </property>
         <property name="text">
          <string>↑↓</string>
@@ -798,7 +806,10 @@ QMainWindow::separator
          <bool>false</bool>
         </property>
         <property name="statusTip">
-         <string>Rotate the picture -90°</string>
+         <string>Повернуть картинку на -90 °</string>
+        </property>
+        <property name="whatsThis">
+         <string>Повернуть картинку на -90 °</string>
         </property>
         <property name="text">
          <string>↺ 90°</string>
@@ -811,7 +822,10 @@ QMainWindow::separator
          <bool>false</bool>
         </property>
         <property name="statusTip">
-         <string>Rotate the picture +90°</string>
+         <string>Повернуть картинку на +90 °</string>
+        </property>
+        <property name="whatsThis">
+         <string>Повернуть картинку на +90 °</string>
         </property>
         <property name="text">
          <string>↻ 90°</string>
@@ -824,7 +838,10 @@ QMainWindow::separator
          <bool>false</bool>
         </property>
         <property name="statusTip">
-         <string>Invert the picture</string>
+         <string>Инвертировать картинку горизонтально</string>
+        </property>
+        <property name="whatsThis">
+         <string>Инвертировать картинку горизонтально</string>
         </property>
         <property name="text">
          <string>⇆</string>
@@ -846,7 +863,7 @@ QMainWindow::separator
    </property>
    <widget class="QMenu" name="Info">
     <property name="title">
-     <string>Info</string>
+     <string>Инфо</string>
     </property>
     <addaction name="About"/>
     <addaction name="actionInstructiom"/>
@@ -876,7 +893,7 @@ QMainWindow::separator
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Editor</string>
+    <string>Редактор</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -924,16 +941,17 @@ QMainWindow::separator
           </font>
          </property>
          <property name="statusTip">
-          <string>Recognize text on the picture</string>
+          <string> Распознать текст на картинке</string>
          </property>
          <property name="whatsThis">
-          <string>Recognize text on the picture</string>
+          <string>
+Распознать текст на картинке</string>
          </property>
          <property name="layoutDirection">
           <enum>Qt::RightToLeft</enum>
          </property>
          <property name="text">
-          <string>Begin</string>
+          <string>СТАРТ</string>
          </property>
          <property name="checkable">
           <bool>false</bool>
@@ -1036,7 +1054,7 @@ QComboBox:hover,QPushButton:hover
 }</string>
          </property>
          <property name="title">
-          <string>Languages</string>
+          <string>Языки</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignJustify|Qt::AlignVCenter</set>
@@ -1198,7 +1216,7 @@ QComboBox:hover,QPushButton:hover
              <string/>
             </property>
             <property name="placeholderText">
-             <string>languages...</string>
+             <string>Языки...</string>
             </property>
            </widget>
           </item>
@@ -1223,7 +1241,7 @@ QComboBox:hover,QPushButton:hover
           </size>
          </property>
          <property name="text">
-          <string>Gray</string>
+          <string>Черно-белый</string>
          </property>
          <property name="tristate">
           <bool>false</bool>
@@ -1273,7 +1291,7 @@ QComboBox:hover,QPushButton:hover
            <item>
             <widget class="QLabel" name="label_for_contrast">
              <property name="text">
-              <string>Contrast</string>
+              <string>Контраст</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1320,7 +1338,7 @@ QComboBox:hover,QPushButton:hover
            <item>
             <widget class="QLabel" name="lable_for_brightness">
              <property name="text">
-              <string>Brightness</string>
+              <string>Яркость</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1346,7 +1364,7 @@ QComboBox:hover,QPushButton:hover
            <item>
             <widget class="QLabel" name="label_for_color_balance">
              <property name="text">
-              <string>Color balance</string>
+              <string>Цветовой баланс</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1372,7 +1390,7 @@ QComboBox:hover,QPushButton:hover
            <item>
             <widget class="QLabel" name="label_for_sharpness">
              <property name="text">
-              <string>Sharpness</string>
+              <string>Четкость</string>
              </property>
              <property name="textFormat">
               <enum>Qt::AutoText</enum>
@@ -1428,10 +1446,13 @@ QComboBox:hover,QPushButton:hover
               <enum>Qt::StrongFocus</enum>
              </property>
              <property name="statusTip">
-              <string>Reset enhancer on the picture</string>
+              <string>Сброс улучшение на картинке</string>
+             </property>
+             <property name="whatsThis">
+              <string>Сброс улучшение на картинке</string>
              </property>
              <property name="text">
-              <string>Reset</string>
+              <string>Сброс</string>
              </property>
              <property name="icon">
               <iconset resource="../qt_for_main.qrc">
@@ -1465,7 +1486,8 @@ QComboBox:hover,QPushButton:hover
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Unsharp Mask</string>
+              <string>Контурная
+резкость</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -1497,7 +1519,8 @@ QComboBox:hover,QPushButton:hover
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Gaussian Blur</string>
+              <string>Размытие
+по Гауссу</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -1542,7 +1565,7 @@ QComboBox:hover,QPushButton:hover
 }</string>
              </property>
              <property name="text">
-              <string>Median Filter</string>
+              <string>Медианный фильтр</string>
              </property>
              <property name="tristate">
               <bool>false</bool>
@@ -1571,7 +1594,7 @@ QComboBox:hover,QPushButton:hover
           </size>
          </property>
          <property name="title">
-          <string>Scale</string>
+          <string>Масштаб</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1592,7 +1615,7 @@ QComboBox:hover,QPushButton:hover
           <item>
            <widget class="QLabel" name="height_label">
             <property name="text">
-             <string>Width</string>
+             <string>Ширина</string>
             </property>
             <property name="scaledContents">
              <bool>false</bool>
@@ -1627,7 +1650,7 @@ QComboBox:hover,QPushButton:hover
           <item>
            <widget class="QLabel" name="width_label">
             <property name="text">
-             <string>Height</string>
+             <string>Высота</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1650,21 +1673,31 @@ QComboBox:hover,QPushButton:hover
           <item>
            <widget class="QRadioButton" name="radioButton_keepAssRatio">
             <property name="text">
-             <string>Keep
-proportions</string>
+             <string>Сохранять
+пропорции</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_3">
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+             </font>
+            </property>
             <property name="statusTip">
-             <string>Change the resolution with keep resolution</string>
+             <string>Изменить разрешение</string>
             </property>
             <property name="whatsThis">
-             <string>Change the resolution</string>
+             <string>Изменить разрешение</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	font-size: 11px;
+}</string>
             </property>
             <property name="text">
-             <string>Scale</string>
+             <string>Сохранить</string>
             </property>
             <property name="icon">
              <iconset resource="../qt_for_main.qrc">
@@ -1688,10 +1721,13 @@ proportions</string>
              </size>
             </property>
             <property name="statusTip">
-             <string>Reset scale</string>
+             <string>Сбросить масштаб</string>
+            </property>
+            <property name="whatsThis">
+             <string>Сбросить масштаб</string>
             </property>
             <property name="text">
-             <string>Reset</string>
+             <string>Сброс</string>
             </property>
             <property name="icon">
              <iconset resource="../qt_for_main.qrc">
@@ -1710,7 +1746,7 @@ proportions</string>
   </widget>
   <action name="About">
    <property name="text">
-    <string>About...</string>
+    <string>О программе...</string>
    </property>
    <property name="shortcutContext">
     <enum>Qt::WindowShortcut</enum>
@@ -1725,12 +1761,12 @@ proportions</string>
      <normaloff>:/main_icon/Icons/question.svg</normaloff>:/main_icon/Icons/question.svg</iconset>
    </property>
    <property name="text">
-    <string>Instruction</string>
+    <string>Инструкция</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
    <property name="text">
-    <string>About Qt</string>
+    <string>Про Qt</string>
    </property>
   </action>
  </widget>

@@ -4,11 +4,12 @@
 ##############################################
 import os
 import sys
+from datetime import datetime
 
 import pytesseract
 from PIL import Image
 from PySide2 import QtUiTools
-from PySide2.QtCore import Qt, Signal, Slot, QThread
+from PySide2.QtCore import Qt, Signal, Slot, QThread, QTimer
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
 from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget, QErrorMessage, QComboBox
 import cv2
@@ -150,9 +151,10 @@ class RecognizeBegin(QThread):
 
     def __init__(self, parent=None):
         super(RecognizeBegin, self).__init__(parent=parent)
-        # self.mw = MyWindow()
 
     def run(self):
+        begin = datetime.now()
+
         self.parent().ui.progressBar.setMaximum(0)
         # self.parent().guioff()
         self.signalGuioff.emit()
@@ -197,9 +199,9 @@ class RecognizeBegin(QThread):
             # error_dialog = QErrorMessage()
             # error_dialog.showMessage("Text hasn't found")
         else:
-            self.signalResult.emit(text, [img])
+            timer = datetime.now() - begin
+            self.signalResult.emit(text, [img, timer])
 
-        # self.parent().guion()
         self.signalGuion.emit()
         self.parent().ui.progressBar.setMaximum(1)
 
@@ -575,7 +577,7 @@ class MyWindow(QMainWindow):
     @Slot(str, list)
     def resultWindow(self, text, image_data):
 
-        self.result = result.ResultWidget(self, text, image_data[0])
+        self.result = result.ResultWidget(self, text, image_data[0], image_data[1])
         self.result.show()
 
     def notfoundtexterr(self):

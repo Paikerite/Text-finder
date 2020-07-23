@@ -7,13 +7,15 @@ from ui_result import Ui_MainWindow
 
 
 class ResultWidget(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self, parent, text, image_data):
+    def __init__(self, parent, text, image_data, timer):
         super().__init__()
         self.setupUi(self)
         self.Parent = parent
         self.result_text = text
         self.image_data = image_data
+        # self.timer_result = timer
 
+        self.label_timer.setText(f"recognition time - {timer}")
         self.label_dataimage.setPixmap(Image.fromarray(image_data).toqpixmap())
         self.textBrowser_result.setText(text)
         self.pushButton_save.clicked.connect(self.saveResult)

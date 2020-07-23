@@ -590,12 +590,15 @@ QMainWindow::separator
        <number>20</number>
       </property>
       <item>
-       <widget class="QGraphicsView" name="graphicsView">
+       <widget class="showRectangle" name="graphicsView">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
         </property>
         <property name="backgroundBrush">
          <brush brushstyle="NoBrush">
@@ -675,6 +678,13 @@ QMainWindow::separator
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>showRectangle</class>
+   <extends>QGraphicsView</extends>
+   <header>showrectangle.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

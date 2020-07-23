@@ -132,7 +132,7 @@ QPushButton
     border-style: solid;
     border-radius: 6;
     padding: 3px;
-    font-size: 20px;
+    font-size: 17px;
     padding-left: 5px;
     padding-right: 5px;
     min-width: 40px;
@@ -594,7 +594,7 @@ QMainWindow::separator
        </font>
       </property>
       <property name="text">
-       <string>recognition time - </string>
+       <string>время распознавание - </string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
@@ -680,7 +680,7 @@ QMainWindow::separator
              <x>0</x>
              <y>0</y>
              <width>602</width>
-             <height>332</height>
+             <height>335</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -702,7 +702,12 @@ QMainWindow::separator
     <item>
      <widget class="QGroupBox" name="groupBox_buttons">
       <property name="autoFillBackground">
-       <bool>true</bool>
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	font-size: 14;
+}</string>
       </property>
       <property name="title">
        <string/>
@@ -719,14 +724,14 @@ QMainWindow::separator
           </font>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Сохранить</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_showtext">
          <property name="text">
-          <string>Show text</string>
+          <string>Показать текст</string>
          </property>
         </widget>
        </item>
@@ -738,7 +743,7 @@ QMainWindow::separator
           </font>
          </property>
          <property name="text">
-          <string>Show data-image</string>
+          <string>Показать data-image</string>
          </property>
         </widget>
        </item>
@@ -758,7 +763,7 @@ QMainWindow::separator
        <item>
         <widget class="QPushButton" name="pushButton_back">
          <property name="text">
-          <string>Back</string>
+          <string>Вернуться</string>
          </property>
         </widget>
        </item>

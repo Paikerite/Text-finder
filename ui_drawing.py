@@ -1,23 +1,33 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'uiforDrawing.ui',
-# licensing of 'uiforDrawing.ui' applies.
-#
-# Created: Fri May  8 15:17:02 2020
-#      by: pyside2-uic  running on PySide2 5.12.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'uiforDrawing.ui'
+##
+## Created by: Qt User Interface Compiler version 5.14.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+
+from labelimage import labelimage
+
+import data_main
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Icons/find.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon = QIcon()
+        icon.addFile(u"Icons/find.svg", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("QToolTip\n"
+        MainWindow.setStyleSheet(u"QToolTip\n"
 "{\n"
 "     border: 1px solid black;\n"
 "     background-color: #ffa02f;\n"
@@ -46,86 +56,100 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QMainWindow{\n"
-"    \n"
-"    background-color: rgb(80, 80, 80);\n"
+"	\n"
+"	background-color: rgb(80, 80, 80);\n"
 "}\n"
 "QLabel{\n"
-"    color: rgb(255, 255, 255);\n"
+"	color: rgb(255, 255, 255);\n"
 "}\n"
 "")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.positin_label = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.positin_label = QLabel(self.centralwidget)
+        self.positin_label.setObjectName(u"positin_label")
+        font = QFont()
         font.setPointSize(16)
         self.positin_label.setFont(font)
-        self.positin_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.positin_label.setObjectName("positin_label")
+        self.positin_label.setAlignment(Qt.AlignCenter)
+
         self.verticalLayout.addWidget(self.positin_label)
-        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
-        self.scrollArea.setStyleSheet("QScrollArea{\n"
-"    background-color: rgb(90, 90, 90);\n"
+
+        self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setStyleSheet(u"QScrollArea{\n"
+"	background-color: rgb(90, 90, 90);\n"
 "}")
-        self.scrollArea.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.scrollArea.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.scrollArea.setFrameShape(QFrame.WinPanel)
+        self.scrollArea.setFrameShadow(QFrame.Sunken)
         self.scrollArea.setLineWidth(1)
         self.scrollArea.setMidLineWidth(0)
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 778, 495))
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 495))
         self.scrollAreaWidgetContents.setAutoFillBackground(False)
-        self.scrollAreaWidgetContents.setStyleSheet("QWidget {\n"
-"    \n"
-"    background-color: rgb(95, 95, 95);\n"
+        self.scrollAreaWidgetContents.setStyleSheet(u"QWidget {\n"
+"	\n"
+"	background-color: rgb(95, 95, 95);\n"
 "}")
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.labelimage = labelimage(self.scrollAreaWidgetContents)
-        self.labelimage.setCursor(QtCore.Qt.CrossCursor)
+        self.labelimage.setObjectName(u"labelimage")
+        self.labelimage.setCursor(QCursor(Qt.CrossCursor))
         self.labelimage.setMouseTracking(True)
-        self.labelimage.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.labelimage.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.labelimage.setFocusPolicy(Qt.NoFocus)
+        self.labelimage.setContextMenuPolicy(Qt.DefaultContextMenu)
         self.labelimage.setAutoFillBackground(False)
-        self.labelimage.setText("")
         self.labelimage.setScaledContents(False)
-        self.labelimage.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.labelimage.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.labelimage.setWordWrap(False)
-        self.labelimage.setObjectName("labelimage")
+
         self.verticalLayout_2.addWidget(self.labelimage)
+
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
         self.verticalLayout.addWidget(self.scrollArea)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.SaveChangedPic = QtWidgets.QPushButton(self.centralwidget)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Icons/save.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.SaveChangedPic = QPushButton(self.centralwidget)
+        self.SaveChangedPic.setObjectName(u"SaveChangedPic")
+        icon1 = QIcon()
+        icon1.addFile(u":/main_icon/Icons/save.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.SaveChangedPic.setIcon(icon1)
-        self.SaveChangedPic.setObjectName("SaveChangedPic")
+
         self.horizontalLayout.addWidget(self.SaveChangedPic)
-        self.resetPicture = QtWidgets.QPushButton(self.centralwidget)
-        self.resetPicture.setStyleSheet("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Icons/arr_repeat.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        self.resetPicture = QPushButton(self.centralwidget)
+        self.resetPicture.setObjectName(u"resetPicture")
+        self.resetPicture.setStyleSheet(u"")
+        icon2 = QIcon()
+        icon2.addFile(u":/main_icon/Icons/arr_repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.resetPicture.setIcon(icon2)
-        self.resetPicture.setObjectName("resetPicture")
+
         self.horizontalLayout.addWidget(self.resetPicture)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Size off", None, -1))
-        self.positin_label.setText(QtWidgets.QApplication.translate("MainWindow", "Select certain field", None, -1))
-        self.SaveChangedPic.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
-        self.resetPicture.setText(QtWidgets.QApplication.translate("MainWindow", "Reset", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Size off", None))
+        self.positin_label.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0434\u0435\u043b\u0438\u0442\u0435 \u043e\u0431\u043b\u0430\u0441\u0442\u044c", None))
+        self.labelimage.setText("")
+        self.SaveChangedPic.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
+        self.resetPicture.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0431\u0440\u043e\u0441", None))
+    # retranslateUi
 
-from labelimage import labelimage

@@ -65,7 +65,7 @@ QLabel{
        </font>
       </property>
       <property name="text">
-       <string>Select certain field</string>
+       <string>Выделите область</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -153,7 +153,7 @@ QLabel{
       <item>
        <widget class="QPushButton" name="SaveChangedPic">
         <property name="text">
-         <string>Save</string>
+         <string>Сохранить</string>
         </property>
         <property name="icon">
          <iconset resource="../qt_for_main.qrc">
@@ -167,7 +167,7 @@ QLabel{
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Reset</string>
+         <string>Сброс</string>
         </property>
         <property name="icon">
          <iconset resource="../qt_for_main.qrc">
