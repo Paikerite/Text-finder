@@ -38,7 +38,7 @@ class ResultWidget(QtWidgets.QMainWindow, Ui_MainWindow):
                                            )
         try:
             file = open(name[0], 'w')
-            file.write(self.result_text)
+            file.write(self.textBrowser_result.toPlainText()) # self.result_text
             file.close()
         except FileNotFoundError as fe:
             print(fe)

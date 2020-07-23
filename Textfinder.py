@@ -261,7 +261,9 @@ class MyWindow(QMainWindow):
         self.ui.progressBar.setValue(0)
         self.toknowresolution_of_pixmap()
 
-        self.lang = ["Russian", "English", "Ukrainan", "Spanish", "French", "German", "Italian", "Math(test)"]
+        self.lang = ["Русссский", "Английский", "Украинский",
+                     "Испанский", "Французский", "Немецкий",
+                     "Итальянский", "Математический(test)"]
 
         self.ui.comboBox.addItems(self.lang)
 
