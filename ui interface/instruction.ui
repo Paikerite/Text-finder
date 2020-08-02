@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1114</width>
+    <width>1459</width>
     <height>748</height>
    </rect>
   </property>
@@ -641,16 +641,25 @@ QTreeView::item:selected {
          <string>Drag &amp; Drop</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Загрузка картины с помощью копирование</string>
+        </property>
+        <property name="toolTip">
+         <string>Загрузка картины с помощью копирование</string>
+        </property>
+        <property name="statusTip">
+         <string>Загрузка картины с помощью копирование</string>
+        </property>
+        <property name="whatsThis">
+         <string>Загрузка картины с помощью копирование</string>
+        </property>
+       </item>
       </item>
       <item>
        <property name="text">
         <string>2. Редактор</string>
        </property>
-       <item>
-        <property name="text">
-         <string>Коррекция</string>
-        </property>
-       </item>
        <item>
         <property name="text">
          <string>Расположение инструментов</string>
@@ -680,6 +689,11 @@ QTreeView::item:selected {
          <string>Обрезка по выделению</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Выбор языка</string>
+        </property>
+       </item>
       </item>
      </widget>
     </item>
@@ -701,7 +715,7 @@ QTreeView::item:selected {
        <number>4</number>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>8</number>
       </property>
       <widget class="QWidget" name="page_loadfile">
        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,1">
@@ -714,7 +728,7 @@ QTreeView::item:selected {
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;После запуска программы, следует загрузить&lt;/p&gt;&lt;p&gt;картинку/фотографию. Что бы это сделать, &lt;/p&gt;&lt;p&gt;нужно нажать на кнопку &lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Browse&amp;quot;&lt;/span&gt;, после чего &lt;/p&gt;&lt;p&gt;выбрать файл.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;После запуска программы, следует загрузить&lt;/p&gt;&lt;p&gt;картинку/фотографию. Что бы это сделать, &lt;/p&gt;&lt;p&gt;нужно нажать на кнопку &lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Загрузить&amp;quot;&lt;/span&gt;, после чего &lt;/p&gt;&lt;p&gt;выбрать файл.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -737,7 +751,7 @@ QTreeView::item:selected {
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>../../../Progri/Python/Text finder/instruction/1.png</pixmap>
+           <pixmap resource="../qt.qrc">:/inst_areselection/instruction/1.png</pixmap>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -756,7 +770,7 @@ QTreeView::item:selected {
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Возможно вам потребуется просканировать &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;конкретную область, а не все изображение. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Для этого нужно перейти в раздел &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Area selection&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/inst_areselection/instruction/2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Возможно вам потребуется просканировать &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;конкретную область, а не все изображение. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Для этого нужно перейти в раздел &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Обрезать&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/inst_areselection/instruction/2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -768,7 +782,7 @@ QTreeView::item:selected {
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Затем зажать левую кнопку мыши на выбранной области и выделить ее,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;после чего изображение будет обрезано. Потом нажать на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Save&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Если вы ошиблись, нажмите на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Reset&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;br/&gt;&lt;img src=&quot;:/inst_areselection/instruction/3_4_5.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Затем зажать левую кнопку мыши на выбранной области и выделить ее,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;после чего изображение будет обрезано. Потом нажать на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Сохранить&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Если вы ошиблись, нажмите на кнопку &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Сброс&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot;.&lt;/span&gt;&lt;br/&gt;&lt;img src=&quot;:/inst_areselection/instruction/3_4_5.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>
@@ -855,7 +869,7 @@ QTreeView::item:selected {
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Есть возможность изменить разрешение картины с сохранением пропорцый.&lt;/p&gt;&lt;p&gt;Нужно ввести нужный вами ширину и высоту.&lt;/p&gt;&lt;p&gt;Reset - сбрасывает разрешение картины.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/inst_areselection/instruction/9.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Есть возможность изменить разрешение картины с сохранением пропорцый и без.&lt;/p&gt;&lt;p&gt;Нужно ввести нужный вами ширину и высоту.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/inst_areselection/instruction/9.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -907,6 +921,132 @@ QTreeView::item:selected {
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
          </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_lang">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QLabel" name="label_lang">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <family>Yu Gothic UI Light</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Выбор языка&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/inst_areselection/instruction/91.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_loadWithCopy">
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QLabel" name="label_infoCopy">
+          <property name="font">
+           <font>
+            <family>Yu Gothic UI Light</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Загрузить картинку можно с помощью контекстного меню в пункте &quot;Вставить&quot;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_imgCopy">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../qt.qrc">:/inst_areselection/instruction/11.png</pixmap>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_enchancer">
+       <layout class="QVBoxLayout" name="verticalLayout_9">
+        <item>
+         <widget class="QLabel" name="label_enchancer">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <family>Yu Gothic UI Light</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если оригинальное изображание плохо распознается, то можно воспользоваться &amp;quot;Улучшателями&amp;quot;.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Старайтесь как можно сильнее выделеть нужный вам текст, перед фоном. &lt;/p&gt;&lt;p&gt;Черно-белое изображение лучше распознается, по-этому оптимально поставить галочку &amp;quot;Черно-белый&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_enchancer_page1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../qt.qrc">:/inst_areselection/instruction/12.png</pixmap>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_enchancer_page2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../qt.qrc">:/inst_areselection/instruction/13.png</pixmap>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>

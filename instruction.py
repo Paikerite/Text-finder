@@ -6,7 +6,7 @@ import instruction_ui as ins_ui
 
 class Instruction(QMainWindow):
 
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         super().__init__()
 
         self.ui = ins_ui.Ui_MainWindow()
@@ -40,6 +40,11 @@ class Instruction(QMainWindow):
             self.ui.stackedWidget.setCurrentIndex(1)
         elif tmp == "Об программе":
             self.ui.stackedWidget.setCurrentIndex(5)
+        elif tmp == "Загрузка картины с помощью копирование":
+            self.ui.stackedWidget.setCurrentIndex(7)
+        elif tmp == "Выбор языка":
+            self.ui.stackedWidget.setCurrentIndex(6)
+
 
 
 if __name__ == "__main__":

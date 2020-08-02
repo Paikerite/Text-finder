@@ -1224,7 +1224,7 @@ class Ui_MainWindow(object):
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u21c6", None))
         self.Info.setTitle(QCoreApplication.translate("MainWindow", u"\u0418\u043d\u0444\u043e", None))
         self.dockWidget_editor.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440", None))
-#if QT_CONFIG(statustip)
+#if QT_CONFIG(statustip)checkBox_medianfilter
         self.pushButton.setStatusTip(QCoreApplication.translate("MainWindow", u" \u0420\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0442\u044c \u0442\u0435\u043a\u0441\u0442 \u043d\u0430 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0435", None))
 #endif // QT_CONFIG(statustip)
 #if QT_CONFIG(whatsthis)
@@ -1256,7 +1256,7 @@ class Ui_MainWindow(object):
 "\u0440\u0435\u0437\u043a\u043e\u0441\u0442\u044c", None))
         self.label_GaussianBlur.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u044b\u0442\u0438\u0435\n"
 "\u043f\u043e \u0413\u0430\u0443\u0441\u0441\u0443", None))
-        self.checkBox_medianfilter.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439 \u0444\u0438\u043b\u044c\u0442\u0440", None))
+        self.checkBox_medianfilter.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439\n\u0444\u0438\u043b\u044c\u0442\u0440", None))
         self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage2), QCoreApplication.translate("MainWindow", u"2", None))
         self.ScaleCheckBox.setTitle(QCoreApplication.translate("MainWindow", u"\u041c\u0430\u0441\u0448\u0442\u0430\u0431", None))
         self.height_label.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0438\u0440\u0438\u043d\u0430", None))

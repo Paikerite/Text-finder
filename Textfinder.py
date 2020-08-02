@@ -261,7 +261,7 @@ class MyWindow(QMainWindow):
         self.ui.progressBar.setValue(0)
         self.toknowresolution_of_pixmap()
 
-        self.lang = ["Русссский", "Английский", "Украинский",
+        self.lang = ["Русский", "Английский", "Украинский",
                      "Испанский", "Французский", "Немецкий",
                      "Итальянский", "Математический(test)"]
 

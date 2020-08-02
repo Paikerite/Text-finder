@@ -1263,7 +1263,7 @@ QComboBox:hover,QPushButton:hover
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <property name="elideMode">
           <enum>Qt::ElideNone</enum>
@@ -1565,7 +1565,8 @@ QComboBox:hover,QPushButton:hover
 }</string>
              </property>
              <property name="text">
-              <string>Медианный фильтр</string>
+              <string>Медианный
+фильтр</string>
              </property>
              <property name="tristate">
               <bool>false</bool>

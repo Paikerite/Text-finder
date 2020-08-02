@@ -18,10 +18,10 @@ class imagelabel_fromMainUi(QLabel):
         self.customContextMenuRequested.connect(self.on_context_menu)
 
         self.popMenu = QMenu(self)
-        self.popMenu.addAction(QAction('Paste', self, triggered=self.context_trigger_paste))
-        self.popMenu.addAction(QAction('Copy', self, triggered=self.context_trigger_copy))
+        self.popMenu.addAction(QAction('Вставить', self, triggered=self.context_trigger_paste))
+        self.popMenu.addAction(QAction('Копировать', self, triggered=self.context_trigger_copy))
         self.popMenu.addSeparator()
-        self.popMenu.addAction(QAction('Reset', self, triggered=self.context_trigger_reset))
+        self.popMenu.addAction(QAction('Сбросить', self, triggered=self.context_trigger_reset))
 
         # self.popMenu.triggered[QAction].connect(self.context_trigger)
 
