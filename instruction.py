@@ -27,11 +27,8 @@ class Instruction(QMainWindow):
             self.ui.stackedWidget.setCurrentIndex(0)
         elif tmp == "Drag & Drop":
             self.ui.stackedWidget.setCurrentIndex(2)
-        elif tmp == "Коррекция":
-            print("not ready yet")
-            # self.ui.stackedWidget.setCurrentIndex()
         elif tmp == "Расположение инструментов":
-            print("not ready yet")
+            self.ui.stackedWidget.setCurrentIndex(8)
         elif tmp == "Размер":
             self.ui.stackedWidget.setCurrentIndex(3)
         elif tmp == "Положение картины":

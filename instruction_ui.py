@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1114, 748)
+        MainWindow.resize(1459, 748)
         MainWindow.setMaximumSize(QSize(1852, 1025))
         icon = QIcon()
         icon.addFile(u"../../../Progri/Python/Text finder/ebook.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -599,7 +599,6 @@ class Ui_MainWindow(object):
         QTreeWidgetItem(__qtreewidgetitem)
         QTreeWidgetItem(__qtreewidgetitem)
         __qtreewidgetitem1 = QTreeWidgetItem(self.treeWidget)
-        QTreeWidgetItem(__qtreewidgetitem1)
         __qtreewidgetitem2 = QTreeWidgetItem(__qtreewidgetitem1)
         __qtreewidgetitem2.setBackground(0, brush1);
         QTreeWidgetItem(__qtreewidgetitem1)
@@ -817,6 +816,46 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.label_imgCopy)
 
         self.stackedWidget.addWidget(self.page_loadWithCopy)
+        self.page_enchancer = QWidget()
+        self.page_enchancer.setObjectName(u"page_enchancer")
+        self.verticalLayout_9 = QVBoxLayout(self.page_enchancer)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.label_enchancer = QLabel(self.page_enchancer)
+        self.label_enchancer.setObjectName(u"label_enchancer")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.label_enchancer.sizePolicy().hasHeightForWidth())
+        self.label_enchancer.setSizePolicy(sizePolicy2)
+        self.label_enchancer.setFont(font4)
+        self.label_enchancer.setScaledContents(False)
+
+        self.verticalLayout_9.addWidget(self.label_enchancer)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label_enchancer_page1 = QLabel(self.page_enchancer)
+        self.label_enchancer_page1.setObjectName(u"label_enchancer_page1")
+        sizePolicy2.setHeightForWidth(self.label_enchancer_page1.sizePolicy().hasHeightForWidth())
+        self.label_enchancer_page1.setSizePolicy(sizePolicy2)
+        self.label_enchancer_page1.setPixmap(QPixmap(u":/inst_areselection/instruction/12.png"))
+        self.label_enchancer_page1.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_2.addWidget(self.label_enchancer_page1)
+
+        self.label_enchancer_page2 = QLabel(self.page_enchancer)
+        self.label_enchancer_page2.setObjectName(u"label_enchancer_page2")
+        sizePolicy2.setHeightForWidth(self.label_enchancer_page2.sizePolicy().hasHeightForWidth())
+        self.label_enchancer_page2.setSizePolicy(sizePolicy2)
+        self.label_enchancer_page2.setPixmap(QPixmap(u":/inst_areselection/instruction/13.png"))
+        self.label_enchancer_page2.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_2.addWidget(self.label_enchancer_page2)
+
+
+        self.verticalLayout_9.addLayout(self.horizontalLayout_2)
+
+        self.stackedWidget.addWidget(self.page_enchancer)
 
         self.horizontalLayout.addWidget(self.stackedWidget)
 
@@ -862,17 +901,15 @@ class Ui_MainWindow(object):
         ___qtreewidgetitem6 = self.treeWidget.topLevelItem(2)
         ___qtreewidgetitem6.setText(0, QCoreApplication.translate("MainWindow", u"2. \u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440", None));
         ___qtreewidgetitem7 = ___qtreewidgetitem6.child(0)
-        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("MainWindow", u"\u041a\u043e\u0440\u0440\u0435\u043a\u0446\u0438\u044f", None));
+        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u043e\u0432", None));
         ___qtreewidgetitem8 = ___qtreewidgetitem6.child(1)
-        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u043e\u0432", None));
+        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440", None));
         ___qtreewidgetitem9 = ___qtreewidgetitem6.child(2)
-        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440", None));
+        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u044b", None));
         ___qtreewidgetitem10 = ___qtreewidgetitem6.child(3)
-        ___qtreewidgetitem10.setText(0, QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u044b", None));
+        ___qtreewidgetitem10.setText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u0435\u0437\u043a\u0430 \u043f\u043e \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044e", None));
         ___qtreewidgetitem11 = ___qtreewidgetitem6.child(4)
-        ___qtreewidgetitem11.setText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u0435\u0437\u043a\u0430 \u043f\u043e \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044e", None));
-        ___qtreewidgetitem12 = ___qtreewidgetitem6.child(5)
-        ___qtreewidgetitem12.setText(0, QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u043e\u0440 \u044f\u0437\u044b\u043a\u0430", None));
+        ___qtreewidgetitem11.setText(0, QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u043e\u0440 \u044f\u0437\u044b\u043a\u0430", None));
         self.treeWidget.setSortingEnabled(__sortingEnabled)
 
         self.label_Instruction_loadfile.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u041f\u043e\u0441\u043b\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b, \u0441\u043b\u0435\u0434\u0443\u0435\u0442 \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c</p><p>\u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443/\u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044e. \u0427\u0442\u043e \u0431\u044b \u044d\u0442\u043e \u0441\u0434\u0435\u043b\u0430\u0442\u044c, </p><p>\u043d\u0443\u0436\u043d\u043e \u043d\u0430\u0436\u0430\u0442\u044c \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 <span style=\" font-weight:600;\">&quot;\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c&quot;</span>, \u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e </p><p>\u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0444\u0430\u0439\u043b.</p></body></html>", None))
@@ -889,5 +926,9 @@ class Ui_MainWindow(object):
         self.label_lang.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">\u0412\u044b\u0431\u043e\u0440 \u044f\u0437\u044b\u043a\u0430</span></p><p><img src=\":/inst_areselection/instruction/91.png\"/></p></body></html>", None))
         self.label_infoCopy.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443 \u043c\u043e\u0436\u043d\u043e \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u043d\u043e\u0433\u043e \u043c\u0435\u043d\u044e \u0432 \u043f\u0443\u043d\u043a\u0442\u0435 \"\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044c\"", None))
         self.label_imgCopy.setText("")
+        self.label_enchancer.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0415\u0441\u043b\u0438 \u043e\u0440\u0438\u0433\u0438\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0430\u043d\u0438\u0435 \u043f\u043b\u043e\u0445\u043e \u0440\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0435\u0442\u0441\u044f, \u0442\u043e \u043c\u043e\u0436\u043d\u043e \u0432\u043e\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c\u0441\u044f &quot;\u0423\u043b\u0443\u0447\u0448\u0430\u0442\u0435\u043b\u044f\u043c\u0438&quot;.</p><p><br/>\u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u043a\u0430\u043a \u043c\u043e\u0436\u043d\u043e \u0441\u0438\u043b\u044c\u043d\u0435\u0435 \u0432\u044b\u0434\u0435\u043b\u0435\u0442\u044c \u043d\u0443\u0436\u043d\u044b\u0439 \u0432\u0430\u043c \u0442\u0435\u043a\u0441\u0442, \u043f\u0435\u0440\u0435\u0434 \u0444\u043e\u043d\u043e\u043c. </p><p>\u0427\u0435\u0440\u043d\u043e-\u0431\u0435\u043b\u043e\u0435 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u043b\u0443"
+                        "\u0447\u0448\u0435 \u0440\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0435\u0442\u0441\u044f, \u043f\u043e-\u044d\u0442\u043e\u043c\u0443 \u043e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u043e \u043f\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0433\u0430\u043b\u043e\u0447\u043a\u0443 &quot;\u0427\u0435\u0440\u043d\u043e-\u0431\u0435\u043b\u044b\u0439&quot;.</p></body></html>", None))
+        self.label_enchancer_page1.setText("")
+        self.label_enchancer_page2.setText("")
     # retranslateUi
 

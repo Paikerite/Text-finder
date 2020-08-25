@@ -49,14 +49,14 @@ GAUSSIANBLUR_FACTOR_MAX = 2.0
 UNSHARPMASK_FACTOR_MIN = 0.0
 UNSHARPMASK_FACTOR_MAX = 2.0
 
-languages = {"Russian": 'rus',
-             "English": 'eng',
-             "Ukrainan": 'ukr',
-             "Spanish": 'spa',
-             "French": 'fra',
-             "German": 'deu',
-             "Italian": 'ita',
-             "Math(test)": 'equ',
+languages = {"Русский": 'rus',
+             "Английский": 'eng',
+             "Украинский": 'ukr',
+             "Испанский": 'spa',
+             "Французский": 'fra',
+             "Немецкий": 'deu',
+             "Итальянский": 'ita',
+             "Математический(test)": 'equ',
              }
 
 
