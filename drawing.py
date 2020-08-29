@@ -10,9 +10,9 @@ import ui_drawing
 class MyWidget(QtWidgets.QMainWindow, ui_drawing.Ui_MainWindow):
 
     def __init__(self, parent, image=None):
-        super().__init__()
+        super(MyWidget, self).__init__(parent=parent)
         self.setupUi(self)
-        self.Parent = parent
+        self.Parent = self.parent()
         self.resetPicture.clicked.connect(lambda: self.labelimage.setPixmap(self.image_from_main))
         self.SaveChangedPic.clicked.connect(self.savepicture)
 
@@ -40,10 +40,9 @@ class MyWidget(QtWidgets.QMainWindow, ui_drawing.Ui_MainWindow):
         self.positin_label.setText(f"Mouse position. begin - {lst_pos[0]} {lst_pos[1]} "
                                    f"end - {lst_pos[2]} {lst_pos[3]}")
 
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
-    application = MyWidget()
-    application.show()
-
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     app = QtWidgets.QApplication([])
+#     application = MyWidget()
+#     application.show()
+#
+#     sys.exit(app.exec_())

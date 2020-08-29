@@ -78,6 +78,7 @@ class imagelabel_fromMainUi(QLabel):
 
             self.dropEvent_Signal.emit(str(self.file_dir))
             print("Send file_dir to main window")
+            self.setStyleSheet(u'')
 
     def dragLeaveEvent(self, event):
         self.setStyleSheet(u'')

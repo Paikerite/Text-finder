@@ -8,3 +8,6 @@
 /instruction/
 /Tesseract-OCR/
 /ebook.ico
+/dist/
+/build/
+/venv/

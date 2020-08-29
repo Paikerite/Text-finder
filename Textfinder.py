@@ -6,21 +6,21 @@ import os
 import sys
 from datetime import datetime
 
+import cv2
 import pytesseract
 from PIL import Image
+from PySide2 import QtXml
 from PySide2 import QtUiTools
-from PySide2.QtCore import Qt, Signal, Slot, QThread, QTimer
+from PySide2.QtCore import Qt, Signal, Slot, QThread
 from PySide2.QtGui import QPixmap, QImage, QIntValidator
-from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication, QWidget, QErrorMessage, QComboBox
-import cv2
+from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication
 
-import img_helper
-import ui
-import instruction as ins
 # import about_tf
 import drawing as drawing_file
+import img_helper
+import instruction as ins
 import result
-from imagelabel_frommainui import imagelabel_fromMainUi
+import ui
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -142,7 +142,6 @@ def calculating(from_slider_value, min, max):
 
     return value
 
-
 class RecognizeBegin(QThread):
     signalMain = Signal()
     signalResult = Signal(str, list)
@@ -156,7 +155,6 @@ class RecognizeBegin(QThread):
         begin = datetime.now()
 
         self.parent().ui.progressBar.setMaximum(0)
-        # self.parent().guioff()
         self.signalGuioff.emit()
 
         fortxt = self.parent().ui.imagelabel.pixmap()
@@ -167,16 +165,6 @@ class RecognizeBegin(QThread):
 
         fortxt = Image.fromqpixmap(fortxt)
         pytesseract.pytesseract.tesseract_cmd = dir
-
-        # try:
-        #     pytesseract.image_to_osd(fortxt)
-        # except pytesseract.pytesseract.TesseractError as te:
-        #     print(te)
-        # except pytesseract.pytesseract.TesseractNotFoundError as fe:
-        #     print(fe)
-        #     QMessageBox.about(self, 'Error', 'Tesseract not found')
-
-        # lang = self.parent().ui.comboBox.currentText()
 
         text = pytesseract.image_to_string(fortxt, lang='+'.join(self.parent().lang_lst)) #eng+rus
         dict_data = pytesseract.image_to_boxes(fortxt, lang='+'.join(self.parent().lang_lst))
@@ -192,12 +180,6 @@ class RecognizeBegin(QThread):
         if text == '':
             print("empty text")
             self.signalMain.emit()
-            # self.mw.notfoundtexterr()
-            # self.signals.notfoundtexterr()
-            # QMessageBox.about(self, 'Error', "Text hasn't found")
-
-            # error_dialog = QErrorMessage()
-            # error_dialog.showMessage("Text hasn't found")
         else:
             timer = datetime.now() - begin
             self.signalResult.emit(text, [img, timer])
@@ -209,18 +191,17 @@ class RecognizeBegin(QThread):
 class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
-        # self.threadpool = QtCore.QThreadPool()
 
         self.ui = ui.Ui_MainWindow()
         self.ui.setupUi(self)
         # send_pic = pyqtSignal(str)
         # self.imagelabel = imagelabel_fromMainUi(parent=self)
+
         self.RecognizeBegin = RecognizeBegin(parent=self)
         self.RecognizeBegin.signalMain.connect(self.notfoundtexterr)
         self.RecognizeBegin.signalResult.connect(self.resultWindow)
         self.RecognizeBegin.signalGuion.connect(self.guion)
         self.RecognizeBegin.signalGuioff.connect(self.guioff)
-
         self.drawing = None
         self.image = None
         self.pixmap = None
@@ -257,6 +238,7 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_5.clicked.connect(self.on_flip_top)
         self.ui.pushButton_add.clicked.connect(self.add_leng)
         self.ui.pushButton_remove.clicked.connect(self.remove_leng)
+
         self.ui.progressBar.setMinimum(0)
         self.ui.progressBar.setValue(0)
         self.toknowresolution_of_pixmap()
@@ -278,7 +260,7 @@ class MyWindow(QMainWindow):
         try:
             self.width_pixmap = self.ui.imagelabel.pixmap().width()
             self.height_pixmap = self.ui.imagelabel.pixmap().height()
-            self.ui.imagelabel.setStatusTip(f"current resolution - {self.width_pixmap}x{self.height_pixmap}")
+            self.ui.imagelabel.setStatusTip(f"Текущее разрешение - {self.width_pixmap}x{self.height_pixmap}")
         except AttributeError as AE:
             print(AE)
 
@@ -445,31 +427,27 @@ class MyWindow(QMainWindow):
         except NameError as ne:
             print(ne)
             QMessageBox.about(self, 'Error', 'Image not found, upload it')
+        except TypeError as te:
+            print(te)
+            self.ui.imagelabel.setPixmap(self.image)
 
         self.toknowresolution_of_pixmap()
 
     def scalecheck(self):
-        try:
+        if self.ui.width.text().isdigit() and self.ui.height.text().isdigit():
             width = int(self.ui.width.text())
             height = int(self.ui.height.text())
             print(f"width = {width} height - {height}")
-        except ValueError as ve:
-            print(ve)
-            QMessageBox.about(self, 'Error', 'Please, fill the empty fields')
-            width = ''
-            height = ''
-        if width == '' or height == '':
-            pass
-        else:
+
             try:
                 if self.ui.radioButton_keepAssRatio.isChecked():
                     self.pixmap = self.image.scaled(width, height, Qt.KeepAspectRatio)
                 else:
                     self.pixmap = self.image.scaled(width, height)
                 self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
-            except NameError as ne:
-                print(ne)
-                QMessageBox.about(self, 'Error', 'Image not found, upload it')
+            except TypeError as te:
+                print(te)
+                self.ui.imagelabel.setPixmap(self.pixmap)
 
         self.toknowresolution_of_pixmap()
 
@@ -510,6 +488,9 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider_gaussian.setValue(-100)
         self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
+
+        self.ui.width.clear()
+        self.ui.height.clear()
 
         operations.unsharmask = operations.gaussianblur = operations.color_balance = \
             operations.brightness = operations.contrast = operations.sharpness = 0
@@ -610,11 +591,15 @@ class MyWindow(QMainWindow):
 
     @Slot(list)
     def guion_withpastefile(self, image):
+        # self.image = QImage(image[0])
         self.image = image[0]
         self.image_for_enchance_reset = image
         self.pixmap = None
 
         self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+
+        self.ui.width.clear()
+        self.ui.height.clear()
         self.guion()
 
     @Slot()
@@ -631,6 +616,8 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider_gaussian.setValue(-100)
         self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
+        self.ui.width.clear()
+        self.ui.height.clear()
 
         operations.unsharmask = operations.gaussianblur = operations.color_balance = \
             operations.brightness = operations.contrast = operations.sharpness = 0
