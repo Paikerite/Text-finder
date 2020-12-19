@@ -4,6 +4,7 @@ from PySide2.QtCore import QObject, Signal, Qt
 from PySide2.QtGui import QGuiApplication, QPixmap, QImage
 from PySide2.QtWidgets import QLabel, QWidget, QMenu, QAction
 
+img_format = (".png", ".jpg", ".jpeg", ".bmp", ".tiff")
 
 class imagelabel_fromMainUi(QLabel):
     dropEvent_Signal = Signal(str)
@@ -74,10 +75,11 @@ class imagelabel_fromMainUi(QLabel):
     def dropEvent(self, event):
         for url in event.mimeData().urls():
             self.file_dir = url.toLocalFile()
-            print("Dropped file: " + self.file_dir)
+            if str(self.file_dir).endswith(img_format):
+                print("Dropped file: " + self.file_dir)
 
-            self.dropEvent_Signal.emit(str(self.file_dir))
-            print("Send file_dir to main window")
+                self.dropEvent_Signal.emit(str(self.file_dir))
+                print("Send file_dir to main window")
             self.setStyleSheet(u'')
         else:
             self.setStyleSheet(u'')

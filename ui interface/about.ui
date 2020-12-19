@@ -23,8 +23,8 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../Progri/Python/Text finder/Icons/ebook.svg</normaloff>../../../Progri/Python/Text finder/Icons/ebook.svg</iconset>
+   <iconset resource="../qt_for_main.qrc">
+    <normaloff>:/main_icon/Icons/ebook.svg</normaloff>:/main_icon/Icons/ebook.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
@@ -583,7 +583,7 @@ QAbstractSpinBox {
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../../../Progri/Python/Text finder/Icons/ebook.svg</pixmap>
+        <pixmap resource="../qt_for_main.qrc">:/main_icon/Icons/ebook.svg</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -672,6 +672,8 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../qt_for_main.qrc"/>
+ </resources>
  <connections/>
 </ui>
