@@ -21,6 +21,7 @@ import img_helper
 import instruction as ins
 import result
 import ui
+from about import AboutProgram
 
 images_type = ['.jpg', '.png', 'jpeg']
 
@@ -273,7 +274,9 @@ class MyWindow(QMainWindow):
         self.ins.show()
 
     def about(self):
-        self.ab = QtUiTools.QUiLoader().load(r"ui interface\about.ui")
+        # self.ab = QtUiTools.QUiLoader().load(r"ui interface\about.ui")
+        # self.ab.show()
+        self.ab = AboutProgram(self)
         self.ab.show()
 
     def areaSelection(self):
