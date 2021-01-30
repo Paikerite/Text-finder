@@ -178,12 +178,15 @@ class RecognizeBegin(QThread):
 
         print(dict_data)
 
-        if text == '':
+        if text.isspace():
             print("empty text")
             self.signalMain.emit()
         else:
             timer = datetime.now() - begin
-            self.signalResult.emit(text, [img, timer])
+            try:
+                self.signalResult.emit(text, [img, timer])
+            except UnboundLocalError:
+                self.signalResult.emit(text, [self.parent().image, timer])
 
         self.signalGuion.emit()
         self.parent().ui.progressBar.setMaximum(1)
@@ -429,7 +432,7 @@ class MyWindow(QMainWindow):
             self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
         except NameError as ne:
             print(ne)
-            QMessageBox.about(self, 'Error', 'Image not found, upload it')
+            QMessageBox.about(self, 'Ошибка', 'Картинка не обнаружена, загрузите её')
         except TypeError as te:
             print(te)
             self.ui.imagelabel.setPixmap(self.image)
@@ -555,7 +558,7 @@ class MyWindow(QMainWindow):
         if self.lang_lst:
             self.RecognizeBegin.start()
         else:
-            QMessageBox.about(self, 'Error', "No language selected")
+            QMessageBox.about(self, 'Ошибка', "Не выбран язык, добавьте как минимум один язык")
 
 ###########################################
 # Next function for Thread and ImageLabel #
@@ -567,7 +570,10 @@ class MyWindow(QMainWindow):
         self.result.show()
 
     def notfoundtexterr(self):
-        QMessageBox.about(self, 'Error', "Text hasn't found")
+        QMessageBox.about(self, 'Ошибка', "Текст не обнаружен, попробуйте:"
+                                          "\n\t1. Черно-белый фильтр"
+                                          "\n\t2. Воспользоваться коррекцией"
+                                          "\n\t3. Увеличить или уменьшить масштаб")
 
     @Slot(str)
     def saveresult(self, text):
