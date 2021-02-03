@@ -16,6 +16,7 @@ from PySide2.QtGui import QPixmap, QImage, QIntValidator
 from PySide2.QtWidgets import QMessageBox, QMainWindow, QFileDialog, QApplication
 
 # import about_tf
+import download_from_internet
 import drawing as drawing_file
 import img_helper
 import instruction as ins
@@ -256,6 +257,9 @@ class MyWindow(QMainWindow):
         self.ui.About.triggered.connect(self.about)
         self.ui.actionInstructiom.triggered.connect(self.instruction)
         self.ui.actionAbout_Qt.triggered.connect(self.aboutPyqt)
+        self.ui.action_upload_from_localmachine.triggered.connect(self.browsebutton)
+        self.ui.action_download_from_internet.triggered.connect(self.download_from_internet)
+        self.ui.action_save_image.triggered.connect(self.save_image)
 
         self.ui.width.setValidator(QIntValidator())
         self.ui.height.setValidator(QIntValidator())
@@ -281,6 +285,22 @@ class MyWindow(QMainWindow):
         # self.ab.show()
         self.ab = AboutProgram(self)
         self.ab.show()
+
+    def download_from_internet(self):
+        self.download_ui = download_from_internet.Download_dialog(self)
+        self.download_ui.show()
+
+    def save_image(self):
+        name = QFileDialog.getSaveFileName(self, "Сохранить изображение", "",
+                                            filter="*.png;;*.jpg;;*.jpeg;;*.bmp")
+
+        try:
+            self.ui.imagelabel.pixmap().toImage().save(name[0])
+            # file = open(name[0], 'wb')
+            # file.write(self.ui.imagelabel.pixmap().toImage()) # self.result_text
+            # file.close()
+        except FileNotFoundError as fe:
+            print(fe)
 
     def areaSelection(self):
         self.drawing = drawing_file.MyWidget(self, self.ui.imagelabel.pixmap())

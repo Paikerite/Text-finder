@@ -3,10 +3,13 @@ Image helper
 Main module of the package
 All image operations should go thorough this module
 """
-
+import numpy
 from PIL import Image, ImageEnhance, ImageFilter
 
 # constants
+from PySide2.QtGui import QImage, QPixmap
+from cv2 import medianBlur
+
 CONTRAST_FACTOR_MAX = 1.5
 CONTRAST_FACTOR_MIN = 0.5
 
@@ -30,7 +33,13 @@ def medianfilter(img, state):
     """add medianfilter"""
 
     if state:
-        return img.filter(ImageFilter.MedianFilter())
+        return img.filter(ImageFilter.MedianFilter(3))
+
+        # image = medianBlur(numpy.array(img)[:, :, ::-1], 3)
+        # height, width, channel = image.shape
+        # bytesPerLine = 3 * width
+        # image = QImage(image.data, width, height, bytesPerLine, QImage.Format_RGB888)
+        # return QPixmap.fromImage(image)
     else:
         return img
 
@@ -120,4 +129,3 @@ def flip_top(img):
     """Flip top to bottom"""
 
     return img.transpose(Image.FLIP_TOP_BOTTOM)
-

@@ -3,16 +3,13 @@
 ################################################################################
 ## Form generated from reading UI file 'text_finder_search.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.2
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
-    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
-    QPixmap, QRadialGradient)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 from imagelabel_frommainui import imagelabel_fromMainUi
@@ -625,6 +622,20 @@ class Ui_MainWindow(object):
         self.actionInstructiom.setIcon(icon1)
         self.actionAbout_Qt = QAction(MainWindow)
         self.actionAbout_Qt.setObjectName(u"actionAbout_Qt")
+        self.action_save_image = QAction(MainWindow)
+        self.action_save_image.setObjectName(u"action_save_image")
+        icon2 = QIcon()
+        icon2.addFile(u":/main_icon/Icons/document-download.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.action_save_image.setIcon(icon2)
+        self.action_remove_watermark = QAction(MainWindow)
+        self.action_remove_watermark.setObjectName(u"action_remove_watermark")
+        self.action_download_from_internet = QAction(MainWindow)
+        self.action_download_from_internet.setObjectName(u"action_download_from_internet")
+        icon3 = QIcon()
+        icon3.addFile(u":/main_icon/Icons/cloud-download.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.action_download_from_internet.setIcon(icon3)
+        self.action_upload_from_localmachine = QAction(MainWindow)
+        self.action_upload_from_localmachine.setObjectName(u"action_upload_from_localmachine")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(0, 0))
@@ -658,10 +669,10 @@ class Ui_MainWindow(object):
         self.pushButton_2.setStyleSheet(u"QPushButton {\n"
 "	font-size: 15px;\n"
 "}")
-        icon2 = QIcon()
-        icon2.addFile(u":/main_icon/Icons/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
-        icon2.addFile(u":/main_icon/Icons/upload \u2014 \u043a\u043e\u043f\u0438\u044f.svg", QSize(), QIcon.Disabled, QIcon.Off)
-        self.pushButton_2.setIcon(icon2)
+        icon4 = QIcon()
+        icon4.addFile(u":/main_icon/Icons/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/main_icon/Icons/upload \u2014 \u043a\u043e\u043f\u0438\u044f.svg", QSize(), QIcon.Disabled, QIcon.Off)
+        self.pushButton_2.setIcon(icon4)
 
         self.horizontalLayout_2.addWidget(self.pushButton_2, 0, Qt.AlignVCenter)
 
@@ -744,6 +755,10 @@ class Ui_MainWindow(object):
         self.menuBar.setGeometry(QRect(0, 0, 1270, 21))
         self.Info = QMenu(self.menuBar)
         self.Info.setObjectName(u"Info")
+        self.menu_file = QMenu(self.menuBar)
+        self.menu_file.setObjectName(u"menu_file")
+        self.menu = QMenu(self.menu_file)
+        self.menu.setObjectName(u"menu")
         MainWindow.setMenuBar(self.menuBar)
         self.statusBar = QStatusBar(MainWindow)
         self.statusBar.setObjectName(u"statusBar")
@@ -1006,10 +1021,10 @@ class Ui_MainWindow(object):
         font4.setStyleStrategy(QFont.PreferDefault)
         self.pushButton_Reset_enhance.setFont(font4)
         self.pushButton_Reset_enhance.setFocusPolicy(Qt.StrongFocus)
-        icon3 = QIcon()
-        icon3.addFile(u":/main_icon/Icons/arr_repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
-        icon3.addFile(u":/main_icon/Icons/arr_repeat_blacklivesmatter.svg", QSize(), QIcon.Disabled, QIcon.Off)
-        self.pushButton_Reset_enhance.setIcon(icon3)
+        icon5 = QIcon()
+        icon5.addFile(u":/main_icon/Icons/arr_repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u":/main_icon/Icons/arr_repeat_blacklivesmatter.svg", QSize(), QIcon.Disabled, QIcon.Off)
+        self.pushButton_Reset_enhance.setIcon(icon5)
 
         self.verticalLayout_6.addWidget(self.pushButton_Reset_enhance)
 
@@ -1131,10 +1146,10 @@ class Ui_MainWindow(object):
         self.pushButton_3.setStyleSheet(u"QPushButton {\n"
 "	font-size: 11px;\n"
 "}")
-        icon4 = QIcon()
-        icon4.addFile(u":/main_icon/Icons/scale_whitelivesmatter.svg", QSize(), QIcon.Normal, QIcon.Off)
-        icon4.addFile(u":/main_icon/Icons/scale.svg", QSize(), QIcon.Disabled, QIcon.Off)
-        self.pushButton_3.setIcon(icon4)
+        icon6 = QIcon()
+        icon6.addFile(u":/main_icon/Icons/scale_whitelivesmatter.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u":/main_icon/Icons/scale.svg", QSize(), QIcon.Disabled, QIcon.Off)
+        self.pushButton_3.setIcon(icon6)
 
         self.verticalLayout_5.addWidget(self.pushButton_3)
 
@@ -1143,7 +1158,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.resetScale.sizePolicy().hasHeightForWidth())
         self.resetScale.setSizePolicy(sizePolicy1)
         self.resetScale.setMaximumSize(QSize(16777215, 16777215))
-        self.resetScale.setIcon(icon3)
+        self.resetScale.setIcon(icon5)
 
         self.verticalLayout_5.addWidget(self.resetScale)
 
@@ -1159,10 +1174,16 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.lineEdit, self.checkBox_2)
 
         self.menuBar.addAction(self.Info.menuAction())
+        self.menuBar.addAction(self.menu_file.menuAction())
         self.Info.addAction(self.About)
         self.Info.addAction(self.actionInstructiom)
         self.Info.addSeparator()
         self.Info.addAction(self.actionAbout_Qt)
+        self.menu_file.addAction(self.action_save_image)
+        self.menu_file.addAction(self.menu.menuAction())
+        self.menu_file.addAction(self.action_remove_watermark)
+        self.menu.addAction(self.action_download_from_internet)
+        self.menu.addAction(self.action_upload_from_localmachine)
 
         self.retranslateUi(MainWindow)
 
@@ -1179,6 +1200,10 @@ class Ui_MainWindow(object):
         self.About.setText(QCoreApplication.translate("MainWindow", u"\u041e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0435...", None))
         self.actionInstructiom.setText(QCoreApplication.translate("MainWindow", u"\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f", None))
         self.actionAbout_Qt.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e Qt", None))
+        self.action_save_image.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435", None))
+        self.action_remove_watermark.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0431\u0440\u0430\u0442\u044c \u0432\u043e\u0434\u044f\u043d\u043e\u0439 \u0437\u043d\u0430\u043a", None))
+        self.action_download_from_internet.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0430", None))
+        self.action_upload_from_localmachine.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u0430", None))
 #if QT_CONFIG(statustip)
         self.areaSelection_button.setStatusTip(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u0435\u0437\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0440\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0432\u0430\u043d\u0438\u0435", None))
 #endif // QT_CONFIG(statustip)
@@ -1223,8 +1248,10 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(whatsthis)
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u21c6", None))
         self.Info.setTitle(QCoreApplication.translate("MainWindow", u"\u0418\u043d\u0444\u043e", None))
+        self.menu_file.setTitle(QCoreApplication.translate("MainWindow", u"\u0424\u0430\u0439\u043b", None))
+        self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435...", None))
         self.dockWidget_editor.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440", None))
-#if QT_CONFIG(statustip)checkBox_medianfilter
+#if QT_CONFIG(statustip)
         self.pushButton.setStatusTip(QCoreApplication.translate("MainWindow", u" \u0420\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0442\u044c \u0442\u0435\u043a\u0441\u0442 \u043d\u0430 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0435", None))
 #endif // QT_CONFIG(statustip)
 #if QT_CONFIG(whatsthis)
@@ -1256,7 +1283,8 @@ class Ui_MainWindow(object):
 "\u0440\u0435\u0437\u043a\u043e\u0441\u0442\u044c", None))
         self.label_GaussianBlur.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u044b\u0442\u0438\u0435\n"
 "\u043f\u043e \u0413\u0430\u0443\u0441\u0441\u0443", None))
-        self.checkBox_medianfilter.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439\n\u0444\u0438\u043b\u044c\u0442\u0440", None))
+        self.checkBox_medianfilter.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439\n"
+"\u0444\u0438\u043b\u044c\u0442\u0440", None))
         self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage2), QCoreApplication.translate("MainWindow", u"2", None))
         self.ScaleCheckBox.setTitle(QCoreApplication.translate("MainWindow", u"\u041c\u0430\u0441\u0448\u0442\u0430\u0431", None))
         self.height_label.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0438\u0440\u0438\u043d\u0430", None))

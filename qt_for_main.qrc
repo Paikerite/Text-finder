@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="main_icon">
+    <file>Icons/cloud-download.svg</file>
     <file>Icons/arr_repeat_blacklivesmatter.svg</file>
     <file>Icons/upload.svg</file>
     <file>Icons/upload — копия.svg</file>
@@ -12,5 +13,6 @@
     <file>Icons/arr_repeat.svg</file>
     <file>Icons/scale.svg</file>
     <file>Icons/scale_whitelivesmatter.svg</file>
+    <file>Icons/document-download.svg</file>
   </qresource>
 </RCC>
