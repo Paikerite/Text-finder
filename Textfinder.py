@@ -272,6 +272,7 @@ class MyWindow(QMainWindow):
         self.ui.action_upload_from_localmachine.triggered.connect(self.browsebutton)
         self.ui.action_download_from_internet.triggered.connect(self.download_from_internet)
         self.ui.action_save_image.triggered.connect(self.save_image)
+        self.ui.action_remove_watermark.triggered.connect(self.remove_watermark)
 
         self.ui.width.setValidator(QIntValidator())
         self.ui.height.setValidator(QIntValidator())
@@ -301,6 +302,34 @@ class MyWindow(QMainWindow):
     def download_from_internet(self):
         self.download_ui = download_from_internet.Download_dialog(self)
         self.download_ui.show()
+
+    def remove_watermark(self):
+        def is_gray(a, b, c):
+            r = 40 # 40
+            if a + b + c < 350:
+                return True
+            if abs(a - b) > r:
+                return False
+            if abs(a - c) > r:
+                return False
+            if abs(b - c) > r:
+                return False
+            return True
+
+        image = Image.fromqpixmap(self.ui.imagelabel.pixmap())
+        image = image.convert("RGB")
+        color_data = image.getdata()
+
+        new_color = []
+        for item in color_data:
+            if is_gray(item[0], item[1], item[2]):
+                new_color.append(item)
+            else:
+                new_color.append((255, 255, 255))
+
+        image.putdata(new_color)
+        self.ui.imagelabel.setPixmap(image.toqpixmap())
+        #image.show()
 
     def save_image(self):
         name = QFileDialog.getSaveFileName(self, "Сохранить изображение", "",
