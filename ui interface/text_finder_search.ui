@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1270</width>
-    <height>800</height>
+    <height>805</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -753,7 +753,7 @@ QMainWindow::separator
            <x>0</x>
            <y>0</y>
            <width>1126</width>
-           <height>635</height>
+           <height>640</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1589,6 +1589,62 @@ QComboBox:hover,QPushButton:hover
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QGroupBox" name="Treshes">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="title">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="radioButton_thresh">
+                <property name="font">
+                 <font>
+                  <pointsize>8</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Пороговое преобразование (стандартное)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;Оригинал&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/main_icon/data/original_gray.png&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;После обработки&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/main_icon/data/Binary.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="statusTip">
+                 <string>Пороговое преобразование (стандартное)</string>
+                </property>
+                <property name="text">
+                 <string>Порог</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_thresh_INV">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Пороговое преобразование (инверсия)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;Оригинал&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/main_icon/data/original_gray.png&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;После обработки&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/main_icon/data/Binary_INV.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="statusTip">
+                 <string>Пороговое преобразование (инверсия)</string>
+                </property>
+                <property name="text">
+                 <string>Порог
+инверсия</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -1627,7 +1683,7 @@ QComboBox:hover,QPushButton:hover
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="topMargin">
-           <number>20</number>
+           <number>14</number>
           </property>
           <item>
            <widget class="QLabel" name="height_label">
@@ -1797,7 +1853,7 @@ QComboBox:hover,QPushButton:hover
   </action>
   <action name="action_remove_watermark">
    <property name="text">
-    <string>Убрать водяной знак</string>
+    <string>Убрать символи</string>
    </property>
   </action>
   <action name="action_download_from_internet">

@@ -8,7 +8,7 @@ from PIL import Image, ImageEnhance, ImageFilter
 
 # constants
 from PySide2.QtGui import QImage, QPixmap
-from cv2 import medianBlur
+from cv2 import medianBlur, threshold, THRESH_BINARY_INV, THRESH_BINARY, cvtColor, COLOR_RGB2BGR, imwrite, UMat
 
 CONTRAST_FACTOR_MAX = 1.5
 CONTRAST_FACTOR_MIN = 0.5
@@ -28,6 +28,37 @@ GAUSSIANBLUR_FACTOR_MAX = 2.0
 UNSHARPMASK_FACTOR_MIN = 0.0
 UNSHARPMASK_FACTOR_MAX = 2.0
 
+
+def thresh(img, state):
+    if state:
+        img = img.convert(mode='L')
+        #img = cvtColor(numpy.array(img), COLOR_RGB2BGR)
+        imgCV2 = cvtColor(UMat(numpy.array(img, dtype=numpy.uint8)), COLOR_RGB2BGR)
+        #print(f"Before - {type(img)}")
+        imgCV2 = threshold(imgCV2, 127, 255, THRESH_BINARY)
+        #print(f"After - {type(img)}")
+
+        imwrite("temp.png", imgCV2[1])
+
+        #img = Image.fromarray(img)
+        img = Image.open("temp.png")
+        return img
+    else:
+        return img
+
+def thresh_INV(img, state):
+    if state:
+        img = img.convert(mode='L')
+
+        imgCV2 = cvtColor(UMat(numpy.array(img, dtype=numpy.uint8)), COLOR_RGB2BGR)
+        imgCV2 = threshold(imgCV2, 127, 255, THRESH_BINARY_INV)
+        imwrite("temp.png", imgCV2[1])
+
+        #img = Image.fromarray(img)
+        img = Image.open("temp.png")
+        return img
+    else:
+        return img
 
 def medianfilter(img, state):
     """add medianfilter"""

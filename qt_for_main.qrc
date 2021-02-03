@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="main_icon">
+    <file>data/original_gray.png</file>
+    <file>data/Binary.png</file>
+    <file>data/Binary_INV.png</file>
     <file>Icons/cloud-download.svg</file>
     <file>Icons/arr_repeat_blacklivesmatter.svg</file>
     <file>Icons/upload.svg</file>

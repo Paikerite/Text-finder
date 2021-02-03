@@ -80,6 +80,8 @@ class Operations:
         self.gaussianblur = 0
         self.blackandwhite = False
         self.medianfilter = False
+        self.thresh = False
+        self.thresh_INV = False
 
 
 operations = Operations()
@@ -94,11 +96,19 @@ def _get_img_with_all_operations(self):
     g = operations.gaussianblur
     baw = operations.blackandwhite
     mf = operations.medianfilter
+    t = operations.thresh
+    ti = operations.thresh_INV
 
     if self.pixmap:
         img = Image.fromqpixmap(self.pixmap)
     else:
         img = Image.fromqimage(self.image)
+
+    if ti:
+        img = img_helper.thresh_INV(img, ti)
+
+    if t:
+        img = img_helper.thresh(img, t)
 
     if mf:
         img = img_helper.medianfilter(img, mf)
@@ -243,6 +253,8 @@ class MyWindow(QMainWindow):
         self.ui.pushButton_5.clicked.connect(self.on_flip_top)
         self.ui.pushButton_add.clicked.connect(self.add_leng)
         self.ui.pushButton_remove.clicked.connect(self.remove_leng)
+        self.ui.radioButton_thresh.clicked.connect(self.thresh)
+        self.ui.radioButton_thresh_INV.clicked.connect(self.thresh_INV)
 
         self.ui.progressBar.setMinimum(0)
         self.ui.progressBar.setValue(0)
@@ -305,6 +317,14 @@ class MyWindow(QMainWindow):
     def areaSelection(self):
         self.drawing = drawing_file.MyWidget(self, self.ui.imagelabel.pixmap())
         self.drawing.show()
+
+    def thresh_INV(self, state):
+        operations.thresh_INV = state
+        self.place_preview_img()
+
+    def thresh(self, state):
+        operations.thresh = state
+        self.place_preview_img()
 
     def black_and_white(self, state):
         operations.blackandwhite = state
@@ -415,6 +435,8 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider_gaussian.setValue(-100)
         self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
+        self.ui.radioButton_thresh.setChecked(False)
+        self.ui.radioButton_thresh_INV.setChecked(False)
 
         operations.unsharmask = operations.gaussianblur = operations.color_balance =\
             operations.brightness = operations.contrast = operations.sharpness = 0
@@ -514,6 +536,8 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider_gaussian.setValue(-100)
         self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
+        self.ui.radioButton_thresh.setChecked(False)
+        self.ui.radioButton_thresh_INV.setChecked(False)
 
         self.ui.width.clear()
         self.ui.height.clear()
@@ -645,6 +669,8 @@ class MyWindow(QMainWindow):
         self.ui.horizontalSlider_gaussian.setValue(-100)
         self.ui.checkBox_2.setChecked(False)
         self.ui.checkBox_medianfilter.setChecked(False)
+        self.ui.radioButton_thresh.setChecked(False)
+        self.ui.radioButton_thresh_INV.setChecked(False)
         self.ui.width.clear()
         self.ui.height.clear()
 

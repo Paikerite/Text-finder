@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1270, 800)
+        MainWindow.resize(1270, 805)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -700,7 +700,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1126, 635))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1126, 640))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.imagelabel = imagelabel_fromMainUi(self.scrollAreaWidgetContents)
@@ -1088,6 +1088,30 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.checkBox_medianfilter, 0, Qt.AlignTop)
 
+        self.Treshes = QGroupBox(self.ContrastGroupPage2)
+        self.Treshes.setObjectName(u"Treshes")
+        self.Treshes.setEnabled(True)
+        self.Treshes.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.Treshes.setFlat(False)
+        self.verticalLayout_10 = QVBoxLayout(self.Treshes)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(-1, 2, -1, 5)
+        self.radioButton_thresh = QCheckBox(self.Treshes)
+        self.radioButton_thresh.setObjectName(u"radioButton_thresh")
+        font6 = QFont()
+        font6.setPointSize(8)
+        self.radioButton_thresh.setFont(font6)
+
+        self.verticalLayout_10.addWidget(self.radioButton_thresh)
+
+        self.radioButton_thresh_INV = QCheckBox(self.Treshes)
+        self.radioButton_thresh_INV.setObjectName(u"radioButton_thresh_INV")
+
+        self.verticalLayout_10.addWidget(self.radioButton_thresh_INV)
+
+
+        self.verticalLayout_7.addWidget(self.Treshes)
+
         self.ContrastGroup.addTab(self.ContrastGroupPage2, "")
 
         self.verticalLayout.addWidget(self.ContrastGroup)
@@ -1104,7 +1128,7 @@ class Ui_MainWindow(object):
         self.ScaleCheckBox.setChecked(False)
         self.verticalLayout_5 = QVBoxLayout(self.ScaleCheckBox)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(-1, 20, -1, -1)
+        self.verticalLayout_5.setContentsMargins(-1, 14, -1, -1)
         self.height_label = QLabel(self.ScaleCheckBox)
         self.height_label.setObjectName(u"height_label")
         self.height_label.setScaledContents(False)
@@ -1201,7 +1225,7 @@ class Ui_MainWindow(object):
         self.actionInstructiom.setText(QCoreApplication.translate("MainWindow", u"\u0418\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f", None))
         self.actionAbout_Qt.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e Qt", None))
         self.action_save_image.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435", None))
-        self.action_remove_watermark.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0431\u0440\u0430\u0442\u044c \u0432\u043e\u0434\u044f\u043d\u043e\u0439 \u0437\u043d\u0430\u043a", None))
+        self.action_remove_watermark.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0431\u0440\u0430\u0442\u044c \u0441\u0438\u043c\u0432\u043e\u043b\u0438", None))
         self.action_download_from_internet.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0430", None))
         self.action_upload_from_localmachine.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u0430", None))
 #if QT_CONFIG(statustip)
@@ -1285,6 +1309,22 @@ class Ui_MainWindow(object):
 "\u043f\u043e \u0413\u0430\u0443\u0441\u0441\u0443", None))
         self.checkBox_medianfilter.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439\n"
 "\u0444\u0438\u043b\u044c\u0442\u0440", None))
+        self.Treshes.setTitle("")
+#if QT_CONFIG(tooltip)
+        self.radioButton_thresh.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600;\">\u041f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 (\u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435)</span></p><p align=\"center\"><br/>\u041e\u0440\u0438\u0433\u0438\u043d\u0430\u043b</p><p align=\"center\"><img src=\":/main_icon/data/original_gray.png\"/></p><p align=\"center\">\u041f\u043e\u0441\u043b\u0435 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438</p><p align=\"center\"><img src=\":/main_icon/data/Binary.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.radioButton_thresh.setStatusTip(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 (\u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435)", None))
+#endif // QT_CONFIG(statustip)
+        self.radioButton_thresh.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0440\u043e\u0433", None))
+#if QT_CONFIG(tooltip)
+        self.radioButton_thresh_INV.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:12pt; font-weight:600;\">\u041f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 (\u0438\u043d\u0432\u0435\u0440\u0441\u0438\u044f)</span></p><p align=\"center\"><br/>\u041e\u0440\u0438\u0433\u0438\u043d\u0430\u043b</p><p align=\"center\"><img src=\":/main_icon/data/original_gray.png\"/></p><p align=\"center\">\u041f\u043e\u0441\u043b\u0435 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438</p><p align=\"center\"><img src=\":/main_icon/data/Binary_INV.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.radioButton_thresh_INV.setStatusTip(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 (\u0438\u043d\u0432\u0435\u0440\u0441\u0438\u044f)", None))
+#endif // QT_CONFIG(statustip)
+        self.radioButton_thresh_INV.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0440\u043e\u0433\n"
+"\u0438\u043d\u0432\u0435\u0440\u0441\u0438\u044f", None))
         self.ContrastGroup.setTabText(self.ContrastGroup.indexOf(self.ContrastGroupPage2), QCoreApplication.translate("MainWindow", u"2", None))
         self.ScaleCheckBox.setTitle(QCoreApplication.translate("MainWindow", u"\u041c\u0430\u0441\u0448\u0442\u0430\u0431", None))
         self.height_label.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0438\u0440\u0438\u043d\u0430", None))
