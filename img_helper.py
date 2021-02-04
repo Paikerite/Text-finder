@@ -3,12 +3,14 @@ Image helper
 Main module of the package
 All image operations should go thorough this module
 """
+from os import remove
+
 import numpy
 from PIL import Image, ImageEnhance, ImageFilter
 
 # constants
-from PySide2.QtGui import QImage, QPixmap
-from cv2 import medianBlur, threshold, THRESH_BINARY_INV, THRESH_BINARY, cvtColor, COLOR_RGB2BGR, imwrite, UMat
+# from PySide2.QtGui import QImage, QPixmap
+from cv2 import threshold, THRESH_BINARY_INV, THRESH_BINARY, cvtColor, COLOR_RGB2BGR, imwrite, UMat
 
 CONTRAST_FACTOR_MAX = 1.5
 CONTRAST_FACTOR_MIN = 0.5
@@ -35,10 +37,15 @@ def thresh(img, state):
         #img = cvtColor(numpy.array(img), COLOR_RGB2BGR)
         imgCV2 = cvtColor(UMat(numpy.array(img, dtype=numpy.uint8)), COLOR_RGB2BGR)
         #print(f"Before - {type(img)}")
-        imgCV2 = threshold(imgCV2, 127, 255, THRESH_BINARY)
+        imgCV2 = threshold(imgCV2, 127, 255, THRESH_BINARY)[1]
         #print(f"After - {type(img)}")
 
-        imwrite("temp.png", imgCV2[1])
+        # kernel = getStructuringElement(MORPH_RECT, (1, 1))
+        # imgCV2 = morphologyEx(imgCV2, MORPH_OPEN, kernel)
+
+        # imgCV2 = 255 - opening
+
+        imwrite("temp.png", imgCV2)
 
         #img = Image.fromarray(img)
         img = Image.open("temp.png")
@@ -51,8 +58,8 @@ def thresh_INV(img, state):
         img = img.convert(mode='L')
 
         imgCV2 = cvtColor(UMat(numpy.array(img, dtype=numpy.uint8)), COLOR_RGB2BGR)
-        imgCV2 = threshold(imgCV2, 127, 255, THRESH_BINARY_INV)
-        imwrite("temp.png", imgCV2[1])
+        imgCV2 = threshold(imgCV2, 127, 255, THRESH_BINARY_INV)[1]
+        imwrite("temp.png", imgCV2)
 
         #img = Image.fromarray(img)
         img = Image.open("temp.png")

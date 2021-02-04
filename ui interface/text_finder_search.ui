@@ -1853,7 +1853,7 @@ QComboBox:hover,QPushButton:hover
   </action>
   <action name="action_remove_watermark">
    <property name="text">
-    <string>Убрать символи</string>
+    <string>Убрать водяной знак</string>
    </property>
   </action>
   <action name="action_download_from_internet">

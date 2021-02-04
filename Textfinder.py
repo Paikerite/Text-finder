@@ -164,6 +164,7 @@ class RecognizeBegin(QThread):
         super(RecognizeBegin, self).__init__(parent=parent)
 
     def run(self):
+        global img
         begin = datetime.now()
 
         self.parent().ui.progressBar.setMaximum(0)
@@ -173,7 +174,8 @@ class RecognizeBegin(QThread):
 
         fortxt.toImage().save('temp.png', 'png')
         forimage_box = cv2.imread('temp.png')
-        os.remove('temp.png')
+        # cv2.imshow("test", forimage_box)
+        # os.remove('temp.png')
 
         fortxt = Image.fromqpixmap(fortxt)
         pytesseract.pytesseract.tesseract_cmd = dir
@@ -186,6 +188,7 @@ class RecognizeBegin(QThread):
         for b in dict_data.splitlines():
             b = b.split(' ')
             img = cv2.rectangle(forimage_box, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 1)
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         print(dict_data)
 
@@ -293,6 +296,10 @@ class MyWindow(QMainWindow):
         self.ins = ins.Instruction(self)
         self.ins.show()
 
+    def closeEvent(self, event):
+        print("closed")
+        os.remove('temp.png')
+
     def about(self):
         # self.ab = QtUiTools.QUiLoader().load(r"ui interface\about.ui")
         # self.ab.show()
@@ -306,7 +313,7 @@ class MyWindow(QMainWindow):
     def remove_watermark(self):
         def is_gray(a, b, c):
             r = 40 # 40
-            if a + b + c < 350:
+            if a + b + c < 350: # 350
                 return True
             if abs(a - b) > r:
                 return False
@@ -328,7 +335,9 @@ class MyWindow(QMainWindow):
                 new_color.append((255, 255, 255))
 
         image.putdata(new_color)
-        self.ui.imagelabel.setPixmap(image.toqpixmap())
+        self.pixmap = image.toqpixmap()
+        # self.image = image
+        self.ui.imagelabel.setPixmap(self.pixmap)
         #image.show()
 
     def save_image(self):
@@ -518,10 +527,13 @@ class MyWindow(QMainWindow):
 
             try:
                 if self.ui.radioButton_keepAssRatio.isChecked():
-                    self.pixmap = self.image.scaled(width, height, Qt.KeepAspectRatio)
+                    self.pixmap = QPixmap.fromImage(self.image.scaled(width, height, Qt.KeepAspectRatio))
+                    #self.image = self.image.scaled(width, height, Qt.KeepAspectRatio)
                 else:
-                    self.pixmap = self.image.scaled(width, height)
-                self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.pixmap))
+                    self.pixmap = QPixmap.fromImage(self.image.scaled(width, height))
+                    #self.image = self.image.scaled(width, height)
+                #self.ui.imagelabel.setPixmap(QPixmap.fromImage(self.image))
+                self.ui.imagelabel.setPixmap(self.pixmap)
             except TypeError as te:
                 print(te)
                 self.ui.imagelabel.setPixmap(self.pixmap)
